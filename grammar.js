@@ -47,7 +47,7 @@ module.exports = grammar({
     query_specification: $ => seq(
       token(/SELECT/i)
       ,$.select_list
-      ,optional(seq(token("FROM"), $.table_sources))
+      ,optional(seq(token(/FROM/i), $.table_sources))
     ),
 
     select_list: $ => seq($.select_list_elem, repeat(seq(token(','), $.select_list_elem))),
