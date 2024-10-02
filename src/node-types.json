@@ -215,9 +215,5 @@
   {
     "type": ";",
     "named": false
-  },
-  {
-    "type": "FROM",
-    "named": false
   }
 ]
