@@ -41,7 +41,6 @@ module.exports = grammar({
       $.query_specification
     ),
 
-    //TODO caps hanlding on select/from tokens?
     query_specification: $ => seq(
       token(/SELECT/i)
       ,$.select_list
@@ -50,7 +49,6 @@ module.exports = grammar({
 
     select_list: $ => seq($.select_list_elem, repeat(seq(token(','), $.select_list_elem))),
 
-    //TODO fixme
     select_list_elem: $ => choice(ID, SQUARE_BRACKET_ID),
 
     table_sources: $ => seq($.table_source),
@@ -65,7 +63,7 @@ module.exports = grammar({
       $.id_
     ),
 
-    //TODO seq choice
+    //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5155-L5160
     full_column_name: $ => seq(
       $.id_
     ),
