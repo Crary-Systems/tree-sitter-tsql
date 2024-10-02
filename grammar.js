@@ -11,9 +11,7 @@ const SQUARE_BRACKET_ID = token(/\[[A-Za-z_#]+\]/);
 module.exports = grammar({
   name: "TSQL",
 
-  //TODO fixme
   conflicts: $ => [
-    [$.select_statement]
   ],
 
   rules: {
@@ -34,10 +32,10 @@ module.exports = grammar({
       $.select_statement
     ),
 
-    select_statement: $ => seq(
+    select_statement: $ => prec.left(seq(
       $.query_expression
       ,optional(SEMI)
-    ),
+    )),
 
     query_expression: $ => seq(
       $.query_specification
