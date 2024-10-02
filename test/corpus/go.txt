@@ -1,0 +1,24 @@
+=====================================
+Simple Go example
+=====================================
+
+GO
+
+---
+
+(tsql_file
+  (batch
+    (go_statement)))
+
+
+=====================================
+Simple Go with count example
+=====================================
+
+GO 5
+
+---
+
+(tsql_file
+  (batch
+    (go_statement count: (integer))))

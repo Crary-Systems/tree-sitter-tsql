@@ -1,14 +1,103 @@
 {
   "name": "TSQL",
   "rules": {
-    "program": {
+    "tsql_file": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "sql_clauses"
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "batch"
+          }
         }
       ]
+    },
+    "batch": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "go_statement"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "execute_body_batch"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "go_statement"
+                  },
+                  {
+                    "type": "REPEAT1",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "sql_clauses"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "go_statement"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "go_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "GO",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "count",
+              "content": {
+                "type": "SYMBOL",
+                "name": "integer"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "execute_body_batch": {
+      "type": "STRING",
+      "value": "TODO"
     },
     "sql_clauses": {
       "type": "CHOICE",
@@ -260,6 +349,22 @@
           }
         }
       ]
+    },
+    "integer": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[0-9]+"
+      }
+    },
+    "placeholder": {
+      "type": "ALIAS",
+      "content": {
+        "type": "STRING",
+        "value": "TODO"
+      },
+      "named": true,
+      "value": "dummy"
     }
   },
   "extras": [

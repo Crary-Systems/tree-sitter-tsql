@@ -6,6 +6,7 @@ const SEMI = token(';');
 //FULLWIDTH handling?
 const ID = token(/[A-Za-z_#]+/);
 const SQUARE_BRACKET_ID = token(/\[[A-Za-z_#]+\]/);
+const INT = token(/[0-9]+/);
 
 
 module.exports = grammar({
@@ -15,10 +16,23 @@ module.exports = grammar({
   ],
 
   rules: {
-    //TODO fixme
-    program: $ => choice(
-      $.sql_clauses
+    tsql_file: $ => choice(
+      repeat($.batch)
+      //TODO execute_body_batch go_statmenet* -- https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L37
     ),
+
+    batch: $ => prec.left(choice(
+      $.go_statement
+      ,seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
+      ,//TODO seq($.batch_level_statement, repeat($.go_statement))
+    )),
+
+    //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
+    go_statement: $ => seq(token(/GO/i), optional(field("count", $.integer))),
+
+    execute_body_batch: $ => 'TODO', //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3145-L3147
+
+    //TODO batch_level_statement: $ => 'TODO', //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
 
     sql_clauses: $ => choice(
       seq($.dml_clause, optional(SEMI))
@@ -72,9 +86,17 @@ module.exports = grammar({
       $.full_column_name
     ),
 
+    //
+    // HELPERS
+    //
+
     id_ : $ => choice(
       ID
       ,SQUARE_BRACKET_ID
     ),
+
+    integer: $ => INT,
+
+    placeholder: $ => alias('TODO', $.dummy),
   }
 });

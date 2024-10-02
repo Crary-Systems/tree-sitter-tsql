@@ -1,0 +1,69 @@
+=====================================
+Go Batch Repeated
+=====================================
+Go
+GO 5
+go
+---
+(tsql_file
+  (batch
+    (go_statement))
+  (batch
+    (go_statement (integer)))
+  (batch
+    (go_statement)))
+
+=====================================
+Simple Select Batch No Execute Body Batch clause
+=====================================
+GO
+SELECT id,type FROM [PostTypes]
+SELECT id FROM [PostTypes]
+GO 1
+GO 2
+----
+(tsql_file
+  (batch (go_statement))
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select_list
+                  (select_list_elem)
+                  (select_list_elem))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_))))))))))))
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select_list
+                  (select_list_elem))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_))))))))))))
+  (batch
+    (go_statement (integer)))
+  (batch
+    (go_statement (integer))))
+
+=====================================
+execute_body_batch example
+:skip
+=====================================
+
+=====================================
+batch_level_statement example
+:skip
+=====================================
