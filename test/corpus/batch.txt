@@ -59,9 +59,28 @@ GO 2
     (go_statement (integer))))
 
 =====================================
-execute_body_batch example
-:skip
+execute_body_batch named params
 =====================================
+StackOverflowTiny.dbo.sp_autostats @tblname = 'dbo.PostTypes', @flagc = 'ON'
+GO
+---
+(tsql_file
+  (batch
+    (execute_body_batch
+      (func_proc_name_server_database_schema
+        (func_proc_name_database_schema
+          (id_)
+          (id_)
+          (id_)))
+      (execute_statement_arg
+        (execute_statement_arg_named
+          (execute_parameter
+            (constant))))
+      (execute_statement_arg
+        (execute_statement_arg_named
+          (execute_parameter
+            (constant)))))
+    (go_statement)))
 
 =====================================
 batch_level_statement example

@@ -23,6 +23,11 @@
     }
   },
   {
+    "type": "constant",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "dml_clause",
     "named": true,
     "fields": {},
@@ -40,7 +45,67 @@
   {
     "type": "execute_body_batch",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "execute_statement_arg",
+          "named": true
+        },
+        {
+          "type": "func_proc_name_server_database_schema",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_parameter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_statement_arg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "execute_statement_arg_named",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_statement_arg_named",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "execute_parameter",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "full_column_name",
@@ -73,6 +138,93 @@
     }
   },
   {
+    "type": "func_proc_name_database_schema",
+    "named": true,
+    "fields": {
+      "database": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "procedure": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "schema": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "func_proc_name_schema",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func_proc_name_schema",
+    "named": true,
+    "fields": {
+      "procedure": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "schema": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "func_proc_name_server_database_schema",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "func_proc_name_database_schema",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "go_statement",
     "named": true,
     "fields": {
@@ -90,6 +242,21 @@
   },
   {
     "type": "id_",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "keyword",
     "named": true,
     "fields": {}
   },
@@ -261,7 +428,7 @@
     "named": false
   },
   {
-    "type": "TODO",
+    "type": "=",
     "named": false
   },
   {

@@ -13,6 +13,7 @@ const SQUARE_BRACKET_ID = token(/\[[A-Za-z_#]+\]/);
 const LOCAL_ID          = token(/@[A-Za-z_$@#0-9]+/);
 const INT               = token(/[0-9]+/);
 const DOT               = token(/\./);
+const STRING            = token(/N?'([^']|'')*'/);
 
 //
 // PARSER https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4
@@ -31,24 +32,31 @@ module.exports = grammar({
     ),
 
     batch: $ => prec.left(choice(
-      seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
+      $.go_statement
+      ,seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
       ,//TODO seq($.batch_level_statement, repeat($.go_statement))
     )),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
-    go_statement: $ => seq(prec(2,token(/GO/i)), optional(field("count", $.integer))),
+    go_statement: $ => prec(2,seq(token(/GO/i), optional(field("count", $.integer)))),
 
     //TODOWORKME
     execute_body_batch: $ => seq(
       $.func_proc_name_server_database_schema, optional(seq($.execute_statement_arg, repeat(seq(token(','), $.execute_statement_arg)))), optional(SEMI)
     ),
 
-    func_proc_name_server_database_schema : $ => choice(
-      seq(optional(field('server', $.id_)), DOT, optional(field('database', $.id_)), DOT, optional(field('schema', $.id_)), DOT, field('procedure', $.id_))
-
-
-      //TODO fallback func_proc_name_database_schema
+    func_proc_name_server_database_schema: $ => choice(
+     //TODO seq(optional(field('server', $.id_)), DOT, optional(field('database', $.id_)), DOT, optional(field('schema', $.id_)), DOT, field('procedure', $.id_))
+      $.func_proc_name_database_schema
     ),
+
+    func_proc_name_database_schema: $ => choice(
+      seq(optional(field('database', $.id_)), DOT, optional(field('schema', $.id_)), DOT, field('procedure', $.id_))
+      ,$.func_proc_name_schema
+    ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5136-L5138
+    func_proc_name_schema: $ => seq(optional(seq(field('schema',$.id_), DOT)), field('procedure', $.id_)),
 
     execute_statement_arg: $ => choice(
       //seq($.execute_statement_arg_unnamed, repeat(seq(token(','), $.execute_statement_arg))),   //Unnamed params can continue unnamed
@@ -63,10 +71,14 @@ module.exports = grammar({
     //TODO execute_statement_arg_unnamed : $ => 'TODO',
 
     execute_parameter: $ => choice(
-      token(/DEFAULT/i)
+      $.constant
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3172
     ),
 
+    constant: $ => choice(
+      STRING
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5270
+    ),
 
     //TODO batch_level_statement: $ => 'TODO', //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
 
@@ -134,7 +146,7 @@ module.exports = grammar({
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5287
     keyword: $ => choice(
-      prec(1,token(/GO/i))
+      token(/GO/i)
     ),
 
     integer: $ => INT,
