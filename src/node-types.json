@@ -212,10 +212,51 @@
   {
     "type": "func_proc_name_server_database_schema",
     "named": true,
-    "fields": {},
+    "fields": {
+      "database": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "procedure": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "schema": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "server": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "func_proc_name_database_schema",
@@ -414,6 +455,14 @@
       "types": [
         {
           "type": "batch",
+          "named": true
+        },
+        {
+          "type": "execute_body_batch",
+          "named": true
+        },
+        {
+          "type": "go_statement",
           "named": true
         }
       ]

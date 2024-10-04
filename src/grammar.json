@@ -10,12 +10,28 @@
             "type": "SYMBOL",
             "name": "batch"
           }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "execute_body_batch"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "go_statement"
+              }
+            }
+          ]
         }
       ]
     },
     "batch": {
       "type": "PREC_LEFT",
-      "value": 0,
+      "value": 1,
       "content": {
         "type": "CHOICE",
         "members": [
@@ -162,6 +178,88 @@
     "func_proc_name_server_database_schema": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "server",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "database",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "schema",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "procedure",
+              "content": {
+                "type": "SYMBOL",
+                "name": "id_"
+              }
+            }
+          ]
+        },
         {
           "type": "SYMBOL",
           "name": "func_proc_name_database_schema"
@@ -540,7 +638,7 @@
       ]
     },
     "table_sources": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
@@ -572,7 +670,7 @@
       ]
     },
     "full_table_name": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
