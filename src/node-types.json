@@ -72,6 +72,18 @@
         {
           "type": "constant",
           "named": true
+        },
+        {
+          "type": "default",
+          "named": true
+        },
+        {
+          "type": "id_",
+          "named": true
+        },
+        {
+          "type": "null_",
+          "named": true
         }
       ]
     }
@@ -510,7 +522,15 @@
     "named": false
   },
   {
+    "type": "default",
+    "named": true
+  },
+  {
     "type": "dummy",
+    "named": true
+  },
+  {
+    "type": "null_",
     "named": true
   }
 ]

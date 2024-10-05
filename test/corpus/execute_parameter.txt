@@ -1,0 +1,59 @@
+=====================================
+Execute Parameter Default
+=====================================
+sp_datatype_info DEFAULT
+---
+(tsql_file
+  (execute_body_batch
+    (func_proc_name_server_database_schema
+      (func_proc_name_database_schema
+        (func_proc_name_schema
+          (id_))))
+    (execute_statement_arg
+      (execute_statement_arg_unnamed
+        (execute_parameter
+          (default))))))
+
+=====================================
+Execute Parameter id_
+=====================================
+sp_help @objname=spt_monitor
+---
+(tsql_file
+  (execute_body_batch
+    (func_proc_name_server_database_schema
+      (func_proc_name_database_schema
+        (func_proc_name_schema
+          (id_))))
+    (execute_statement_arg
+      (execute_statement_arg_named
+        (execute_parameter
+          (id_))))))
+
+=====================================
+Execute Parameter LOCAL_ID NEEDS EXEC
+:skip
+=====================================
+EXEC sp_help @objname=@foo;
+---
+
+=====================================
+Execute Parameter Out NEEDS EXEC
+:skip
+=====================================
+EXEC dbo.foo @foo='spt_monitor', @baz=@quux OUT;
+---
+
+=====================================
+Execute Parameter Output NEEDS EXEC
+:skip
+=====================================
+EXEC dbo.foo @foo='spt_monitor', @baz=@quux OUTPUT;
+---
+
+=====================================
+Execute Parameter NULL NEEDS EXEC
+:skip
+=====================================
+EXEC sp_help @objname=NULL;
+---

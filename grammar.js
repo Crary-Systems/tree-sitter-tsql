@@ -45,9 +45,9 @@ module.exports = grammar({
     go_statement: $ => prec(1,seq(token(/GO/i), optional(field("count", $.integer)))),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3145
-    execute_body_batch: $ => seq(
+    execute_body_batch: $ => prec.left(seq(
       $.func_proc_name_server_database_schema, optional(seq($.execute_statement_arg, repeat(seq(token(','), $.execute_statement_arg)))), optional(SEMI)
-    ),
+    )),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5145
     func_proc_name_server_database_schema: $ => choice(
@@ -80,8 +80,15 @@ module.exports = grammar({
 
     execute_parameter: $ => choice(
       $.constant
+      //TODO localid output/out
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3172
+      ,$.id_
+      ,$.default
+      ,$.null_
     ),
+
+    default: $ => token(/DEFAULT/i),
+    null_: $ => token(/NULL/i),
 
     constant: $ => choice(
       STRING
