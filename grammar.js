@@ -14,6 +14,7 @@ const LOCAL_ID          = token(/@[A-Za-z_$@#0-9]+/);
 const INT               = token(/[0-9]+/);
 const DOT               = token(/\./);
 const STRING            = token(/N?'([^']|'')*'/);
+const DECIMAL           = token(/[0-9]+/);
 
 //
 // PARSER https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4
@@ -63,9 +64,10 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5136
     func_proc_name_schema: $ => seq(optional(seq(field('schema',$.id_), DOT)), field('procedure', $.id_)),
 
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3158
     execute_statement_arg: $ => choice(
-      //TODO seq($.execute_statement_arg_unnamed, repeat(seq(token(','), $.execute_statement_arg))),   //Unnamed params can continue unnamed
-      prec.left(seq($.execute_statement_arg_named, repeat(seq(token(','), $.execute_statement_arg_named)))) //Named can only be continued by unnamed
+      prec.left(seq($.execute_statement_arg_unnamed, repeat(seq(token(','), $.execute_statement_arg))))   //Unnamed params can continue unnamed
+      ,prec.left(seq($.execute_statement_arg_named, repeat(seq(token(','), $.execute_statement_arg_named)))) //Named can only be continued by unnamed
     ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3163
@@ -73,8 +75,8 @@ module.exports = grammar({
       field('name', LOCAL_ID), token('='), field('value', $.execute_parameter)
     ),
 
-
-    //TODO execute_statement_arg_unnamed : $ => 'TODO',
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3167
+    execute_statement_arg_unnamed : $ => field('value', $.execute_parameter),
 
     execute_parameter: $ => choice(
       $.constant
@@ -83,6 +85,7 @@ module.exports = grammar({
 
     constant: $ => choice(
       STRING
+      ,seq(optional(token(/-/)), choice(DECIMAL)) //TODO
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5270
     ),
 

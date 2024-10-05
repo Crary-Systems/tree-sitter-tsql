@@ -386,6 +386,38 @@
             "members": [
               {
                 "type": "SYMBOL",
+                "name": "execute_statement_arg_unnamed"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "STRING",
+                        "value": ","
+                      }
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "execute_statement_arg"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
                 "name": "execute_statement_arg_named"
               },
               {
@@ -443,6 +475,14 @@
         }
       ]
     },
+    "execute_statement_arg_unnamed": {
+      "type": "FIELD",
+      "name": "value",
+      "content": {
+        "type": "SYMBOL",
+        "name": "execute_parameter"
+      }
+    },
     "execute_parameter": {
       "type": "CHOICE",
       "members": [
@@ -461,6 +501,38 @@
             "type": "PATTERN",
             "value": "N?'([^']|'')*'"
           }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "-"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[0-9]+"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -755,7 +827,11 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "batch"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

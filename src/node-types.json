@@ -85,7 +85,15 @@
       "required": true,
       "types": [
         {
+          "type": "execute_statement_arg",
+          "named": true
+        },
+        {
           "type": "execute_statement_arg_named",
+          "named": true
+        },
+        {
+          "type": "execute_statement_arg_unnamed",
           "named": true
         }
       ]
@@ -93,6 +101,22 @@
   },
   {
     "type": "execute_statement_arg_named",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "execute_parameter",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "execute_statement_arg_unnamed",
     "named": true,
     "fields": {
       "value": {
@@ -297,6 +321,11 @@
     }
   },
   {
+    "type": "integer",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "keyword",
     "named": true,
     "fields": {}
@@ -482,10 +511,6 @@
   },
   {
     "type": "dummy",
-    "named": true
-  },
-  {
-    "type": "integer",
     "named": true
   }
 ]
