@@ -5,13 +5,11 @@ Go
 GO 5
 go
 ---
+
 (tsql_file
-  (batch
-    (go_statement))
-  (batch
-    (go_statement (integer)))
-  (batch
-    (go_statement)))
+  (batch (go_statement))
+  (batch (go_statement (integer)))
+  (batch (go_statement)))
 
 =====================================
 Simple Select Batch No Execute Body Batch clause
@@ -22,6 +20,7 @@ SELECT id FROM [PostTypes]
 GO 1
 GO 2
 ----
+
 (tsql_file
   (batch (go_statement))
   (batch
@@ -38,8 +37,7 @@ GO 2
                   (table_source
                     (table_source_item
                       (full_table_name
-                        (id_))))))))))))
-  (batch
+                        (id_)))))))))))
     (sql_clauses
       (dml_clause
         (select_statement_standalone
@@ -52,10 +50,8 @@ GO 2
                   (table_source
                     (table_source_item
                       (full_table_name
-                        (id_))))))))))))
-  (batch
-    (go_statement (integer)))
-  (batch
+                        (id_)))))))))))
+    (go_statement (integer))
     (go_statement (integer))))
 
 =====================================

@@ -23,6 +23,7 @@ module.exports = grammar({
   name: "TSQL",
 
   conflicts: $ => [
+    [$.batch]
   ],
 
   rules: {
@@ -33,14 +34,14 @@ module.exports = grammar({
       ,seq($.execute_body_batch, repeat($.go_statement))
     ),
 
-    batch: $ => prec.left(1,choice(
-      $.go_statement
+    batch: $ => choice(
+      prec(1,$.go_statement)
       ,seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
       ,//TODO seq($.batch_level_statement, repeat($.go_statement))
-    )),
+    ),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
-    go_statement: $ => prec(2,seq(token(/GO/i), optional(field("count", $.integer)))),
+    go_statement: $ => prec(1,seq(token(/GO/i), optional(field("count", $.integer)))),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3145
     execute_body_batch: $ => seq(
