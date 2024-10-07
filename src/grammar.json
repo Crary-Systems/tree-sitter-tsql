@@ -495,6 +495,27 @@
           "name": "constant"
         },
         {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "LOCAL_ID_"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "OUTPUT"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "id_"
         },
@@ -507,6 +528,21 @@
           "name": "null_"
         }
       ]
+    },
+    "LOCAL_ID_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "@[A-Za-z_$@#0-9]+"
+      }
+    },
+    "OUTPUT": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "OUT(PUT)?",
+        "flags": "i"
+      }
     },
     "default": {
       "type": "TOKEN",
@@ -594,8 +630,143 @@
               ]
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "another_statement"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": ";"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
         }
       ]
+    },
+    "another_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "execute_statement"
+        }
+      ]
+    },
+    "execute_statement": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "execute"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "execute_body"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "STRING",
+                  "value": ";"
+                }
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "execute": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "EXEC(UTE)?",
+        "flags": "i"
+      }
+    },
+    "execute_body": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "return_status",
+                      "content": {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "@[A-Za-z_$@#0-9]+"
+                        }
+                      }
+                    },
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "="
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "func_proc_name_server_database_schema"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "execute_var_string"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "execute_statement_arg"
+            }
+          ]
+        }
+      ]
+    },
+    "execute_var_string": {
+      "type": "STRING",
+      "value": "TODO"
     },
     "dml_clause": {
       "type": "CHOICE",

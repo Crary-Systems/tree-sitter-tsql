@@ -78,14 +78,17 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3167
     execute_statement_arg_unnamed : $ => field('value', $.execute_parameter),
 
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3171
     execute_parameter: $ => choice(
       $.constant
-      //TODO localid output/out
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3172
+      ,seq($.LOCAL_ID_, optional($.OUTPUT))
       ,$.id_
       ,$.default
       ,$.null_
     ),
+
+    LOCAL_ID_: $ => LOCAL_ID,
+    OUTPUT: $ => token(/OUT(PUT)?/i),
 
     default: $ => token(/DEFAULT/i),
     null_: $ => token(/NULL/i),
@@ -100,9 +103,31 @@ module.exports = grammar({
 
     sql_clauses: $ => choice(
       seq($.dml_clause, optional(SEMI))
+      ,seq($.another_statement, optional(SEMI))
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L53-L61
     ),
 
+    another_statement: $ => choice(
+
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L350
+      $.execute_statement
+    ),
+
+    // https://msdn.microsoft.com/en-us/library/ms188332.aspx
+    // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3141
+    execute_statement: $ => prec.left(seq($.execute, $.execute_body, optional(SEMI))),
+
+    execute: $ => token(/EXEC(UTE)?/i),
+
+    // https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
+    execute_body: $ => choice(
+      seq(optional(seq(field('return_status',LOCAL_ID), token(/=/)))
+        , choice($.func_proc_name_server_database_schema, $.execute_var_string)
+        , $.execute_statement_arg)
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3152-L3156
+    ),
+
+    execute_var_string: $ => 'TODO',
 
     dml_clause: $ => choice(
       $.select_statement_standalone

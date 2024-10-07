@@ -1,0 +1,16 @@
+=====================================
+execute_var_string string on right NEEDS DECLSET
+:skip
+=====================================
+
+DECLARE @sql as nvarchar(max);
+SET @sql = 'SELECT ';
+EXEC (@sql + '1+1');
+
+=====================================
+execute_var_string string on left NEEDS DECLSET
+:skip
+=====================================
+DECLARE @sql as nvarchar(max);
+SET @sql = '1+1';
+EXEC ('SELECT ' + @sql);
