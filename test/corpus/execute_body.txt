@@ -15,7 +15,7 @@ EXEC @foo=@sql
               (LOCAL_ID_))))))))
 
 =====================================
-execute_body Impersonation TODO
+execute_body Impersonation
 =====================================
 EXEC (@sql) AS LOGIN = 'sa'
 ---

@@ -5,6 +5,11 @@
     "fields": {}
   },
   {
+    "type": "RESULT_SETS",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "another_statement",
     "named": true,
     "fields": {},
@@ -108,6 +113,14 @@
           "named": true
         },
         {
+          "type": "WITH",
+          "named": true
+        },
+        {
+          "type": "execute_option",
+          "named": true
+        },
+        {
           "type": "execute_statement_arg",
           "named": true
         },
@@ -140,6 +153,33 @@
         },
         {
           "type": "func_proc_name_server_database_schema",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "NONE",
+          "named": true
+        },
+        {
+          "type": "RECOMPILE",
+          "named": true
+        },
+        {
+          "type": "RESULT_SETS",
+          "named": true
+        },
+        {
+          "type": "UNDEFINED",
           "named": true
         }
       ]
@@ -684,6 +724,10 @@
     "named": true
   },
   {
+    "type": "NONE",
+    "named": true
+  },
+  {
     "type": "OUTPUT",
     "named": true
   },
@@ -692,7 +736,19 @@
     "named": true
   },
   {
+    "type": "RECOMPILE",
+    "named": true
+  },
+  {
+    "type": "UNDEFINED",
+    "named": true
+  },
+  {
     "type": "USER",
+    "named": true
+  },
+  {
+    "type": "WITH",
     "named": true
   },
   {

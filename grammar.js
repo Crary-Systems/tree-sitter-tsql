@@ -128,13 +128,29 @@ module.exports = grammar({
     execute_body: $ => prec.left(choice(
       seq(optional(seq(field('return_status',$.LOCAL_ID_), token(/=/)))
         , choice($.func_proc_name_server_database_schema, $.execute_var_string)
-        , optional($.execute_statement_arg))
+        , optional($.execute_statement_arg)
+        , optional(seq($.WITH, $.execute_option, repeat(seq(token(','), $.execute_option)))))
       //TODO execute_option https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
 
       ,seq(parens(seq($.execute_var_string, repeat(seq(token(','), $.execute_var_string))))
         ,optional(seq($.AS, choice($.LOGIN,$.USER), token('='), $.string_lit))
         ,optional(seq($.AT_KEYWORD, field('linkedServer', $.id_))))
     )),
+
+    WITH: $ => token(/WITH/i),
+
+    execute_option: $ => choice(
+      $.RECOMPILE
+      ,seq($.RESULT_SETS, choice($.NONE, $.UNDEFINED))
+      //TODO Result Sets Definition
+      // https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
+    ),
+
+    RESULT_SETS: $ => seq(token(/RESULT/i), token(/SETS/i)),
+    NONE: $ => token(/NONE/i),
+    UNDEFINED: $ => token(/UNDEFINED/i),
+
+    RECOMPILE: $ => token(/RECOMPILE/i),
 
     AS: $ => token(/AS/i),
     LOGIN: $ => token(/LOGIN/i),
