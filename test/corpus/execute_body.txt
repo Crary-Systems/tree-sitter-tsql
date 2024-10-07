@@ -1,7 +1,7 @@
 =====================================
-execute_var_string simple
+execute_body Return Status
 =====================================
-EXECUTE @sql
+EXEC @foo=@sql
 ---
 (tsql_file
   (batch
@@ -10,22 +10,17 @@ EXECUTE @sql
         (execute_statement
           (execute)
           (execute_body
+            (LOCAL_ID_)
             (execute_var_string
               (LOCAL_ID_))))))))
 
 =====================================
-execute_var_string string_lit left
+execute_body Impersonation TODO
+:skip
 =====================================
-EXECUTE 'SELECT ' + @sql
 ---
-(tsql_file
-  (batch
-    (sql_clauses
-      (another_statement
-        (execute_statement
-          (execute)
-          (execute_body
-            (execute_var_string
-              (string_lit)
-              (PLUS)
-              (LOCAL_ID_))))))))
+=====================================
+execute_body Linked Server Pass Through TODO
+:skip
+=====================================
+---

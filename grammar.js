@@ -50,10 +50,10 @@ module.exports = grammar({
     )),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5145
-    func_proc_name_server_database_schema: $ => choice(
+    func_proc_name_server_database_schema: $ => prec(4,choice(
       seq(optional(field('server', $.id_)), DOT, optional(field('database', $.id_)), DOT, optional(field('schema', $.id_)), DOT, field('procedure', $.id_))
       ,$.func_proc_name_database_schema
-    ),
+    )),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5140
     func_proc_name_database_schema: $ => choice(
@@ -120,14 +120,35 @@ module.exports = grammar({
     execute: $ => token(/EXEC(UTE)?/i),
 
     // https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
-    execute_body: $ => choice(
-      seq(optional(seq(field('return_status',LOCAL_ID), token(/=/)))
+    execute_body: $ => prec.left(choice(
+      seq(optional(seq(field('return_status',$.LOCAL_ID_), token(/=/)))
         , choice($.func_proc_name_server_database_schema, $.execute_var_string)
-        , $.execute_statement_arg)
+        , optional($.execute_statement_arg)
+
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3152-L3156
+    ))),
+
+    // https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
+    // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3175-L3178
+    // NOTE: The output clause in the ANTLR reference seems incorrect.
+    execute_var_string: $ => choice(
+      seq($.LOCAL_ID_, optional(seq($.PLUS, $.LOCAL_ID_, optional(seq($.PLUS, $.execute_var_string)))))
+      ,seq($.string_lit, optional(seq($.PLUS, $.LOCAL_ID_, optional(seq($.PLUS, $.execute_var_string)))))
     ),
 
-    execute_var_string: $ => 'TODO',
+    string_lit: $ => token(seq(
+      optional('N')
+      ,"'" //Opening Single Quote
+      ,repeat(choice(
+        /[^']/,               // Any character except a single quote
+        "''"                  // Escaped single quote (two single quotes)
+      ))
+      ,"'" //Closing Single Quote
+
+    )),
+
+
+    PLUS: $ => token(/\+/),
 
     dml_clause: $ => choice(
       $.select_statement_standalone

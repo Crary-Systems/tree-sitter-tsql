@@ -65,7 +65,18 @@
   {
     "type": "execute_body",
     "named": true,
-    "fields": {},
+    "fields": {
+      "return_status": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "LOCAL_ID_",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -216,7 +227,29 @@
   {
     "type": "execute_var_string",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "LOCAL_ID_",
+          "named": true
+        },
+        {
+          "type": "PLUS",
+          "named": true
+        },
+        {
+          "type": "execute_var_string",
+          "named": true
+        },
+        {
+          "type": "string_lit",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "full_column_name",
@@ -605,8 +638,8 @@
     "named": true
   },
   {
-    "type": "TODO",
-    "named": false
+    "type": "PLUS",
+    "named": true
   },
   {
     "type": "default",
@@ -622,6 +655,10 @@
   },
   {
     "type": "null_",
+    "named": true
+  },
+  {
+    "type": "string_lit",
     "named": true
   }
 ]

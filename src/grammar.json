@@ -180,95 +180,99 @@
       }
     },
     "func_proc_name_server_database_schema": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "server",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "id_"
+      "type": "PREC",
+      "value": 4,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "server",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "id_"
+                    }
+                  },
+                  {
+                    "type": "BLANK"
                   }
-                },
-                {
-                  "type": "BLANK"
+                ]
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "\\."
                 }
-              ]
-            },
-            {
-              "type": "TOKEN",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\."
-              }
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "database",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "id_"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "database",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "id_"
+                    }
+                  },
+                  {
+                    "type": "BLANK"
                   }
-                },
-                {
-                  "type": "BLANK"
+                ]
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "\\."
                 }
-              ]
-            },
-            {
-              "type": "TOKEN",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\."
-              }
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "schema",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "id_"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "schema",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "id_"
+                    }
+                  },
+                  {
+                    "type": "BLANK"
                   }
-                },
-                {
-                  "type": "BLANK"
+                ]
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "\\."
                 }
-              ]
-            },
-            {
-              "type": "TOKEN",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\."
+              },
+              {
+                "type": "FIELD",
+                "name": "procedure",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "id_"
+                }
               }
-            },
-            {
-              "type": "FIELD",
-              "name": "procedure",
-              "content": {
-                "type": "SYMBOL",
-                "name": "id_"
-              }
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "func_proc_name_database_schema"
-        }
-      ]
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "func_proc_name_database_schema"
+          }
+        ]
+      }
     },
     "func_proc_name_database_schema": {
       "type": "CHOICE",
@@ -707,11 +711,82 @@
       }
     },
     "execute_body": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "return_status",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "LOCAL_ID_"
+                        }
+                      },
+                      {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "="
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "func_proc_name_server_database_schema"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "execute_var_string"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "execute_statement_arg"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "execute_var_string": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SEQ",
           "members": [
+            {
+              "type": "SYMBOL",
+              "name": "LOCAL_ID_"
+            },
             {
               "type": "CHOICE",
               "members": [
@@ -719,22 +794,33 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "FIELD",
-                      "name": "return_status",
-                      "content": {
-                        "type": "TOKEN",
-                        "content": {
-                          "type": "PATTERN",
-                          "value": "@[A-Za-z_$@#0-9]+"
-                        }
-                      }
+                      "type": "SYMBOL",
+                      "name": "PLUS"
                     },
                     {
-                      "type": "TOKEN",
-                      "content": {
-                        "type": "PATTERN",
-                        "value": "="
-                      }
+                      "type": "SYMBOL",
+                      "name": "LOCAL_ID_"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "PLUS"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "execute_var_string"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -742,31 +828,112 @@
                   "type": "BLANK"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string_lit"
             },
             {
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "func_proc_name_server_database_schema"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "PLUS"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "LOCAL_ID_"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "PLUS"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "execute_var_string"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "execute_var_string"
+                  "type": "BLANK"
                 }
               ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "execute_statement_arg"
             }
           ]
         }
       ]
     },
-    "execute_var_string": {
-      "type": "STRING",
-      "value": "TODO"
+    "string_lit": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "N"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "'"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[^']"
+                },
+                {
+                  "type": "STRING",
+                  "value": "''"
+                }
+              ]
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "'"
+          }
+        ]
+      }
+    },
+    "PLUS": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\+"
+      }
     },
     "dml_clause": {
       "type": "CHOICE",
