@@ -16,11 +16,35 @@ EXEC @foo=@sql
 
 =====================================
 execute_body Impersonation TODO
-:skip
 =====================================
+EXEC (@sql) AS LOGIN = 'sa'
 ---
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (execute_statement
+          (execute)
+          (execute_body
+            (execute_var_string
+              (LOCAL_ID_))
+            (AS)
+            (LOGIN)
+            (string_lit)))))))
+
 =====================================
-execute_body Linked Server Pass Through TODO
-:skip
+execute_body Linked Server Pass Through
 =====================================
+EXEC ('sp_help') at AdventureWorks
 ---
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (execute_statement
+          (execute)
+          (execute_body
+            (execute_var_string
+              (string_lit))
+            (AT_KEYWORD)
+            (id_)))))))

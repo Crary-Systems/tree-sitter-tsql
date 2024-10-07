@@ -17,6 +17,11 @@ const STRING            = token(/N?'([^']|'')*'/);
 const DECIMAL           = token(/[0-9]+/);
 
 //
+// UTILS
+//
+const parens = (...rule) => seq('(', ...rule, ')');
+
+//
 // PARSER https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4
 //
 
@@ -123,10 +128,18 @@ module.exports = grammar({
     execute_body: $ => prec.left(choice(
       seq(optional(seq(field('return_status',$.LOCAL_ID_), token(/=/)))
         , choice($.func_proc_name_server_database_schema, $.execute_var_string)
-        , optional($.execute_statement_arg)
+        , optional($.execute_statement_arg))
+      //TODO execute_option https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
 
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3152-L3156
-    ))),
+      ,seq(parens(seq($.execute_var_string, repeat(seq(token(','), $.execute_var_string))))
+        ,optional(seq($.AS, choice($.LOGIN,$.USER), token('='), $.string_lit))
+        ,optional(seq($.AT_KEYWORD, field('linkedServer', $.id_))))
+    )),
+
+    AS: $ => token(/AS/i),
+    LOGIN: $ => token(/LOGIN/i),
+    USER: $ => token(/USER/i),
+    AT_KEYWORD: $ => token(/AT/i),
 
     // https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver15
     // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3175-L3178
@@ -233,5 +246,6 @@ module.exports = grammar({
     integer: $ => INT,
 
     placeholder: $ => alias('TODO', $.dummy),
+
   }
 });

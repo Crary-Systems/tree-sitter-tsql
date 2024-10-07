@@ -773,8 +773,152 @@
                 ]
               }
             ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "("
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "execute_var_string"
+                      },
+                      {
+                        "type": "REPEAT",
+                        "content": {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "TOKEN",
+                              "content": {
+                                "type": "STRING",
+                                "value": ","
+                              }
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "execute_var_string"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "STRING",
+                    "value": ")"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "AS"
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "LOGIN"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "USER"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "STRING",
+                          "value": "="
+                        }
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "string_lit"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "AT_KEYWORD"
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "linkedServer",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "id_"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
           }
         ]
+      }
+    },
+    "AS": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "AS",
+        "flags": "i"
+      }
+    },
+    "LOGIN": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "LOGIN",
+        "flags": "i"
+      }
+    },
+    "USER": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "USER",
+        "flags": "i"
+      }
+    },
+    "AT_KEYWORD": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "AT",
+        "flags": "i"
       }
     },
     "execute_var_string": {

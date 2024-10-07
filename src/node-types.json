@@ -66,6 +66,16 @@
     "type": "execute_body",
     "named": true,
     "fields": {
+      "linkedServer": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
       "return_status": {
         "multiple": false,
         "required": false,
@@ -82,6 +92,22 @@
       "required": true,
       "types": [
         {
+          "type": "AS",
+          "named": true
+        },
+        {
+          "type": "AT_KEYWORD",
+          "named": true
+        },
+        {
+          "type": "LOGIN",
+          "named": true
+        },
+        {
+          "type": "USER",
+          "named": true
+        },
+        {
           "type": "execute_statement_arg",
           "named": true
         },
@@ -91,6 +117,10 @@
         },
         {
           "type": "func_proc_name_server_database_schema",
+          "named": true
+        },
+        {
+          "type": "string_lit",
           "named": true
         }
       ]
@@ -622,6 +652,14 @@
     }
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
@@ -634,11 +672,27 @@
     "named": false
   },
   {
+    "type": "AS",
+    "named": true
+  },
+  {
+    "type": "AT_KEYWORD",
+    "named": true
+  },
+  {
+    "type": "LOGIN",
+    "named": true
+  },
+  {
     "type": "OUTPUT",
     "named": true
   },
   {
     "type": "PLUS",
+    "named": true
+  },
+  {
+    "type": "USER",
     "named": true
   },
   {
