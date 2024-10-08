@@ -296,9 +296,24 @@ module.exports = grammar({
       $.id_
     ),
 
+    //TODO CORPUS
     expression: $ => choice(
-      $.full_column_name
+      $.primitive_expression
+      ,$.full_column_name
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3900-L3917
+    ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3927
+    primitive_expression: $ => choice(
+      $.default
+      ,$.null_
+      ,$.LOCAL_ID_
+      ,$.primitive_constant
+    ),
+
+    primitive_constant: $ => choice(
+      $.string_lit
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5279
     ),
 
     //

@@ -1743,7 +1743,41 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "primitive_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "full_column_name"
+        }
+      ]
+    },
+    "primitive_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "default"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "LOCAL_ID_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_constant"
+        }
+      ]
+    },
+    "primitive_constant": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "string_lit"
         }
       ]
     },
