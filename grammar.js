@@ -1,3 +1,5 @@
+const precedences = require('./grammar/precedences.js');
+
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
@@ -15,6 +17,7 @@ const INT               = token(/[0-9]+/);
 const DOT               = token(/\./);
 const STRING            = token(/N?'([^']|'')*'/);
 const DECIMAL           = token(/[0-9]+/);
+const DOUBLE_COLON      = token('::');
 
 //
 // UTILS
@@ -31,6 +34,8 @@ module.exports = grammar({
   conflicts: $ => [
     [$.batch]
   ],
+
+  ...precedences,
 
   rules: {
 
@@ -217,11 +222,27 @@ module.exports = grammar({
     //TODO REDO THIS ONE
     select_list_elem: $ => choice(
       $.asterisk
+      ,$.udt_elem
       ,$.expression_elem
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4143-L4148
     ),
 
     asterisk: $ => token(/\*/),
+
+    //https://learn.microsoft.com/en-us/sql/t-sql/queries/select-clause-transact-sql?view=sql-server-ver16
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4133
+    udt_elem: $ => prec.left(choice(
+      seq(field('udt_column_name', $.id_), DOT, field('non_static_attr',$.id_), $.udt_method_arguments, optional($.as_column_alias))
+
+      ,seq(field('udt_column_name', $.id_), DOUBLE_COLON, field('non_static_attr',$.id_)
+        ,optional($.udt_method_arguments)
+        ,optional($.as_column_alias))
+    )),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4123
+    udt_method_arguments: $ => seq(
+      parens($.execute_var_string, repeat(seq(token(','), $.execute_var_string)))
+    ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4138
     expression_elem: $ => prec.right(choice(

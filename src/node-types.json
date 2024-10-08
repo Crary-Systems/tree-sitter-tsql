@@ -697,6 +697,10 @@
         {
           "type": "expression_elem",
           "named": true
+        },
+        {
+          "type": "udt_elem",
+          "named": true
         }
       ]
     }
@@ -819,6 +823,61 @@
     }
   },
   {
+    "type": "udt_elem",
+    "named": true,
+    "fields": {
+      "non_static_attr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "udt_column_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "as_column_alias",
+          "named": true
+        },
+        {
+          "type": "udt_method_arguments",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "udt_method_arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "execute_var_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -828,6 +887,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
