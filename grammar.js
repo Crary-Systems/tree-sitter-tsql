@@ -44,6 +44,7 @@ module.exports = grammar({
       prec(1,$.go_statement)
       ,seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
       ,//TODO seq($.batch_level_statement, repeat($.go_statement))
+       //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
     ),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
@@ -135,6 +136,7 @@ module.exports = grammar({
       ,seq(parens(seq($.execute_var_string, repeat(seq(token(','), $.execute_var_string))))
         ,optional(seq($.AS, choice($.LOGIN,$.USER), token('='), $.string_lit))
         ,optional(seq($.AT_KEYWORD, field('linkedServer', $.id_))))
+      //TODO AT_DATA_SOURCE https://learn.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql?view=sql-server-ver16&redirectedfrom=MSDN#:~:text=AT%20DATA_SOURCE%20data_source_name%20Applies%20to%3A%20SQL%20Server%202019%20(15.x)%20and%20later
     )),
 
     WITH: $ => token(/WITH/i),
