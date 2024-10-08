@@ -20,9 +20,9 @@ SELECT id FROM [PostTypes]
 GO 1
 GO 2
 ----
-
 (tsql_file
-  (batch (go_statement))
+  (batch
+    (go_statement))
   (batch
     (sql_clauses
       (dml_clause
@@ -30,9 +30,18 @@ GO 2
           (select_statement
             (query_expression
               (query_specification
+                (select)
                 (select_list
-                  (select_list_elem)
-                  (select_list_elem))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_)))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
                 (table_sources
                   (table_source
                     (table_source_item
@@ -44,15 +53,22 @@ GO 2
           (select_statement
             (query_expression
               (query_specification
+                (select)
                 (select_list
-                  (select_list_elem))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
                 (table_sources
                   (table_source
                     (table_source_item
                       (full_table_name
                         (id_)))))))))))
-    (go_statement (integer))
-    (go_statement (integer))))
+    (go_statement
+      (integer))
+    (go_statement
+      (integer))))
 
 =====================================
 execute_body_batch named params

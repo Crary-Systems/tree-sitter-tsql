@@ -203,19 +203,40 @@ module.exports = grammar({
     ),
 
     query_specification: $ => seq(
-      token(/SELECT/i)
+      $.select
       ,$.select_list
       ,optional(seq(token(/FROM/i), $.table_sources))
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4010-L4023
     ),
 
+    select: $ => token(/SELECT/i),
     //https://learn.microsoft.com/en-us/sql/t-sql/queries/select-clause-transact-sql?view=sql-server-ver16&redirectedfrom=MSDN
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4119
     select_list: $ => seq($.select_list_elem, repeat(seq(token(','), $.select_list_elem))),
 
-    //TODO REDO THIS ONE https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4143-L4148
+    //TODO REDO THIS ONE
     select_list_elem: $ => choice(
-      ID, SQUARE_BRACKET_ID
+      $.asterisk
+      ,$.expression_elem
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4143-L4148
+    ),
+
+    asterisk: $ => token(/\*/),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4138
+    expression_elem: $ => prec.right(choice(
+      seq(field('leftAlias', $.column_alias), token(/=/), field('leftAssignment', $.expression))
+      ,seq(field('expressionAs', $.expression), optional($.as_column_alias))
+    )),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4910
+    as_column_alias: $ => seq(optional($.as), $.column_alias),
+    as: $ => token(/AS/i),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4990
+    column_alias: $ => choice(
+      $.id_
+      ,$.string_lit
     ),
 
     table_sources: $ => choice(
@@ -250,10 +271,12 @@ module.exports = grammar({
     // HELPERS
     //
 
-    id_ : $ => choice(
+    //https://msdn.microsoft.com/en-us/library/ms175874.aspx
+    id_: $ => choice(
       ID
       ,SQUARE_BRACKET_ID
       ,$.keyword
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L6261
     ),
 
     //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5287

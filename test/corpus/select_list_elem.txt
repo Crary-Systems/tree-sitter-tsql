@@ -1,7 +1,7 @@
 =================================================
-Simple Select fields from single shortname table
+Select List Elem Asterisk
 =================================================
-select Id,[Type] FROM PostTypes
+select * from PostTypes
 ---
 (tsql_file
   (batch
@@ -14,17 +14,27 @@ select Id,[Type] FROM PostTypes
                 (select)
                 (select_list
                   (select_list_elem
-                    (expression_elem
-                      (expression
-                        (full_column_name
-                          (id_)))))
-                  (select_list_elem
-                    (expression_elem
-                      (expression
-                        (full_column_name
-                          (id_))))))
+                    (asterisk)))
                 (table_sources
                   (table_source
                     (table_source_item
                       (full_table_name
                         (id_)))))))))))))
+
+=================================================
+Select List Elem UDT Elem
+:skip
+=================================================
+---
+
+=================================================
+Select List Elem LocalID Expr
+:skip
+=================================================
+---
+
+=================================================
+Select List Elem expression_elem
+:skip
+=================================================
+---

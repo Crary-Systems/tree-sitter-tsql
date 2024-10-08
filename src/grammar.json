@@ -1262,12 +1262,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "SELECT",
-            "flags": "i"
-          }
+          "type": "SYMBOL",
+          "name": "select"
         },
         {
           "type": "SYMBOL",
@@ -1299,6 +1295,14 @@
           ]
         }
       ]
+    },
+    "select": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "SELECT",
+        "flags": "i"
+      }
     },
     "select_list": {
       "type": "SEQ",
@@ -1332,18 +1336,123 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "[A-Za-z_#]+"
-          }
+          "type": "SYMBOL",
+          "name": "asterisk"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "\\[[A-Za-z_#]+\\]"
+          "type": "SYMBOL",
+          "name": "expression_elem"
+        }
+      ]
+    },
+    "asterisk": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\*"
+      }
+    },
+    "expression_elem": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "leftAlias",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "column_alias"
+                }
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "="
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "leftAssignment",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                }
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "expressionAs",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                }
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "as_column_alias"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
           }
+        ]
+      }
+    },
+    "as_column_alias": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "as"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "column_alias"
+        }
+      ]
+    },
+    "as": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "AS",
+        "flags": "i"
+      }
+    },
+    "column_alias": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "id_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_lit"
         }
       ]
     },

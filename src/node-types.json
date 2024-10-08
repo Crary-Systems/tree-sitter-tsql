@@ -1,5 +1,10 @@
 [
   {
+    "type": "AS",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "LOCAL_ID_",
     "named": true,
     "fields": {}
@@ -25,6 +30,30 @@
     }
   },
   {
+    "type": "as",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "as_column_alias",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "as",
+          "named": true
+        },
+        {
+          "type": "column_alias",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "batch",
     "named": true,
     "fields": {},
@@ -42,6 +71,25 @@
         },
         {
           "type": "sql_clauses",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "column_alias",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "id_",
+          "named": true
+        },
+        {
+          "type": "string_lit",
           "named": true
         }
       ]
@@ -322,6 +370,67 @@
     }
   },
   {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "full_column_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_elem",
+    "named": true,
+    "fields": {
+      "expressionAs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "leftAlias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "column_alias",
+            "named": true
+          }
+        ]
+      },
+      "leftAssignment": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "as_column_alias",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "full_column_name",
     "named": true,
     "fields": {},
@@ -544,6 +653,10 @@
       "required": true,
       "types": [
         {
+          "type": "select",
+          "named": true
+        },
+        {
           "type": "select_list",
           "named": true
         },
@@ -572,7 +685,21 @@
   {
     "type": "select_list_elem",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "asterisk",
+          "named": true
+        },
+        {
+          "type": "expression_elem",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "select_statement",
@@ -712,10 +839,6 @@
     "named": false
   },
   {
-    "type": "AS",
-    "named": true
-  },
-  {
     "type": "AT_KEYWORD",
     "named": true
   },
@@ -752,6 +875,10 @@
     "named": true
   },
   {
+    "type": "asterisk",
+    "named": true
+  },
+  {
     "type": "default",
     "named": true
   },
@@ -765,6 +892,10 @@
   },
   {
     "type": "null_",
+    "named": true
+  },
+  {
+    "type": "select",
     "named": true
   },
   {
