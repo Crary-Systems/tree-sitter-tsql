@@ -54,6 +54,11 @@
     }
   },
   {
+    "type": "assignment_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "batch",
     "named": true,
     "fields": {},
@@ -687,11 +692,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "LOCAL_ID_",
+          "named": true
+        },
+        {
+          "type": "assignment_operator",
+          "named": true
+        },
+        {
           "type": "asterisk",
+          "named": true
+        },
+        {
+          "type": "expression",
           "named": true
         },
         {
@@ -878,6 +895,14 @@
     }
   },
   {
+    "type": "%=",
+    "named": false
+  },
+  {
+    "type": "&=",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -886,7 +911,23 @@
     "named": false
   },
   {
+    "type": "*=",
+    "named": false
+  },
+  {
+    "type": "+=",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-=",
+    "named": false
+  },
+  {
+    "type": "/=",
     "named": false
   },
   {
@@ -938,6 +979,10 @@
     "named": true
   },
   {
+    "type": "^=",
+    "named": false
+  },
+  {
     "type": "asterisk",
     "named": true
   },
@@ -964,5 +1009,9 @@
   {
     "type": "string_lit",
     "named": true
+  },
+  {
+    "type": "|=",
+    "named": false
   }
 ]

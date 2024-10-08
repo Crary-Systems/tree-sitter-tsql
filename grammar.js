@@ -223,8 +223,21 @@ module.exports = grammar({
     select_list_elem: $ => choice(
       $.asterisk
       ,$.udt_elem
+      ,seq($.LOCAL_ID_, choice($.assignment_operator, token('=')), $.expression)
       ,$.expression_elem
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4143-L4148
+    ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L6294
+    assignment_operator: $ => choice(
+       token('+=')
+      ,token('-=')
+      ,token('*=')
+      ,token('/=')
+      ,token('%=')
+      ,token('&=')
+      ,token('^=')
+      ,token('|=')
     ),
 
     asterisk: $ => token(/\*/),
