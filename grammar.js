@@ -61,10 +61,10 @@ module.exports = grammar({
     )),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5145
-    func_proc_name_server_database_schema: $ => prec(4,choice(
+    func_proc_name_server_database_schema: $ => choice(
       seq(optional(field('server', $.id_)), DOT, optional(field('database', $.id_)), DOT, optional(field('schema', $.id_)), DOT, field('procedure', $.id_))
       ,$.func_proc_name_database_schema
-    )),
+    ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5140
     func_proc_name_database_schema: $ => choice(

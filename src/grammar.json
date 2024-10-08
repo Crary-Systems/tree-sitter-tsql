@@ -176,99 +176,95 @@
       }
     },
     "func_proc_name_server_database_schema": {
-      "type": "PREC",
-      "value": 4,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "server",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "id_"
-                    }
-                  },
-                  {
-                    "type": "BLANK"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "server",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
                   }
-                ]
-              },
-              {
-                "type": "TOKEN",
-                "content": {
-                  "type": "PATTERN",
-                  "value": "\\."
+                },
+                {
+                  "type": "BLANK"
                 }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "database",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "id_"
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
-                "type": "TOKEN",
-                "content": {
-                  "type": "PATTERN",
-                  "value": "\\."
-                }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "schema",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "id_"
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
-                "type": "TOKEN",
-                "content": {
-                  "type": "PATTERN",
-                  "value": "\\."
-                }
-              },
-              {
-                "type": "FIELD",
-                "name": "procedure",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "id_"
-                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
               }
-            ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "func_proc_name_database_schema"
-          }
-        ]
-      }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "database",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "schema",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
+                  }
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "procedure",
+              "content": {
+                "type": "SYMBOL",
+                "name": "id_"
+              }
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "func_proc_name_database_schema"
+        }
+      ]
     },
     "func_proc_name_database_schema": {
       "type": "CHOICE",
@@ -1744,6 +1740,20 @@
       {
         "type": "SYMBOL",
         "name": "keyword"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "func_proc_name_server_database_schema"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "func_proc_name_database_schema"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "func_proc_name_schema"
       }
     ]
   ],
