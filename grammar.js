@@ -53,7 +53,7 @@ module.exports = grammar({
     ),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
-    go_statement: $ => prec(1,seq(token(/GO/i), optional(field("count", $.integer)))),
+    go_statement: $ => seq(token(/GO/i), optional(field("count", $.integer))),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3145
     execute_body_batch: $ => prec.left(seq(
