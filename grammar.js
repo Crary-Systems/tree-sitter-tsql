@@ -366,7 +366,6 @@ module.exports = grammar({
       //TODO BETWEEN
     ),
 
-    //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5051
     window_frame_preceding: $ => choice(
       seq(token(/UNBOUNDED/i), token(/PRECEDING/i))

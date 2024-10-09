@@ -1,0 +1,77 @@
+=====================================
+Window Frame Preceding Unbounded
+=====================================
+SELECT RANK() OVER (ROWS UNBOUNDED PRECEDING)
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (ranking_windowed_function
+                            (rank_)
+                            (over_clause
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_preceding))))))))))))))))))
+
+=====================================
+Window Frame Preceding Decimal
+=====================================
+SELECT RANK() OVER (ROWS 10 PRECEDING)
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (ranking_windowed_function
+                            (rank_)
+                            (over_clause
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_preceding))))))))))))))))))
+
+=====================================
+Window Frame Preceding CURRENT
+=====================================
+SELECT RANK() OVER (ROWS CURRENT ROW)
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (ranking_windowed_function
+                            (rank_)
+                            (over_clause
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_preceding))))))))))))))))))
