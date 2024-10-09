@@ -18,6 +18,7 @@ const DOT               = token(/\./);
 const STRING            = token(/N?'([^']|'')*'/);
 const DECIMAL           = token(/[0-9]+/);
 const DOUBLE_COLON      = token('::');
+const DEC_DOT_DEC       = token(/([0-9]+\.[0-9]+|[0-9]+\.|\.?[0-9]+)/);
 
 //
 // UTILS
@@ -313,8 +314,30 @@ module.exports = grammar({
 
     primitive_constant: $ => choice(
       $.string_lit
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5279
+      ,$.binary
+      ,$.real_
+      ,$.decimal_
+      ,$.float_
+      ,$.money_
+      //,$.parameter_ TODO corpus example??
     ),
+
+    binary: $ => seq(token('0'),token(/X/i), token(/[0-9A-F]*/)),
+    money_: $ => seq(field('dollar', token('$')), optional(choice(token('-'),token('+'))), choice($.real_, $.float_)),
+
+    //TODO corpus example??
+    //parameter_: $ => token('?');
+
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlLexer.g4#L1231
+    real_: $ => seq(
+      choice(DECIMAL,DEC_DOT_DEC)
+      ,token(/E/i)
+      ,optional(choice(token('+'),token('-')))
+      ,token(/[0-9]+/)),
+
+    float_: $ => DEC_DOT_DEC,
+    decimal_: $ => DECIMAL,
 
     //
     // HELPERS

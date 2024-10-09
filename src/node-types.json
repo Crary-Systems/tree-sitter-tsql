@@ -82,6 +82,11 @@
     }
   },
   {
+    "type": "binary",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "column_alias",
     "named": true,
     "fields": {},
@@ -102,6 +107,11 @@
   },
   {
     "type": "constant",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "decimal_",
     "named": true,
     "fields": {}
   },
@@ -440,6 +450,11 @@
     }
   },
   {
+    "type": "float_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "full_column_name",
     "named": true,
     "fields": {},
@@ -639,6 +654,36 @@
     "fields": {}
   },
   {
+    "type": "money_",
+    "named": true,
+    "fields": {
+      "dollar": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "$",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "float_",
+          "named": true
+        },
+        {
+          "type": "real_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "primitive_constant",
     "named": true,
     "fields": {},
@@ -646,6 +691,26 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal_",
+          "named": true
+        },
+        {
+          "type": "float_",
+          "named": true
+        },
+        {
+          "type": "money_",
+          "named": true
+        },
+        {
+          "type": "real_",
+          "named": true
+        },
         {
           "type": "string_lit",
           "named": true
@@ -717,6 +782,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "real_",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "select_list",
@@ -941,6 +1011,10 @@
     }
   },
   {
+    "type": "$",
+    "named": false
+  },
+  {
     "type": "%=",
     "named": false
   },
@@ -961,6 +1035,10 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": "+=",
     "named": false
   },
@@ -969,11 +1047,19 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": "-=",
     "named": false
   },
   {
     "type": "/=",
+    "named": false
+  },
+  {
+    "type": "0",
     "named": false
   },
   {

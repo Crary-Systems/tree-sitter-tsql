@@ -1778,8 +1778,191 @@
         {
           "type": "SYMBOL",
           "name": "string_lit"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "binary"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "real_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decimal_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "money_"
         }
       ]
+    },
+    "binary": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "0"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "X",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9A-F]*"
+          }
+        }
+      ]
+    },
+    "money_": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "dollar",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "$"
+            }
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": "-"
+                  }
+                },
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": "+"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "real_"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "float_"
+            }
+          ]
+        }
+      ]
+    },
+    "real_": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "[0-9]+"
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "([0-9]+\\.[0-9]+|[0-9]+\\.|\\.?[0-9]+)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "E",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": "+"
+                  }
+                },
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": "-"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9]+"
+          }
+        }
+      ]
+    },
+    "float_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "([0-9]+\\.[0-9]+|[0-9]+\\.|\\.?[0-9]+)"
+      }
+    },
+    "decimal_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[0-9]+"
+      }
     },
     "id_": {
       "type": "CHOICE",
