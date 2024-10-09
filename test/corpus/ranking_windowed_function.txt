@@ -1,0 +1,90 @@
+=================================================
+Ranking Windowed Function Rank
+=================================================
+select RANK() OVER (ORDER BY foo)
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (ranking_windowed_function
+                            (rank_)
+                            (over_clause
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))))))))))
+
+=================================================
+Ranking Windowed Function Dense Rank
+=================================================
+select DENSE_RANK() OVER (ORDER BY foo)
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (ranking_windowed_function
+                            (dense_rank_)
+                            (over_clause
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))))))))))
+
+=================================================
+Ranking Windowed Function Row Number
+=================================================
+select ROW_NUMBER() OVER (ORDER BY foo)
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (ranking_windowed_function
+                            (row_number_)
+                            (over_clause
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))))))))))
+
+=================================================
+Ranking Windowed Function NTile
+:skip
+=================================================
+select NTILE(4) OVER (ORDER BY foo)
+---

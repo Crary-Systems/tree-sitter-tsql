@@ -301,7 +301,84 @@ module.exports = grammar({
     expression: $ => choice(
       $.primitive_expression
       ,$.full_column_name
+      ,$.function_call
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3900-L3917
+    ),
+
+    //TODO CORPUS
+    function_call: $ => choice(
+      $.ranking_windowed_function
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
+
+    ),
+
+    //TODO CORPUS
+    //https://msdn.microsoft.com/en-us/library/ms189798.aspx
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5004
+    ranking_windowed_function: $ => choice(
+      seq(choice($.rank_, $.dense_rank_, $.row_number_)
+        ,token('('), token(')'), $.over_clause)
+      //TODO ntile
+    ),
+
+    rank_: $ => token(/RANK/i),
+    dense_rank_: $ => token(/DENSE_RANK/i),
+    row_number_: $ => token(/ROW_NUMBER/i),
+
+    //https://msdn.microsoft.com/en-us/library/ms189461.aspx
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5033
+    over_clause: $ => seq(
+      token(/OVER/i)
+      ,token('(')
+        ,optional(seq(token(/PARTITION/i), token(/BY/i), $.expression_list_))
+        ,optional($.order_by_clause)
+        ,optional($.row_or_range_clause)
+      ,token(')')
+    ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4999
+    expression_list_: $ => seq($.expression, repeat(seq(token(','), $.expression))),
+
+    //https://docs.microsoft.com/en-us/sql/t-sql/queries/select-over-clause-transact-sql?view=sql-server-ver16
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4041
+    order_by_clause: $ => seq(
+      token(/ORDER/i), token(/BY/i), $.order_by_expression, repeat(seq(token(','), $.order_by_expression))
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4071
+    order_by_expression: $ => seq(
+      field('order_by', $.expression)
+      //TODO COLLATE https://learn.microsoft.com/en-us/sql/t-sql/queries/select-over-clause-transact-sql?view=sql-server-ver16&redirectedfrom=MSDN
+      ,optional(choice(
+        field('ascending', $.asc_)
+        ,field('descending', $.desc_)
+      )),
+    ),
+
+    asc_: $ => token(/ASC/i),
+    desc_: $ => token(/DESC/i),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5041
+    window_frame_extent: $ => choice(
+      $.window_frame_preceding
+      //TODO BETWEEN
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5051
+    window_frame_preceding: $ => choice(
+      seq(token(/UNBOUNDED/i), token(/PRECEDING/i))
+      ,seq(DECIMAL, token(/PRECEDING/i))
+      ,seq(token(/CURRENT/i), token(/ROW/i))
+    ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5037
+    //TODO CORPUS
+    row_or_range_clause: $ => seq(
+      choice(token(/ROWS/i), token(/RANGE/i)),
+      $.window_frame_extent
     ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3927
@@ -312,6 +389,7 @@ module.exports = grammar({
       ,$.primitive_constant
     ),
 
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5278
     primitive_constant: $ => choice(
       $.string_lit
       ,$.binary
@@ -323,6 +401,8 @@ module.exports = grammar({
     ),
 
     binary: $ => seq(token('0'),token(/X/i), token(/[0-9A-F]*/)),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5283
     money_: $ => seq(field('dollar', token('$')), optional(choice(token('-'),token('+'))), choice($.real_, $.float_)),
 
     //TODO corpus example??
