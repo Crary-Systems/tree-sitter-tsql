@@ -375,7 +375,6 @@ module.exports = grammar({
     ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5037
-    //TODO CORPUS
     row_or_range_clause: $ => seq(
       choice(token(/ROWS/i), token(/RANGE/i)),
       $.window_frame_extent
@@ -397,7 +396,7 @@ module.exports = grammar({
       ,$.decimal_
       ,$.float_
       ,$.money_
-      //,$.parameter_ TODO corpus example??
+      //,$.parameter_ Example??
     ),
 
     binary: $ => seq(token('0'),token(/X/i), token(/[0-9A-F]*/)),
@@ -405,7 +404,7 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5283
     money_: $ => seq(field('dollar', token('$')), optional(choice(token('-'),token('+'))), choice($.real_, $.float_)),
 
-    //TODO corpus example??
+    //Example??
     //parameter_: $ => token('?');
 
 
