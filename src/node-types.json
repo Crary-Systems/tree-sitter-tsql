@@ -961,6 +961,14 @@
           "named": true
         },
         {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "ntile_",
+          "named": true
+        },
+        {
           "type": "over_clause",
           "named": true
         },
@@ -1395,6 +1403,10 @@
   },
   {
     "type": "execute",
+    "named": true
+  },
+  {
+    "type": "ntile_",
     "named": true
   },
   {

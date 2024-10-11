@@ -1927,8 +1927,46 @@
               "name": "over_clause"
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ntile_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "over_clause"
+            }
+          ]
         }
       ]
+    },
+    "ntile_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "NTILE",
+        "flags": "i"
+      }
     },
     "rank_": {
       "type": "TOKEN",

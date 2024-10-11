@@ -316,15 +316,15 @@ module.exports = grammar({
 
     ),
 
-    //TODO CORPUS
     //https://msdn.microsoft.com/en-us/library/ms189798.aspx
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5004
     ranking_windowed_function: $ => choice(
       seq(choice($.rank_, $.dense_rank_, $.row_number_)
         ,token('('), token(')'), $.over_clause)
-      //TODO ntile
+      ,seq($.ntile_, parens($.expression), $.over_clause)
     ),
 
+    ntile_: $ => token(/NTILE/i),
     rank_: $ => token(/RANK/i),
     dense_rank_: $ => token(/DENSE_RANK/i),
     row_number_: $ => token(/ROW_NUMBER/i),
