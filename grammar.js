@@ -312,9 +312,32 @@ module.exports = grammar({
     //TODO CORPUS
     function_call: $ => choice(
       $.ranking_windowed_function
+      ,$.aggregate_windowed_function
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
 
     ),
+
+    // https://msdn.microsoft.com/en-us/library/ms173454.aspx
+    // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5010
+    // TODO CORPUS
+    aggregate_windowed_function: $ => choice(
+      seq(field('agg_func', choice(
+          $.sum_
+        ))
+        ,parens($.all_distinct_expression)
+        ,optional($.over_clause))
+    ),
+
+
+    sum_: $ => token(/SUM/i),
+
+    // TODO CORPUS
+    all_distinct_expression: $ => seq(
+      optional(choice($.all_, $.distinct_)), $.expression
+    ),
+
+    all_: $ => token(/ALL/i),
+    distinct_: $ => token(/DISTINCT/i),
 
     //https://msdn.microsoft.com/en-us/library/ms189798.aspx
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5004
