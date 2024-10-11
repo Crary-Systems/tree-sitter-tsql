@@ -288,7 +288,7 @@ module.exports = grammar({
 
     full_table_name: $ => prec.right(seq(
       optional(choice(
-      //TODO whats this dotdot example https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5118
+      //NOTE? whats this dotdot example https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5118
         seq(field('server', $.id_), DOT, field('database', $.id_), DOT, field('schema', $.id_), DOT)
         ,seq(field('database', $.id_), DOT, field('schema', $.id_), DOT)
         ,seq(field('schema', $.id_), DOT)
