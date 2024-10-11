@@ -1,0 +1,15 @@
+=====================================
+window_frame_following unbounded NEED AGGREGATEWINDOW
+:skip
+=====================================
+Select SUM(id) OVER (BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---
+
+=====================================
+window_frame_following decimal NEED AGGREGATEWINDOW
+:skip
+=====================================
+Select SUM(id) OVER (BETWEEN CURRENT ROW AND 10 FOLLOWING)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---

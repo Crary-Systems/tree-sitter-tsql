@@ -283,14 +283,18 @@ module.exports = grammar({
     table_source: $ => seq($.table_source_item),
 
     table_source_item: $ => choice(
-      seq($.full_table_name)
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4165-L4183
+      $.full_table_name
     ),
 
-    full_table_name: $ => choice(
-      $.id_
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5116-L5123
-    ),
+    full_table_name: $ => prec.right(seq(
+      optional(choice(
+      //TODO whats this dotdot example https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5118
+        seq(field('server', $.id_), DOT, field('database', $.id_), DOT, field('schema', $.id_), DOT)
+        ,seq(field('database', $.id_), DOT, field('schema', $.id_), DOT)
+        ,seq(field('schema', $.id_), DOT)
+      ))
+      ,field('table', $.id_)
+    )),
 
     //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5155-L5160
     full_column_name: $ => seq(
@@ -345,25 +349,38 @@ module.exports = grammar({
       token(/ORDER/i), token(/BY/i), $.order_by_expression, repeat(seq(token(','), $.order_by_expression))
     ),
 
-    //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4071
     order_by_expression: $ => seq(
       field('order_by', $.expression)
-      //TODO COLLATE https://learn.microsoft.com/en-us/sql/t-sql/queries/select-over-clause-transact-sql?view=sql-server-ver16&redirectedfrom=MSDN
+      ,optional($.collation_)
       ,optional(choice(
         field('ascending', $.asc_)
         ,field('descending', $.desc_)
       )),
     ),
 
+    collation_: $ => seq(
+      token(/COLLATE/i)
+      ,field('collation_name', $.id_)
+    ),
+
     asc_: $ => token(/ASC/i),
     desc_: $ => token(/DESC/i),
 
-    //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5041
     window_frame_extent: $ => choice(
       $.window_frame_preceding
-      //TODO BETWEEN
+      ,seq(token(/BETWEEN/i), $.window_frame_bound, token(/AND/i), $.window_frame_bound)
+    ),
+
+    window_frame_bound: $ => choice(
+      $.window_frame_preceding
+      ,$.window_frame_following
+    ),
+
+    window_frame_following: $ => choice(
+      seq(token(/UNBOUNDED/i), token(/FOLLOWING/i))
+      ,seq(DECIMAL, token(/FOLLOWING/i))
     ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5051

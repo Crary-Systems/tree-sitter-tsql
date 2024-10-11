@@ -87,6 +87,22 @@
     "fields": {}
   },
   {
+    "type": "collation_",
+    "named": true,
+    "fields": {
+      "collation_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "column_alias",
     "named": true,
     "fields": {},
@@ -397,6 +413,10 @@
           "named": true
         },
         {
+          "type": "function_call",
+          "named": true
+        },
+        {
           "type": "primitive_expression",
           "named": true
         }
@@ -450,6 +470,21 @@
     }
   },
   {
+    "type": "expression_list_",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "float_",
     "named": true,
     "fields": {}
@@ -472,16 +507,47 @@
   {
     "type": "full_table_name",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "id_",
-          "named": true
-        }
-      ]
+    "fields": {
+      "database": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "schema": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "server": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "table": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -613,6 +679,21 @@
     }
   },
   {
+    "type": "function_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ranking_windowed_function",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "go_statement",
     "named": true,
     "fields": {
@@ -678,6 +759,90 @@
         },
         {
           "type": "real_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "order_by_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "order_by_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "order_by_expression",
+    "named": true,
+    "fields": {
+      "ascending": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "asc_",
+            "named": true
+          }
+        ]
+      },
+      "descending": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "desc_",
+            "named": true
+          }
+        ]
+      },
+      "order_by": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "collation_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "over_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression_list_",
+          "named": true
+        },
+        {
+          "type": "order_by_clause",
+          "named": true
+        },
+        {
+          "type": "row_or_range_clause",
           "named": true
         }
       ]
@@ -784,9 +949,51 @@
     }
   },
   {
+    "type": "ranking_windowed_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dense_rank_",
+          "named": true
+        },
+        {
+          "type": "over_clause",
+          "named": true
+        },
+        {
+          "type": "rank_",
+          "named": true
+        },
+        {
+          "type": "row_number_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "real_",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "row_or_range_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "window_frame_extent",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "select_list",
@@ -1011,6 +1218,54 @@
     }
   },
   {
+    "type": "window_frame_bound",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "window_frame_following",
+          "named": true
+        },
+        {
+          "type": "window_frame_preceding",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "window_frame_extent",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "window_frame_bound",
+          "named": true
+        },
+        {
+          "type": "window_frame_preceding",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "window_frame_following",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "window_frame_preceding",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "$",
     "named": false
   },
@@ -1115,11 +1370,23 @@
     "named": false
   },
   {
+    "type": "asc_",
+    "named": true
+  },
+  {
     "type": "asterisk",
     "named": true
   },
   {
     "type": "default",
+    "named": true
+  },
+  {
+    "type": "dense_rank_",
+    "named": true
+  },
+  {
+    "type": "desc_",
     "named": true
   },
   {
@@ -1132,6 +1399,14 @@
   },
   {
     "type": "null_",
+    "named": true
+  },
+  {
+    "type": "rank_",
+    "named": true
+  },
+  {
+    "type": "row_number_",
     "named": true
   },
   {
