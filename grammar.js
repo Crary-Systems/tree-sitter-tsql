@@ -345,6 +345,8 @@ module.exports = grammar({
     binary_checksum_: $ => token(/BINARY_CHECKSUM/i),
     checksum_: $ => token(/CHECKSUM/i),
 
+    //https://docs.microsoft.com/en-us/sql/t-sql/functions/analytic-functions-transact-sql
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5019
     analytic_windowed_function: $ => choice(
       seq(choice($.first_value_,$.last_value_), parens($.expression), $.over_clause)
 
