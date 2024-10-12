@@ -313,9 +313,18 @@ module.exports = grammar({
     function_call: $ => choice(
       $.ranking_windowed_function
       ,$.aggregate_windowed_function
+      ,$.analytic_windowed_function
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
 
     ),
+
+    analytic_windowed_function: $ => choice(
+      seq(choice($.first_value_,$.last_value_), parens($.expression), $.over_clause)
+
+    ),
+
+    first_value_: $ => token(/FIRST_VALUE/i),
+    last_value_: $ => token(/LAST_VALUE/i),
 
     // https://msdn.microsoft.com/en-us/library/ms173454.aspx
     // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5010

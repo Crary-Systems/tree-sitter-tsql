@@ -1,0 +1,81 @@
+=====================================
+analytic first
+=====================================
+SELECT FIRST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (analytic_windowed_function
+                            (first_value_)
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (over_clause
+                              (expression_list_
+                                (expression
+                                  (full_column_name
+                                    (id_))))
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+analytic last
+=====================================
+SELECT LAST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (analytic_windowed_function
+                            (last_value_)
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (over_clause
+                              (expression_list_
+                                (expression
+                                  (full_column_name
+                                    (id_))))
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
