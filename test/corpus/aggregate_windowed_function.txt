@@ -273,10 +273,11 @@ SELECT COUNT(id) OVER (PARTITION BY baz) FROM FOO
                                 (full_column_name
                                   (id_))))
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_)))))))))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))
                 (table_sources
                   (table_source
                     (table_source_item
@@ -309,10 +310,11 @@ SELECT COUNT_BIG(id) OVER (PARTITION BY baz) FROM FOO
                                 (full_column_name
                                   (id_))))
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_)))))))))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))
                 (table_sources
                   (table_source
                     (table_source_item

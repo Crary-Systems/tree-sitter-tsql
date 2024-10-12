@@ -43,13 +43,14 @@ select RANK() OVER (PARTITION BY foo, baz)
                           (ranking_windowed_function
                             (rank_)
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_)))
-                                (expression
-                                  (full_column_name
-                                    (id_)))))))))))))))))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))))))))))))))))
 
 =================================================
 over_clause order by

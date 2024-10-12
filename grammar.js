@@ -325,8 +325,17 @@ module.exports = grammar({
         ,optional(choice($.ignore_nulls_, $.respect_nulls_))
         ,$.over_clause)
 
-
+      ,seq(choice($.cume_dist_, $.percent_rank_)
+        ,token('('),token(')')
+        ,token('OVER')
+        ,parens(seq(
+          optional($.partition_by_clause)
+          ,$.order_by_clause)))
     ),
+
+
+    cume_dist_: $ => token(/CUME_DIST/i),
+    percent_rank_: $ => token(/PERCENT_RANK/i),
 
     lag_lead_args: $ => parens(
       seq($.expression,
@@ -410,11 +419,13 @@ module.exports = grammar({
     over_clause: $ => seq(
       token(/OVER/i)
       ,token('(')
-        ,optional(seq(token(/PARTITION/i), token(/BY/i), $.expression_list_))
+        ,optional($.partition_by_clause)
         ,optional($.order_by_clause)
         ,optional($.row_or_range_clause)
       ,token(')')
     ),
+
+    partition_by_clause: $ => seq(token(/PARTITION/i), token(/BY/i), $.expression_list_),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4999
     expression_list_: $ => seq($.expression, repeat(seq(token(','), $.expression))),

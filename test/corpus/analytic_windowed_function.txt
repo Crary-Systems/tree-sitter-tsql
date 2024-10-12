@@ -24,10 +24,11 @@ SELECT FIRST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                               (full_column_name
                                 (id_)))
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
                               (order_by_clause
                                 (order_by_expression
                                   (expression
@@ -65,10 +66,11 @@ SELECT LAST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                               (full_column_name
                                 (id_)))
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
                               (order_by_clause
                                 (order_by_expression
                                   (expression
@@ -105,10 +107,11 @@ SELECT LAST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                               (full_column_name
                                 (id_)))
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
                               (order_by_clause
                                 (order_by_expression
                                   (expression
@@ -155,10 +158,11 @@ SELECT LAG(foo,1 ,0) IGNORE NULLS OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                                     (decimal_)))))
                             (ignore_nulls_)
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
                               (order_by_clause
                                 (order_by_expression
                                   (expression
@@ -201,10 +205,11 @@ SELECT LEAD(foo,1) RESPECT NULLS OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                                     (decimal_)))))
                             (respect_nulls_)
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
                               (order_by_clause
                                 (order_by_expression
                                   (expression
@@ -242,15 +247,97 @@ SELECT LEAD(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                                 (full_column_name
                                   (id_))))
                             (over_clause
-                              (expression_list_
-                                (expression
-                                  (full_column_name
-                                    (id_))))
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
                               (order_by_clause
                                 (order_by_expression
                                   (expression
                                     (full_column_name
                                       (id_))))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+analytic CUME_DIST
+=====================================
+SELECT id, CUME_DIST() OVER (PARTITION BY Foo ORDER BY baz)
+FROM BAR
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_)))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (analytic_windowed_function
+                            (cume_dist_)
+                            (partition_by_clause
+                              (expression_list_
+                                (expression
+                                  (full_column_name
+                                    (id_)))))
+                            (order_by_clause
+                              (order_by_expression
+                                (expression
+                                  (full_column_name
+                                    (id_)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+analytic PERCENT_RANK
+=====================================
+SELECT id, PERCENT_RANK() OVER (ORDER BY baz)
+FROM BAR
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_)))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (analytic_windowed_function
+                            (percent_rank_)
+                            (order_by_clause
+                              (order_by_expression
+                                (expression
+                                  (full_column_name
+                                    (id_)))))))))))
                 (table_sources
                   (table_source
                     (table_source_item
