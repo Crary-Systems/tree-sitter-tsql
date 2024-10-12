@@ -330,6 +330,8 @@ module.exports = grammar({
           ,$.stdevp_
           ,$.var_
           ,$.varp_
+          //TODO STRING_AGG
+          //TODO APPROX_COUNT_DISTINCT
         ))
         ,parens($.all_distinct_expression)
         ,optional($.over_clause))
