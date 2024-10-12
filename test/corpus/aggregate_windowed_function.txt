@@ -318,3 +318,34 @@ SELECT COUNT_BIG(id) OVER (PARTITION BY baz) FROM FOO
                     (table_source_item
                       (full_table_name
                         (id_)))))))))))))
+
+=====================================
+agg checksum_agg
+=====================================
+SELECT CHECKSUM_AGG(id) FROM FOO
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (checksum_agg_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))

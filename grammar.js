@@ -339,8 +339,10 @@ module.exports = grammar({
         ,parens(choice($.asterisk, $.all_distinct_expression))
         ,optional($.over_clause))
 
+      ,seq($.checksum_agg_, parens($.all_distinct_expression))
     ),
 
+    checksum_agg_: $ => token(/CHECKSUM_AGG/i),
     count_: $ => token(/COUNT/i),
     count_big_: $ => token(/COUNT_BIG/i),
 
