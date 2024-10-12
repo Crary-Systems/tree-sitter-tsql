@@ -888,6 +888,10 @@
           "named": true
         },
         {
+          "type": "partition_function",
+          "named": true
+        },
+        {
           "type": "ranking_windowed_function",
           "named": true
         },
@@ -1109,6 +1113,46 @@
       "types": [
         {
           "type": "expression_list_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "partition_function",
+    "named": true,
+    "fields": {
+      "database": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "func_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dollar_partition_",
+          "named": true
+        },
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -1730,6 +1774,10 @@
   },
   {
     "type": "distinct_",
+    "named": true
+  },
+  {
+    "type": "dollar_partition_",
     "named": true
   },
   {

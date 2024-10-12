@@ -1977,8 +1977,89 @@
               ]
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "partition_function"
         }
       ]
+    },
+    "partition_function": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "database",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "id_"
+                  }
+                },
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "\\."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dollar_partition_"
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\."
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "func_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "id_"
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
+    "dollar_partition_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\$PARTITION",
+        "flags": "i"
+      }
     },
     "scalar_function_name": {
       "type": "CHOICE",

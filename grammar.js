@@ -314,6 +314,7 @@ module.exports = grammar({
       $.ranking_windowed_function
       ,$.aggregate_windowed_function
       ,$.analytic_windowed_function
+
       //TODO built_in_function ~~200 rules https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4291
 
       ,choice(
@@ -321,11 +322,16 @@ module.exports = grammar({
         ,seq(choice($.binary_checksum_, $.checksum_), parens(choice($.asterisk, $.expression_list_)))
       )
 
-
-
+      ,$.partition_function
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
 
     ),
+
+    partition_function: $ => seq(
+      optional(seq(field('database', $.id_), DOT)), $.dollar_partition_, DOT, field('func_name', $.id_), parens($.expression)
+    ),
+
+    dollar_partition_: $ => token(/\$PARTITION/i),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5198
     scalar_function_name: $ => choice(
