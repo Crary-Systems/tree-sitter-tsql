@@ -860,7 +860,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -872,7 +872,27 @@
           "named": true
         },
         {
+          "type": "asterisk",
+          "named": true
+        },
+        {
+          "type": "binary_checksum_",
+          "named": true
+        },
+        {
+          "type": "checksum_",
+          "named": true
+        },
+        {
+          "type": "expression_list_",
+          "named": true
+        },
+        {
           "type": "ranking_windowed_function",
+          "named": true
+        },
+        {
+          "type": "scalar_function_name",
           "named": true
         }
       ]
@@ -1249,6 +1269,29 @@
       "types": [
         {
           "type": "window_frame_extent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scalar_function_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "func_proc_name_database_schema",
+          "named": true
+        },
+        {
+          "type": "left_",
+          "named": true
+        },
+        {
+          "type": "right_",
           "named": true
         }
       ]
@@ -1650,6 +1693,14 @@
     "named": true
   },
   {
+    "type": "binary_checksum_",
+    "named": true
+  },
+  {
+    "type": "checksum_",
+    "named": true
+  },
+  {
     "type": "checksum_agg_",
     "named": true
   },
@@ -1706,6 +1757,10 @@
     "named": true
   },
   {
+    "type": "left_",
+    "named": true
+  },
+  {
     "type": "max_",
     "named": true
   },
@@ -1735,6 +1790,10 @@
   },
   {
     "type": "rank_",
+    "named": true
+  },
+  {
+    "type": "right_",
     "named": true
   },
   {

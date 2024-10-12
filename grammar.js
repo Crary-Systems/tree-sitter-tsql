@@ -74,7 +74,7 @@ module.exports = grammar({
     ),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5136
-    func_proc_name_schema: $ => seq(optional(seq(field('schema',$.id_), DOT)), field('procedure', $.id_)),
+    func_proc_name_schema: $ => prec.right(seq(optional(seq(field('schema',$.id_), DOT)), field('procedure', $.id_))),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3158
     execute_statement_arg: $ => choice(
@@ -314,9 +314,30 @@ module.exports = grammar({
       $.ranking_windowed_function
       ,$.aggregate_windowed_function
       ,$.analytic_windowed_function
+      //TODO built_in_function ~~200 rules https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4291
+
+      ,choice(
+        seq($.scalar_function_name, parens(optional($.expression_list_)))
+        ,seq(choice($.binary_checksum_, $.checksum_), parens(choice($.asterisk, $.expression_list_)))
+      )
+
+
+
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
 
     ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5198
+    scalar_function_name: $ => choice(
+      $.func_proc_name_database_schema
+      ,$.right_
+      ,$.left_
+    ),
+
+    right_: $ => token(/RIGHT/i),
+    left_: $ => token(/LEFT/i),
+    binary_checksum_: $ => token(/BINARY_CHECKSUM/i),
+    checksum_: $ => token(/CHECKSUM/i),
 
     analytic_windowed_function: $ => choice(
       seq(choice($.first_value_,$.last_value_), parens($.expression), $.over_clause)

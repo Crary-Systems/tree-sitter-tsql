@@ -335,45 +335,49 @@
       ]
     },
     "func_proc_name_schema": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "FIELD",
-                  "name": "schema",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "id_"
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "schema",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "id_"
+                    }
+                  },
+                  {
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "\\."
+                    }
                   }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "\\."
-                  }
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "FIELD",
+            "name": "procedure",
+            "content": {
+              "type": "SYMBOL",
+              "name": "id_"
             }
-          ]
-        },
-        {
-          "type": "FIELD",
-          "name": "procedure",
-          "content": {
-            "type": "SYMBOL",
-            "name": "id_"
           }
-        }
-      ]
+        ]
+      }
     },
     "execute_statement_arg": {
       "type": "CHOICE",
@@ -1890,8 +1894,140 @@
         {
           "type": "SYMBOL",
           "name": "analytic_windowed_function"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "scalar_function_name"
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "("
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "expression_list_"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "binary_checksum_"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "checksum_"
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "("
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "asterisk"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "expression_list_"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
+    },
+    "scalar_function_name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "func_proc_name_database_schema"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "right_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "left_"
+        }
+      ]
+    },
+    "right_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "RIGHT",
+        "flags": "i"
+      }
+    },
+    "left_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "LEFT",
+        "flags": "i"
+      }
+    },
+    "binary_checksum_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "BINARY_CHECKSUM",
+        "flags": "i"
+      }
+    },
+    "checksum_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "CHECKSUM",
+        "flags": "i"
+      }
     },
     "analytic_windowed_function": {
       "type": "CHOICE",
@@ -3498,6 +3634,10 @@
       {
         "type": "SYMBOL",
         "name": "func_proc_name_schema"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "full_column_name"
       }
     ]
   ],
