@@ -118,6 +118,85 @@
     }
   },
   {
+    "type": "analytic_windowed_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "cume_dist_",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "first_value_",
+          "named": true
+        },
+        {
+          "type": "ignore_nulls_",
+          "named": true
+        },
+        {
+          "type": "lag_",
+          "named": true
+        },
+        {
+          "type": "lag_lead_args",
+          "named": true
+        },
+        {
+          "type": "last_value_",
+          "named": true
+        },
+        {
+          "type": "lead_",
+          "named": true
+        },
+        {
+          "type": "order_by_clause",
+          "named": true
+        },
+        {
+          "type": "over_",
+          "named": true
+        },
+        {
+          "type": "over_clause",
+          "named": true
+        },
+        {
+          "type": "partition_by_clause",
+          "named": true
+        },
+        {
+          "type": "percent_rank_",
+          "named": true
+        },
+        {
+          "type": "percentile_cont_",
+          "named": true
+        },
+        {
+          "type": "percentile_disc_",
+          "named": true
+        },
+        {
+          "type": "respect_nulls_",
+          "named": true
+        },
+        {
+          "type": "within_group_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "another_statement",
     "named": true,
     "fields": {},
@@ -183,11 +262,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "binary",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "collation_",
@@ -794,6 +868,10 @@
           "named": true
         },
         {
+          "type": "analytic_windowed_function",
+          "named": true
+        },
+        {
           "type": "ranking_windowed_function",
           "named": true
         }
@@ -832,6 +910,11 @@
     }
   },
   {
+    "type": "ignore_nulls_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "integer",
     "named": true,
     "fields": {}
@@ -840,6 +923,42 @@
     "type": "keyword",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "lag_lead_args",
+    "named": true,
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "offset": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "money_",
@@ -933,6 +1052,11 @@
     }
   },
   {
+    "type": "over_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "over_clause",
     "named": true,
     "fields": {},
@@ -941,15 +1065,30 @@
       "required": false,
       "types": [
         {
-          "type": "expression_list_",
-          "named": true
-        },
-        {
           "type": "order_by_clause",
           "named": true
         },
         {
+          "type": "partition_by_clause",
+          "named": true
+        },
+        {
           "type": "row_or_range_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "partition_by_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression_list_",
           "named": true
         }
       ]
@@ -1092,6 +1231,11 @@
   },
   {
     "type": "real_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "respect_nulls_",
     "named": true,
     "fields": {}
   },
@@ -1381,6 +1525,11 @@
     "fields": {}
   },
   {
+    "type": "within_group_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "$",
     "named": false
   },
@@ -1426,10 +1575,6 @@
   },
   {
     "type": "/=",
-    "named": false
-  },
-  {
-    "type": "0",
     "named": false
   },
   {
@@ -1501,6 +1646,10 @@
     "named": true
   },
   {
+    "type": "binary",
+    "named": true
+  },
+  {
     "type": "checksum_agg_",
     "named": true
   },
@@ -1510,6 +1659,10 @@
   },
   {
     "type": "count_big_",
+    "named": true
+  },
+  {
+    "type": "cume_dist_",
     "named": true
   },
   {
@@ -1537,6 +1690,22 @@
     "named": true
   },
   {
+    "type": "first_value_",
+    "named": true
+  },
+  {
+    "type": "lag_",
+    "named": true
+  },
+  {
+    "type": "last_value_",
+    "named": true
+  },
+  {
+    "type": "lead_",
+    "named": true
+  },
+  {
     "type": "max_",
     "named": true
   },
@@ -1550,6 +1719,18 @@
   },
   {
     "type": "null_",
+    "named": true
+  },
+  {
+    "type": "percent_rank_",
+    "named": true
+  },
+  {
+    "type": "percentile_cont_",
+    "named": true
+  },
+  {
+    "type": "percentile_disc_",
     "named": true
   },
   {

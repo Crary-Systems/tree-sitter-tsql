@@ -1886,8 +1886,471 @@
         {
           "type": "SYMBOL",
           "name": "aggregate_windowed_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "analytic_windowed_function"
         }
       ]
+    },
+    "analytic_windowed_function": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "first_value_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "last_value_"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "over_clause"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "lag_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "lead_"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "lag_lead_args"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "ignore_nulls_"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "respect_nulls_"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "over_clause"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "cume_dist_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "percent_rank_"
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "("
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": ")"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "over_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "partition_by_clause"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "order_by_clause"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "percentile_cont_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "percentile_disc_"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "within_group_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "order_by_clause"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "over_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "partition_by_clause"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "over_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "OVER",
+        "flags": "i"
+      }
+    },
+    "within_group_": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "WITHIN",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "GROUP",
+            "flags": "i"
+          }
+        }
+      ]
+    },
+    "percentile_cont_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PERCENTILE_CONT",
+        "flags": "i"
+      }
+    },
+    "percentile_disc_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PERCENTILE_DISC",
+        "flags": "i"
+      }
+    },
+    "cume_dist_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "CUME_DIST",
+        "flags": "i"
+      }
+    },
+    "percent_rank_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PERCENT_RANK",
+        "flags": "i"
+      }
+    },
+    "lag_lead_args": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "STRING",
+                        "value": ","
+                      }
+                    },
+                    {
+                      "type": "FIELD",
+                      "name": "offset",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "expression"
+                      }
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "TOKEN",
+                              "content": {
+                                "type": "STRING",
+                                "value": ","
+                              }
+                            },
+                            {
+                              "type": "FIELD",
+                              "name": "default",
+                              "content": {
+                                "type": "SYMBOL",
+                                "name": "expression"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "ignore_nulls_": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "IGNORE",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "NULLS",
+            "flags": "i"
+          }
+        }
+      ]
+    },
+    "respect_nulls_": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "RESPECT",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "NULLS",
+            "flags": "i"
+          }
+        }
+      ]
+    },
+    "lag_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "LAG",
+        "flags": "i"
+      }
+    },
+    "lead_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "LEAD",
+        "flags": "i"
+      }
+    },
+    "first_value_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "FIRST_VALUE",
+        "flags": "i"
+      }
+    },
+    "last_value_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "LAST_VALUE",
+        "flags": "i"
+      }
     },
     "aggregate_windowed_function": {
       "type": "CHOICE",
@@ -2318,29 +2781,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "PARTITION",
-                    "flags": "i"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "BY",
-                    "flags": "i"
-                  }
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "expression_list_"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "partition_by_clause"
             },
             {
               "type": "BLANK"
@@ -2380,33 +2822,62 @@
         }
       ]
     },
-    "expression_list_": {
+    "partition_by_clause": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "expression"
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "PARTITION",
+            "flags": "i"
+          }
         },
         {
-          "type": "REPEAT",
+          "type": "TOKEN",
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "TOKEN",
-                "content": {
-                  "type": "STRING",
-                  "value": ","
-                }
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "BY",
+            "flags": "i"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression_list_"
         }
       ]
+    },
+    "expression_list_": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": ","
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                }
+              ]
+            }
+          }
+        ]
+      }
     },
     "order_by_clause": {
       "type": "SEQ",
@@ -2788,31 +3259,11 @@
       ]
     },
     "binary": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "0"
-          }
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "X",
-            "flags": "i"
-          }
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "[0-9A-F]*"
-          }
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "0x[0-9A-F]*"
+      }
     },
     "money_": {
       "type": "SEQ",
