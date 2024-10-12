@@ -246,3 +246,75 @@ SELECT VARP(id) FROM FOO
                     (table_source_item
                       (full_table_name
                         (id_)))))))))))))
+
+=====================================
+agg count
+=====================================
+SELECT COUNT(id) OVER (PARTITION BY baz) FROM FOO
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (count_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (expression_list_
+                                (expression
+                                  (full_column_name
+                                    (id_)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+agg count_big
+=====================================
+SELECT COUNT_BIG(id) OVER (PARTITION BY baz) FROM FOO
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (count_big_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (expression_list_
+                                (expression
+                                  (full_column_name
+                                    (id_)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))

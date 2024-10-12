@@ -333,7 +333,16 @@ module.exports = grammar({
         ))
         ,parens($.all_distinct_expression)
         ,optional($.over_clause))
+
+      ,seq(
+        field('cnt', choice($.count_, $.count_big_))
+        ,parens(choice($.asterisk, $.all_distinct_expression))
+        ,optional($.over_clause))
+
     ),
+
+    count_: $ => token(/COUNT/i),
+    count_big_: $ => token(/COUNT_BIG/i),
 
     avg_: $ => token(/AVG/i),
     max_: $ => token(/MAX/i),
