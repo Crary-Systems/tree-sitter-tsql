@@ -324,8 +324,47 @@ module.exports = grammar({
 
       ,$.partition_function
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
+      ,$.hierarchyid_static_method
 
     ),
+
+    //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
+    hierarchyid_static_method: $ => choice(
+      seq($.hierachyid_, DOUBLE_COLON, choice(
+        seq($.getroot_, parens())
+        ,seq($.parse_, parens(field('input',$.expression)))
+        )
+      )
+      ,seq($.id_, DOT, choice(
+        $.getlevel_
+        ,$.tostring_
+      ), parens())
+
+      ,seq($.id_, DOT, choice(
+        $.getancestor_
+        ,$.is_descendant_of_
+      ), parens($.expression))
+
+      ,seq($.id_, DOT, choice(
+        $.get_reparented_value_
+        ,$.get_descendant_
+      ), parens(seq($.expression, token(','), $.expression)))
+
+
+    ),
+
+    hierachyid_: $ => token(/HIERARCHYID/i),
+
+    get_descendant_: $ => token(/GetDescendant/i),
+    get_reparented_value_: $ => token(/GetReparentedValue/i),
+    getancestor_: $ => token(/GETANCESTOR/i),
+    is_descendant_of_: $ => token(/IsDescendantOf/i),
+    getlevel_: $ => token(/GETLEVEL/i),
+    getroot_: $ => token(/GETROOT/i),
+    tostring_: $ => token(/ToString/i),
+
+
+    parse_: $ => token(/PARSE/i),
 
     partition_function: $ => seq(
       optional(seq(field('database', $.id_), DOT)), $.dollar_partition_, DOT, field('func_name', $.id_), parens($.expression)

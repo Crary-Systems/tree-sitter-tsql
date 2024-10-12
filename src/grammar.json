@@ -1981,8 +1981,312 @@
         {
           "type": "SYMBOL",
           "name": "partition_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hierarchyid_static_method"
         }
       ]
+    },
+    "hierarchyid_static_method": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "hierachyid_"
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "::"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "getroot_"
+                    },
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "("
+                        },
+                        {
+                          "type": "STRING",
+                          "value": ")"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "parse_"
+                    },
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "("
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "input",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "expression"
+                          }
+                        },
+                        {
+                          "type": "STRING",
+                          "value": ")"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "id_"
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "getlevel_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "tostring_"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "id_"
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "getancestor_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "is_descendant_of_"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "id_"
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\."
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "get_reparented_value_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "get_descendant_"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    },
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "STRING",
+                        "value": ","
+                      }
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hierachyid_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "HIERARCHYID",
+        "flags": "i"
+      }
+    },
+    "get_descendant_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GetDescendant",
+        "flags": "i"
+      }
+    },
+    "get_reparented_value_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GetReparentedValue",
+        "flags": "i"
+      }
+    },
+    "getancestor_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GETANCESTOR",
+        "flags": "i"
+      }
+    },
+    "is_descendant_of_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "IsDescendantOf",
+        "flags": "i"
+      }
+    },
+    "getlevel_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GETLEVEL",
+        "flags": "i"
+      }
+    },
+    "getroot_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GETROOT",
+        "flags": "i"
+      }
+    },
+    "tostring_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "ToString",
+        "flags": "i"
+      }
+    },
+    "parse_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PARSE",
+        "flags": "i"
+      }
     },
     "partition_function": {
       "type": "SEQ",

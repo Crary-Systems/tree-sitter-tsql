@@ -1,0 +1,253 @@
+=====================================
+HIERARCHYID Static Method GetRoot
+=====================================
+SELECT HIERARCHYID::GetRoot()
+FROM FOO
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (hierachyid_)
+                            (getroot_)))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method Parse
+=====================================
+SELECT HIERARCHYID::Parse(bar)
+FROM FOO
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (hierachyid_)
+                            (parse_)
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method GetAncestor
+=====================================
+SELECT foo.GetAncestor(bar)
+FROM BAZ
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (id_)
+                            (getancestor_)
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method GetLevel
+=====================================
+SELECT foo.GetLevel()
+FROM BAZ
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (id_)
+                            (getlevel_)))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method IsDescendantOf
+=====================================
+SELECT foo.IsDescendantOf(bar)
+FROM BAZ
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (id_)
+                            (is_descendant_of_)
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method ToString
+=====================================
+SELECT foo.ToString()
+FROM BAZ
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (id_)
+                            (tostring_)))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method GetReparentedValue
+=====================================
+SELECT foo.GetReparentedValue(oldroot, newroot)
+FROM BAZ
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (id_)
+                            (get_reparented_value_)
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=====================================
+HIERARCHYID Static Method GetDescendant
+=====================================
+SELECT foo.GetDescendant(foo, bar)
+FROM BAZ
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (hierarchyid_static_method
+                            (id_)
+                            (get_descendant_)
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))

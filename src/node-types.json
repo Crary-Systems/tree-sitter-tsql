@@ -888,6 +888,10 @@
           "named": true
         },
         {
+          "type": "hierarchyid_static_method",
+          "named": true
+        },
+        {
           "type": "partition_function",
           "named": true
         },
@@ -916,6 +920,72 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "hierarchyid_static_method",
+    "named": true,
+    "fields": {
+      "input": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "get_descendant_",
+          "named": true
+        },
+        {
+          "type": "get_reparented_value_",
+          "named": true
+        },
+        {
+          "type": "getancestor_",
+          "named": true
+        },
+        {
+          "type": "getlevel_",
+          "named": true
+        },
+        {
+          "type": "getroot_",
+          "named": true
+        },
+        {
+          "type": "hierachyid_",
+          "named": true
+        },
+        {
+          "type": "id_",
+          "named": true
+        },
+        {
+          "type": "is_descendant_of_",
+          "named": true
+        },
+        {
+          "type": "parse_",
+          "named": true
+        },
+        {
+          "type": "tostring_",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1793,6 +1863,34 @@
     "named": true
   },
   {
+    "type": "get_descendant_",
+    "named": true
+  },
+  {
+    "type": "get_reparented_value_",
+    "named": true
+  },
+  {
+    "type": "getancestor_",
+    "named": true
+  },
+  {
+    "type": "getlevel_",
+    "named": true
+  },
+  {
+    "type": "getroot_",
+    "named": true
+  },
+  {
+    "type": "hierachyid_",
+    "named": true
+  },
+  {
+    "type": "is_descendant_of_",
+    "named": true
+  },
+  {
     "type": "lag_",
     "named": true
   },
@@ -1822,6 +1920,10 @@
   },
   {
     "type": "null_",
+    "named": true
+  },
+  {
+    "type": "parse_",
     "named": true
   },
   {
@@ -1866,6 +1968,10 @@
   },
   {
     "type": "sum_",
+    "named": true
+  },
+  {
+    "type": "tostring_",
     "named": true
   },
   {
