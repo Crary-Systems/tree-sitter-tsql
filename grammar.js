@@ -322,14 +322,27 @@ module.exports = grammar({
     // TODO CORPUS
     aggregate_windowed_function: $ => choice(
       seq(field('agg_func', choice(
-          $.sum_
+          $.avg_
+          ,$.max_
+          ,$.min_
+          ,$.sum_
+          ,$.stdev_
+          ,$.stdevp_
+          ,$.var_
+          ,$.varp_
         ))
         ,parens($.all_distinct_expression)
         ,optional($.over_clause))
     ),
 
-
+    avg_: $ => token(/AVG/i),
+    max_: $ => token(/MAX/i),
+    min_: $ => token(/MIN/i),
     sum_: $ => token(/SUM/i),
+    stdev_: $ => token(/STDev/i),
+    stdevp_: $ => token(/STDEVP/i),
+    var_: $ => token(/VAR/i),
+    varp_: $ => token(/VARP/i),
 
     // TODO CORPUS
     all_distinct_expression: $ => seq(
