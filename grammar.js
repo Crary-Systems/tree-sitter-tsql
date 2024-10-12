@@ -475,7 +475,7 @@ module.exports = grammar({
       //,$.parameter_ Example??
     ),
 
-    binary: $ => seq(token('0'),token(/X/i), token(/[0-9A-F]*/)),
+    binary: $ => token(/0x[0-9A-F]*/),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5283
     money_: $ => seq(field('dollar', token('$')), optional(choice(token('-'),token('+'))), choice($.real_, $.float_)),
