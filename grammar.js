@@ -340,6 +340,8 @@ module.exports = grammar({
         ,optional($.over_clause))
 
       ,seq($.checksum_agg_, parens($.all_distinct_expression))
+      //,seq($.GROUPING_, parens($.expression)) --TODO GROUPBY
+      //,seq($.GROUPING_ID, parens($.expression_list_) --TODO GROUPBY
     ),
 
     checksum_agg_: $ => token(/CHECKSUM_AGG/i),

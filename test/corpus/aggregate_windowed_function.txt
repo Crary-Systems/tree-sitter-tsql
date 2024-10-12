@@ -349,3 +349,25 @@ SELECT CHECKSUM_AGG(id) FROM FOO
                     (table_source_item
                       (full_table_name
                         (id_)))))))))))))
+
+=====================================
+agg GROUPING NEED GROUPBY
+:skip
+=====================================
+SELECT GROUPING(FOO) FROM BAR
+GROUP BY FOO WITH ROLLUP
+---
+
+=====================================
+agg GROUPING_ID NEED GROUPBY
+:skip
+=====================================
+SELECT col1, col2, sum(v), GROUPING_ID(col1,col2)
+FROM BAR
+GROUP BY
+  GROUPING SETS (
+    (col1,col2)
+    (col1),
+    (col2),
+    ());
+---

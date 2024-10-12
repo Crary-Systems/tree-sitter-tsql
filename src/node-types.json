@@ -15,6 +15,109 @@
     "fields": {}
   },
   {
+    "type": "aggregate_windowed_function",
+    "named": true,
+    "fields": {
+      "agg_func": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "avg_",
+            "named": true
+          },
+          {
+            "type": "max_",
+            "named": true
+          },
+          {
+            "type": "min_",
+            "named": true
+          },
+          {
+            "type": "stdev_",
+            "named": true
+          },
+          {
+            "type": "stdevp_",
+            "named": true
+          },
+          {
+            "type": "sum_",
+            "named": true
+          },
+          {
+            "type": "var_",
+            "named": true
+          },
+          {
+            "type": "varp_",
+            "named": true
+          }
+        ]
+      },
+      "cnt": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "count_",
+            "named": true
+          },
+          {
+            "type": "count_big_",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "all_distinct_expression",
+          "named": true
+        },
+        {
+          "type": "asterisk",
+          "named": true
+        },
+        {
+          "type": "checksum_agg_",
+          "named": true
+        },
+        {
+          "type": "over_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "all_distinct_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "all_",
+          "named": true
+        },
+        {
+          "type": "distinct_",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "another_statement",
     "named": true,
     "fields": {},
@@ -686,6 +789,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "aggregate_windowed_function",
+          "named": true
+        },
         {
           "type": "ranking_windowed_function",
           "named": true
@@ -1378,11 +1485,31 @@
     "named": false
   },
   {
+    "type": "all_",
+    "named": true
+  },
+  {
     "type": "asc_",
     "named": true
   },
   {
     "type": "asterisk",
+    "named": true
+  },
+  {
+    "type": "avg_",
+    "named": true
+  },
+  {
+    "type": "checksum_agg_",
+    "named": true
+  },
+  {
+    "type": "count_",
+    "named": true
+  },
+  {
+    "type": "count_big_",
     "named": true
   },
   {
@@ -1398,11 +1525,23 @@
     "named": true
   },
   {
+    "type": "distinct_",
+    "named": true
+  },
+  {
     "type": "dummy",
     "named": true
   },
   {
     "type": "execute",
+    "named": true
+  },
+  {
+    "type": "max_",
+    "named": true
+  },
+  {
+    "type": "min_",
     "named": true
   },
   {
@@ -1426,7 +1565,27 @@
     "named": true
   },
   {
+    "type": "stdev_",
+    "named": true
+  },
+  {
+    "type": "stdevp_",
+    "named": true
+  },
+  {
     "type": "string_lit",
+    "named": true
+  },
+  {
+    "type": "sum_",
+    "named": true
+  },
+  {
+    "type": "var_",
+    "named": true
+  },
+  {
+    "type": "varp_",
     "named": true
   },
   {

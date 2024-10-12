@@ -1882,8 +1882,312 @@
         {
           "type": "SYMBOL",
           "name": "ranking_windowed_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "aggregate_windowed_function"
         }
       ]
+    },
+    "aggregate_windowed_function": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "agg_func",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "avg_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "max_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "min_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sum_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "stdev_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "stdevp_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "var_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "varp_"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "all_distinct_expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "over_clause"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "cnt",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "count_"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "count_big_"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "asterisk"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "all_distinct_expression"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "over_clause"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "checksum_agg_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "all_distinct_expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "checksum_agg_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "CHECKSUM_AGG",
+        "flags": "i"
+      }
+    },
+    "count_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "COUNT",
+        "flags": "i"
+      }
+    },
+    "count_big_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "COUNT_BIG",
+        "flags": "i"
+      }
+    },
+    "avg_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "AVG",
+        "flags": "i"
+      }
+    },
+    "max_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "MAX",
+        "flags": "i"
+      }
+    },
+    "min_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "MIN",
+        "flags": "i"
+      }
+    },
+    "sum_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "SUM",
+        "flags": "i"
+      }
+    },
+    "stdev_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "STDev",
+        "flags": "i"
+      }
+    },
+    "stdevp_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "STDEVP",
+        "flags": "i"
+      }
+    },
+    "var_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "VAR",
+        "flags": "i"
+      }
+    },
+    "varp_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "VARP",
+        "flags": "i"
+      }
+    },
+    "all_distinct_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "all_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "distinct_"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "all_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "ALL",
+        "flags": "i"
+      }
+    },
+    "distinct_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "DISTINCT",
+        "flags": "i"
+      }
     },
     "ranking_windowed_function": {
       "type": "CHOICE",
