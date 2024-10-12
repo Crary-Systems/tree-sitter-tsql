@@ -320,8 +320,24 @@ module.exports = grammar({
 
     analytic_windowed_function: $ => choice(
       seq(choice($.first_value_,$.last_value_), parens($.expression), $.over_clause)
+      ,seq(choice($.lag_, $.lead_)
+        ,$.lag_lead_args
+        ,optional(choice($.ignore_nulls_, $.respect_nulls_))
+        ,$.over_clause)
+
 
     ),
+
+    lag_lead_args: $ => parens(
+      seq($.expression,
+        optional(seq(token(','), field('offset', $.expression),
+          optional(seq(token(','), field('default', $.expression))))))
+    ),
+
+    ignore_nulls_: $ => seq(token(/IGNORE/i), token(/NULLS/i)),
+    respect_nulls_: $ => seq(token(/RESPECT/i), token(/NULLS/i)),
+    lag_: $ => token(/LAG/i),
+    lead_: $ => token(/LEAD/i),
 
     first_value_: $ => token(/FIRST_VALUE/i),
     last_value_: $ => token(/LAST_VALUE/i),
