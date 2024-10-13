@@ -284,6 +284,7 @@ module.exports = grammar({
 
     table_source_item: $ => choice(
       $.full_table_name
+      ,$.function_call //TODO optional as table_alias column_alias_list
     ),
 
     full_table_name: $ => prec.right(seq(
@@ -322,11 +323,42 @@ module.exports = grammar({
         ,seq(choice($.binary_checksum_, $.checksum_), parens(choice($.asterisk, $.expression_list_)))
       )
 
+      ,$.freetext_function
       ,$.partition_function
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
       ,$.hierarchyid_static_method
 
     ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4302
+    //TODO CORPUS
+    freetext_function: $ => choice(
+      seq(choice($.containstable_, $.freetexttable_),
+        parens(seq(
+          $.table_name, token(','), parens(seq(choice(
+            $.full_column_name
+            ,parens($.full_column_name, repeat(seq(token(','), $.full_column_name)))
+            ,$.asterisk
+          ), optional($.string_lit))) //TODO contains_search_condition
+        ))
+
+        //TODO
+    )),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5125
+    table_name: $ => seq(
+      optional(choice(
+        seq(field('database', $.id_), DOT, field('schema', $.id_), DOT)
+        ,seq(field('schema', $.id_), DOT))),
+      choice(
+        field('table', $.id_)
+        ,field('blocking_hierarchy', $.blocking_hierarchy_)
+      )
+    ),
+
+    blocking_hierarchy_: $ => token(/BLOCKING_HIERARCHY/i),
+    containstable_: $ => token(/CONTAINSTABLE/i),
+    freetexttable_: $ => token(/FREETEXTTABLE/i),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(
@@ -350,11 +382,9 @@ module.exports = grammar({
         ,$.get_descendant_
       ), parens(seq($.expression, token(','), $.expression)))
 
-
     ),
 
     hierachyid_: $ => token(/HIERARCHYID/i),
-
     get_descendant_: $ => token(/GetDescendant/i),
     get_reparented_value_: $ => token(/GetReparentedValue/i),
     getancestor_: $ => token(/GETANCESTOR/i),
@@ -362,8 +392,6 @@ module.exports = grammar({
     getlevel_: $ => token(/GETLEVEL/i),
     getroot_: $ => token(/GETROOT/i),
     tostring_: $ => token(/ToString/i),
-
-
     parse_: $ => token(/PARSE/i),
 
     partition_function: $ => seq(

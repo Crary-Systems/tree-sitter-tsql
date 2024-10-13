@@ -1,0 +1,5 @@
+=================================================
+freetext func CONTAINSTABLE
+=================================================
+SELECT * FROM CONTAINSTABLE(Flags, FlagColors, 'Green');
+---
