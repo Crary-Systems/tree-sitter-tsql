@@ -1,0 +1,55 @@
+=================================================
+builtin APP_NAME
+=================================================
+SELECT APP_NAME()
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (app_name_)))))))))))))))
+
+=================================================
+builtin APPLOCK_MODE()
+=================================================
+SELECT APPLOCK_MODE('public','Form1','Transcation')
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (applock_mode_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
