@@ -92,3 +92,93 @@ SELECT APPLOCK_TEST('public','Form1','Shared','Transaction')
                               (primitive_expression
                                 (primitive_constant
                                   (string_lit))))))))))))))))))
+
+=================================================
+builtin ASSEMBLYPROPERTY()
+=================================================
+SELECT ASSEMBLYPROPERTY ('HelloWorld' , 'PublicKey');
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (assemblyproperty_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
+
+=================================================
+builtin COL_LENGTH()
+=================================================
+SELECT COL_LENGTH ('t1', 'c1');
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (col_length_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
+
+=================================================
+builtin COL_NAME()
+=================================================
+SELECT COL_NAME(1029578706, 1);
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (col_name_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
