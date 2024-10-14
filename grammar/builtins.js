@@ -62,6 +62,15 @@ module.exports = {
       // https://docs.microsoft.com/en-us/sql/t-sql/functions/db-id-transact-sql?view=sql-server-ver16
       // DB_ID
       ,seq($.db_id_, parens(optional(field('database_name', $.expression))))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/db-name-transact-sql?view=sql-server-ver16
+      // DB_NAME
+      ,seq($.db_name_, parens(optional(field('database_id', $.expression))))
+
+      // https://learn.microsoft.com/en-us/sql/t-sql/functions/file-id-transact-sql?view=sql-server-ver16
+      // FILE_ID
+      ,seq($.file_id_, parens(field('file_name',$.expression)))
+
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -73,4 +82,6 @@ module.exports = {
     columnproperty_: $ => token(/COLUMNPROPERTY/i),
     databasepropertyex_: $ => token(/DATABASEPROPERTYEX/i),
     db_id_: $ => token(/DB_ID/i),
+    db_name_: $ => token(/DB_NAME/i),
+    file_id_: $ => token(/FILE_ID/i)
 };
