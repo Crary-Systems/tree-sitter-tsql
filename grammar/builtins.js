@@ -46,6 +46,22 @@ module.exports = {
         field('table_id', $.expression)
         ,field('column_id', $.expression)))
 
+      // https://learn.microsoft.com/en-us/sql/t-sql/functions/columnproperty-transact-sql?view=sql-server-ver16
+      // COLUMNPROPERTY
+      ,seq($.columnproperty_, parensComma(
+        field('id', $.expression)
+        ,field('column', $.expression)
+        ,field('property', $.expression)))
+
+      // https://learn.microsoft.com/en-us/sql/t-sql/functions/databasepropertyex-transact-sql?view=sql-server-ver16
+      // DATABASEPROPERTYEX
+      ,seq($.databasepropertyex_, parensComma(
+        field('database', $.expression)
+        ,field('property', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/db-id-transact-sql?view=sql-server-ver16
+      // DB_ID
+      ,seq($.db_id_, parens(optional(field('database_name', $.expression))))
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -54,4 +70,7 @@ module.exports = {
     assemblyproperty_: $ => token(/ASSEMBLYPROPERTY/i),
     col_length_: $ => token(/COL_LENGTH/i),
     col_name_: $ => token(/COL_NAME/i),
+    columnproperty_: $ => token(/COLUMNPROPERTY/i),
+    databasepropertyex_: $ => token(/DATABASEPROPERTYEX/i),
+    db_id_: $ => token(/DB_ID/i),
 };
