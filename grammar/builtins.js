@@ -83,6 +83,24 @@ module.exports = {
       // FILEGROUP_ID
       ,seq($.filegroup_id_, parens(field('filegroup_name', $.expression)))
 
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/filegroup-name-transact-sql?view=sql-server-ver16
+      // FILEGROUP_NAME
+      ,seq($.filegroup_name_, parens(field('filegroup_id', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/filegroupproperty-transact-sql?view=sql-server-ver16
+      // FILEGROUPPROPERTY
+      ,seq($.filegroupproperty_, parensComma(field('filegroup_name', $.expression)
+                                            ,field('property', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/fileproperty-transact-sql?view=sql-server-ver16
+      // FILEPROPERTY
+      ,seq($.fileproperty_, parensComma(field('file_name', $.expression)
+                                       ,field('property', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/filepropertyex-transact-sql?view=sql-server-ver16
+      // FILEPROPERTYEX
+      ,seq($.filepropertyex_, parensComma(field('name', $.expression)
+                                         ,field('property', $.expression)))
 
     ),
 
@@ -100,4 +118,8 @@ module.exports = {
     file_idex_: $ => token(/FILE_IDEX/i),
     file_name_: $ => token(/FILE_NAME/i),
     filegroup_id_: $ => token(/FILEGROUP_ID/i),
+    filegroup_name_: $ => token(/FILEGROUP_NAME/i),
+    filegroupproperty_: $ => token(/FILEGROUPPROPERTY/i),
+    fileproperty_: $ => token(/FILEPROPERTY/i),
+    filepropertyex_: $ => token(/FILEPROPERTYEX/i),
 };
