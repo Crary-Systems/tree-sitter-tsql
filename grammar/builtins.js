@@ -135,6 +135,33 @@ module.exports = {
       // NEXT VALUE FOR
       ,seq($.next_value_for_, field('sequence_name', $.table_name)
           ,optional(seq($.over_, parens($.order_by_clause))))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/object-definition-transact-sql?view=sql-server-ver16
+      // OBJECT_DEFINITION
+      ,seq($.object_definition_, parens(field('object_id', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/object-id-transact-sql?view=sql-server-ver16
+      // OBJECT_ID
+      ,seq($.object_id_, parens(seq(field('object_name', $.expression)
+                               ,optional(seq(COMMA, field('object_type', $.expression))))))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/object-name-transact-sql?view=sql-server-ver16
+      // OBJECT_NAME
+      ,seq($.object_name_, parens(seq(field('object_id', $.expression)
+                                 ,optional(seq(COMMA, field('database_id', $.expression))))))
+
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/object-schema-name-transact-sql?view=sql-server-ver16
+      // OBJECT_SCHEMA_NAME
+      ,seq($.object_schema_name_, parens(seq(field('object_id', $.expression)
+                                 ,optional(seq(COMMA, field('database_id', $.expression))))))
+
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/objectproperty-transact-sql?view=sql-server-ver16
+      // OBJECTPROPERTY
+      ,seq($.objectproperty_, parensComma(field('id', $.expression)
+                                         ,field('property', $.expression)))
+
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -160,7 +187,11 @@ module.exports = {
     indexcol_: $ => token(/INDEX_COL/i),
     indexkey_property_: $ => token(/INDEXKEY_PROPERTY/i),
     indexproperty_: $ => token(/INDEXPROPERTY/i),
-
     next_value_for_: $ => seq(token(/NEXT/i),token(/VALUE/i),token(/FOR/i)),
+    object_definition_: $ => token(/OBJECT_DEFINITION/i),
+    object_id_: $ => token(/OBJECT_ID/i),
+    object_name_: $ => token(/OBJECT_NAME/i),
+    object_schema_name_: $ => token(/OBJECT_SCHEMA_NAME/i),
+    objectproperty_: $ => token(/OBJECTPROPERTY/i),
 
 };
