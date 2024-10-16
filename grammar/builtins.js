@@ -102,6 +102,29 @@ module.exports = {
       ,seq($.filepropertyex_, parensComma(field('name', $.expression)
                                          ,field('property', $.expression)))
 
+      // https://learn.microsoft.com/en-us/sql/t-sql/functions/fulltextcatalogproperty-transact-sql?view=sql-server-ver16
+      // FULLTEXTCATALOGPROPERTY
+      ,seq($.fulltextcatalogproperty_, parensComma(field('catalog_name', $.expression)
+                                                  ,field('property', $.expression)))
+
+      // https://learn.microsoft.com/en-us/sql/t-sql/functions/fulltextserviceproperty-transact-sql?view=sql-server-ver16
+      // FULLTEXTSERVICEPROPERTY
+      ,seq($.fulltextserviceproperty_, parens(field('property', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/index-col-transact-sql?view=sql-server-ver16
+      // INDEX_COL
+      ,seq($.indexcol_, parensComma($.expression
+                                   ,field('index_id', $.expression)
+                                   ,field('key_id', $.expression)))
+
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/indexkey-property-transact-sql?view=sql-server-ver16
+      // INDEXKEY_PROPERTY
+      ,seq($.indexkey_property_, parensComma(field('object_ID', $.expression)
+                                            ,field('index_ID', $.expression)
+                                            ,field('key_ID', $.expression)
+                                            ,field('property', $.expression)))
+
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -122,4 +145,9 @@ module.exports = {
     filegroupproperty_: $ => token(/FILEGROUPPROPERTY/i),
     fileproperty_: $ => token(/FILEPROPERTY/i),
     filepropertyex_: $ => token(/FILEPROPERTYEX/i),
+    fulltextcatalogproperty_: $ => token(/FULLTEXTCATALOGPROPERTY/i),
+    fulltextserviceproperty_: $ => token(/FULLTEXTSERVICEPROPERTY/i),
+    indexcol_: $ => token(/INDEX_COL/i),
+    indexkey_property_: $ => token(/INDEXKEY_PROPERTY/i),
+
 };
