@@ -162,6 +162,20 @@ module.exports = {
       ,seq($.objectproperty_, parensComma(field('id', $.expression)
                                          ,field('property', $.expression)))
 
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/objectpropertyex-transact-sql?view=sql-server-ver16
+      // OBJECTPROPERTYEX
+      ,seq($.objectpropertyex_, parensComma(field('id', $.expression)
+                                           ,field('property', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/original-db-name-transact-sql?view=sql-server-ver16
+      // ORIGINAL_DB_NAME
+      ,seq($.original_db_name_, token('('), token(')'))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/parsename-transact-sql?view=sql-server-ver16
+      // PARSENAME
+      ,seq($.parsename_, parensComma(field('object_name', $.expression)
+                                    ,field('object_piece', $.expression)))
+
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -193,5 +207,8 @@ module.exports = {
     object_name_: $ => token(/OBJECT_NAME/i),
     object_schema_name_: $ => token(/OBJECT_SCHEMA_NAME/i),
     objectproperty_: $ => token(/OBJECTPROPERTY/i),
+    objectpropertyex_: $ => token(/OBJECTPROPERTYEX/i),
+    original_db_name_: $ => token(/ORIGINAL_DB_NAME/i),
+    parsename_: $ => token(/PARSENAME/i),
 
 };
