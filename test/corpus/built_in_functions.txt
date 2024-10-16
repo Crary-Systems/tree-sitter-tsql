@@ -354,3 +354,81 @@ SELECT FILE_ID('AdventureWorks2022_Data');
                               (primitive_expression
                                 (primitive_constant
                                   (string_lit))))))))))))))))))
+
+=================================================
+builtin FILE_IDEX()
+=================================================
+SELECT FILE_IDEX('AdventureWorks2022_Data');
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (file_idex_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
+
+=================================================
+builtin FILE_NAME()
+=================================================
+SELECT FILE_NAME(1);
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (file_name_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=================================================
+builtin FILEGROUP_ID()
+=================================================
+SELECT FILEGROUP_ID('PRIMARY');
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (built_in_functions
+                            (filegroup_id_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))

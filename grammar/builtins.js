@@ -71,6 +71,19 @@ module.exports = {
       // FILE_ID
       ,seq($.file_id_, parens(field('file_name',$.expression)))
 
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/file-idex-transact-sql?view=sql-server-ver16
+      // FILE_IDEX
+      ,seq($.file_idex_, parens(field('file_name', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/file-name-transact-sql?view=sql-server-ver16
+      // FILE_NAME
+      ,seq($.file_name_, parens(field('file_id', $.expression)))
+
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/filegroup-id-transact-sql?view=sql-server-ver16
+      // FILEGROUP_ID
+      ,seq($.filegroup_id_, parens(field('filegroup_name', $.expression)))
+
+
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -83,5 +96,8 @@ module.exports = {
     databasepropertyex_: $ => token(/DATABASEPROPERTYEX/i),
     db_id_: $ => token(/DB_ID/i),
     db_name_: $ => token(/DB_NAME/i),
-    file_id_: $ => token(/FILE_ID/i)
+    file_id_: $ => token(/FILE_ID/i),
+    file_idex_: $ => token(/FILE_IDEX/i),
+    file_name_: $ => token(/FILE_NAME/i),
+    filegroup_id_: $ => token(/FILEGROUP_ID/i),
 };
