@@ -125,6 +125,16 @@ module.exports = {
                                             ,field('key_ID', $.expression)
                                             ,field('property', $.expression)))
 
+      // https://docs.microsoft.com/en-us/sql/t-sql/functions/indexproperty-transact-sql?view=sql-server-ver16
+      // INDEXPROPERTY
+      ,seq($.indexproperty_, parensComma(field('object_ID', $.expression)
+                                        ,field('index_or_statistics_name', $.expression)
+                                        ,field('property', $.expression)))
+
+      // https://learn.microsoft.com/en-us/sql/t-sql/functions/next-value-for-transact-sql?view=sql-server-ver16
+      // NEXT VALUE FOR
+      ,seq($.next_value_for_, field('sequence_name', $.table_name)
+          ,optional(seq($.over_, parens($.order_by_clause))))
     ),
 
     app_name_: $ => token(/APP_NAME/i),
@@ -149,5 +159,8 @@ module.exports = {
     fulltextserviceproperty_: $ => token(/FULLTEXTSERVICEPROPERTY/i),
     indexcol_: $ => token(/INDEX_COL/i),
     indexkey_property_: $ => token(/INDEXKEY_PROPERTY/i),
+    indexproperty_: $ => token(/INDEXPROPERTY/i),
+
+    next_value_for_: $ => seq(token(/NEXT/i),token(/VALUE/i),token(/FOR/i)),
 
 };

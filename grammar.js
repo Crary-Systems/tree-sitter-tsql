@@ -288,6 +288,20 @@ module.exports = grammar({
       $.full_table_name
     ),
 
+    //TODO CORPUS
+    table_name: $ => prec.right(seq(
+      optional(choice(
+        seq(field('database', $.id_), DOT, field('schema', $.id_))
+        ,seq(field('schema', $.id_), DOT)
+      ))
+      ,choice(
+        field('table', $.id_)
+        //TODO blocking_hiearchy
+        //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5128
+      )
+    )),
+
+
     full_table_name: $ => prec.right(seq(
       optional(choice(
       //NOTE? whats this dotdot example https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5118
