@@ -1,0 +1,100 @@
+=====================================
+Go Batch Repeated
+=====================================
+Go
+GO 5
+go
+---
+
+(tsql_file
+  (batch (go_statement))
+  (batch (go_statement (integer)))
+  (batch (go_statement)))
+
+=====================================
+Simple Select Batch No Execute Body Batch clause
+=====================================
+GO
+SELECT id,type FROM [PostTypes]
+SELECT id FROM [PostTypes]
+GO 1
+GO 2
+----
+(tsql_file
+  (batch
+    (go_statement))
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_)))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))
+    (go_statement
+      (integer))
+    (go_statement
+      (integer))))
+
+=====================================
+execute_body_batch named params
+=====================================
+StackOverflowTiny.dbo.sp_autostats @tblname = 'dbo.PostTypes', @flagc = 'ON'
+GO
+---
+(tsql_file
+  (batch
+    (execute_body_batch
+      (func_proc_name_server_database_schema
+        (func_proc_name_database_schema
+          (id_)
+          (id_)
+          (id_)))
+      (execute_statement_arg
+        (execute_statement_arg_named
+          (execute_parameter
+            (constant))))
+      (execute_statement_arg
+        (execute_statement_arg_named
+          (execute_parameter
+            (constant)))))
+    (go_statement)))
+
+=====================================
+batch_level_statement example
+:skip
+=====================================

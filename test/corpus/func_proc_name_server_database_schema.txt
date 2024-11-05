@@ -1,0 +1,67 @@
+=====================================
+Full 4 Part Linked Server Func Proc
+=====================================
+[adventureworks].[AdventureWorks].dbo.sp_autostats @tblname = 'BuildVersion'
+---
+
+(tsql_file
+  (execute_body_batch
+    (func_proc_name_server_database_schema
+      (id_)
+      (id_)
+      (id_)
+      (id_))
+    (execute_statement_arg
+      (execute_statement_arg_named
+        (execute_parameter
+          (constant))))))
+
+=====================================
+3 Part Func Proc
+=====================================
+[AdventureWorks].dbo.sp_autostats @tblname = 'BuildVersion'
+---
+(tsql_file
+  (execute_body_batch
+    (func_proc_name_server_database_schema
+      (func_proc_name_database_schema
+        (id_)
+        (id_)
+        (id_)))
+    (execute_statement_arg
+      (execute_statement_arg_named
+        (execute_parameter
+          (constant))))))
+
+=====================================
+2 Part Func Proc
+=====================================
+dbo.sp_autostats @tblname = 'BuildVersion'
+---
+(tsql_file
+  (execute_body_batch
+    (func_proc_name_server_database_schema
+      (func_proc_name_database_schema
+        (func_proc_name_schema
+          (id_)
+          (id_))))
+    (execute_statement_arg
+      (execute_statement_arg_named
+        (execute_parameter
+          (constant))))))
+
+=====================================
+1 Part Func Proc
+=====================================
+sp_autostats @tblname = 'BuildVersion'
+---
+(tsql_file
+  (execute_body_batch
+    (func_proc_name_server_database_schema
+      (func_proc_name_database_schema
+        (func_proc_name_schema
+          (id_))))
+    (execute_statement_arg
+      (execute_statement_arg_named
+        (execute_parameter
+          (constant))))))

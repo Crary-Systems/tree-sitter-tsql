@@ -1,0 +1,20 @@
+=====================================
+EXECUTE Statement
+=====================================
+EXECUTE sp_help @objname=NULL;
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (execute_statement
+          (execute)
+          (execute_body
+            (func_proc_name_server_database_schema
+              (func_proc_name_database_schema
+                (func_proc_name_schema
+                  (id_))))
+            (execute_statement_arg
+              (execute_statement_arg_named
+                (execute_parameter
+                  (null_))))))))))

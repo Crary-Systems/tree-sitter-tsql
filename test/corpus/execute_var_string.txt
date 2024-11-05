@@ -1,0 +1,31 @@
+=====================================
+execute_var_string simple
+=====================================
+EXECUTE @sql
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (execute_statement
+          (execute)
+          (execute_body
+            (execute_var_string
+              (LOCAL_ID_))))))))
+
+=====================================
+execute_var_string string_lit left
+=====================================
+EXECUTE 'SELECT ' + @sql
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (execute_statement
+          (execute)
+          (execute_body
+            (execute_var_string
+              (string_lit)
+              (PLUS)
+              (LOCAL_ID_))))))))

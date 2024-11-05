@@ -1,0 +1,174 @@
+=================================================
+assignment_operator PlusEqual
+=================================================
+select @foo+=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+
+=================================================
+assignment_operator MinusEqual
+=================================================
+select @foo-=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+
+=================================================
+assignment_operator MulEqual
+=================================================
+select @foo*=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+
+=================================================
+assignment_operator DivEqual
+=================================================
+select @foo/=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+=================================================
+assignment_operator ModEqual
+=================================================
+select @foo%=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+
+=================================================
+assignment_operator AmpEqual
+=================================================
+select @foo&=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+
+=================================================
+assignment_operator HatEqual
+=================================================
+select @foo^=baz
+---
+    (tsql_file
+      (batch
+        (sql_clauses
+          (dml_clause
+            (select_statement_standalone
+              (select_statement
+                (query_expression
+                  (query_specification
+                    (select)
+                    (select_list
+                      (select_list_elem
+                        (LOCAL_ID_)
+                        (assignment_operator)
+                        (expression
+                          (full_column_name
+                            (id_)))))))))))))
+
+=================================================
+assignment_operator PipeEqual
+=================================================
+select @foo|=baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (LOCAL_ID_)
+                    (assignment_operator)
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))

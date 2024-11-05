@@ -1,0 +1,157 @@
+=================================================
+Scalar Func 3PartName
+=================================================
+SELECT Foo.Bar.Baz()
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (scalar_function_name
+                            (func_proc_name_database_schema
+                              (id_)
+                              (id_)
+                              (id_))))))))))))))))
+
+=================================================
+Scalar Func Right
+=================================================
+SELECT Right(foo, 5) FROM Bar
+---
+  (tsql_file
+    (batch
+      (sql_clauses
+        (dml_clause
+          (select_statement_standalone
+            (select_statement
+              (query_expression
+                (query_specification
+                  (select)
+                  (select_list
+                    (select_list_elem
+                      (expression_elem
+                        (expression
+                          (function_call
+                            (scalar_function_name
+                              (right_))
+                            (expression_list_
+                              (expression
+                                (full_column_name
+                                  (id_)))
+                              (expression
+                                (primitive_expression
+                                  (primitive_constant
+                                    (decimal_))))))))))
+                  (table_sources
+                    (table_source
+                      (table_source_item
+                        (full_table_name
+                          (id_)))))))))))))
+
+=================================================
+Scalar Func Left
+=================================================
+SELECT Left(foo, 5) FROM Bar
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (scalar_function_name
+                            (left_))
+                          (expression_list_
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=================================================
+Scalar Func Binary Checksum
+=================================================
+SELECT BINARY_CHECKSUM(*) FROM Bar
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (binary_checksum_)
+                          (asterisk))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
+
+=================================================
+Scalar Func Checksum
+=================================================
+SELECT CHECKSUM(foo, bar, baz) FROM quux
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (checksum_)
+                          (expression_list_
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))

@@ -1,0 +1,82 @@
+=====================================
+window_frame_following unbounded NEED AGGREGATEWINDOW
+=====================================
+Select SUM(id) OVER (ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (sum_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_bound
+                                    (window_frame_preceding))
+                                  (window_frame_bound
+                                    (window_frame_following)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
+
+=====================================
+window_frame_following decimal NEED AGGREGATEWINDOW
+=====================================
+Select SUM(id) OVER (ROWS BETWEEN CURRENT ROW AND 10 FOLLOWING)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (sum_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_bound
+                                    (window_frame_preceding))
+                                  (window_frame_bound
+                                    (window_frame_following)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))

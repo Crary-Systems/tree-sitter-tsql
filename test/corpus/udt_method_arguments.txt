@@ -1,0 +1,24 @@
+=====================================
+udt_method_arguments
+=====================================
+Select PointColumn.GetDistance(@refPoint, N'baz')
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (udt_elem
+                      (id_)
+                      (id_)
+                      (udt_method_arguments
+                        (execute_var_string
+                          (LOCAL_ID_))
+                        (execute_var_string
+                          (string_lit))))))))))))))

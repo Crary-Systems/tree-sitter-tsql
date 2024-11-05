@@ -1,0 +1,52 @@
+=================================================
+expression_elem expressionAs
+=================================================
+select [foo] as baz
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_)))
+                      (as_column_alias
+                        (as)
+                        (column_alias
+                          (id_))))))))))))))
+
+=================================================
+expression_elem leftAlias
+=================================================
+select foo = Type from PostTypes
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (column_alias
+                        (id_))
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
