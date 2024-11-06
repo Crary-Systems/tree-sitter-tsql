@@ -7,7 +7,7 @@
 //! let code = r#"
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(&tree_sitter_TSQL::language()).expect("Error loading Tsql grammar");
+//! parser.set_language(tree_sitter_tsql::language()).expect("Error loading Tsql grammar");
 //! let tree = parser.parse(code, None).unwrap();
 //! assert!(!tree.root_node().has_error());
 //! ```
@@ -48,7 +48,7 @@ mod tests {
     fn test_can_load_grammar() {
         let mut parser = tree_sitter::Parser::new();
         parser
-            .set_language(&super::language())
+            .set_language(super::language())
             .expect("Error loading Tsql grammar");
     }
 }
