@@ -48,7 +48,6 @@ select id as foo FROM PostTypes
                         (full_column_name
                           (id_)))
                       (as_column_alias
-                        (as)
                         (column_alias
                           (id_))))))
                 (table_sources

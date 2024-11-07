@@ -19,7 +19,6 @@ select [foo] as baz
                         (full_column_name
                           (id_)))
                       (as_column_alias
-                        (as)
                         (column_alias
                           (id_))))))))))))))
 

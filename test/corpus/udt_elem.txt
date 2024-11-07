@@ -44,7 +44,6 @@ Select foo::bar(@baz) as quux
                         (execute_var_string
                           (LOCAL_ID_)))
                       (as_column_alias
-                        (as)
                         (column_alias
                           (id_))))))))))))))
 
@@ -68,6 +67,5 @@ Select foo::bar as quux
                       (id_)
                       (id_)
                       (as_column_alias
-                        (as)
                         (column_alias
                           (id_))))))))))))))

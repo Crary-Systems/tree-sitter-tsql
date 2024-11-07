@@ -212,22 +212,13 @@
     }
   },
   {
-    "type": "as",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "as_column_alias",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "as",
-          "named": true
-        },
         {
           "type": "column_alias",
           "named": true
