@@ -265,8 +265,7 @@ module.exports = grammar({
     )),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4910
-    as_column_alias: $ => seq(optional($.as), $.column_alias),
-    as: $ => token(/AS/i),
+    as_column_alias: $ => seq(optional(token(/AS/i)), $.column_alias),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4990
     column_alias: $ => choice(
