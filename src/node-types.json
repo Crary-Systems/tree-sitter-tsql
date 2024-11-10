@@ -295,6 +295,32 @@
     "fields": {}
   },
   {
+    "type": "data_type",
+    "named": true,
+    "fields": {
+      "ext_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "scale": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "decimal_",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "decimal_",
     "named": true,
     "fields": {}
@@ -1220,6 +1246,21 @@
     }
   },
   {
+    "type": "prepared_stmt_vardecls",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "pstmt_vardecl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "primitive_constant",
     "named": true,
     "fields": {},
@@ -1276,6 +1317,21 @@
         },
         {
           "type": "primitive_constant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pstmt_vardecl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "data_type",
           "named": true
         }
       ]
@@ -1564,6 +1620,10 @@
         },
         {
           "type": "go_statement",
+          "named": true
+        },
+        {
+          "type": "prepared_stmt_vardecls",
           "named": true
         }
       ]

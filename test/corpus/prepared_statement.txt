@@ -1,0 +1,31 @@
+=================================================
+Prepared statement example TODO ADD WHERECLAUSE
+=================================================
+(@p0 nvarchar(5), @P1 nvarchar(10))select * from FOO
+---
+(tsql_file
+	(prepared_stmt_vardecls
+		(pstmt_vardecl
+			(data_type
+				(id_)
+				(decimal_)))
+		(pstmt_vardecl
+			(data_type
+				(id_)
+				(decimal_))))
+	(batch
+		(sql_clauses
+			(dml_clause
+				(select_statement_standalone
+					(select_statement
+						(query_expression
+							(query_specification
+								(select)
+								(select_list
+									(select_list_elem
+										(asterisk)))
+								(table_sources
+									(table_source
+										(table_source_item
+											(full_table_name
+												(id_)))))))))))))

@@ -24,6 +24,11 @@ const DEC_DOT_DEC       = token(/([0-9]+\.[0-9]+|[0-9]+\.|\.?[0-9]+)/);
 // UTILS
 //
 const parens = (...rule) => seq('(', ...rule, ')');
+const parensComma = (...args) => parens(comma_separated(...args));
+function comma_separated(...rules) {
+  return seq(...rules.flatMap((rule, index) => index === 0 ? [rule] : [',', rule]));
+}
+
 
 //
 // PARSER https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4
@@ -42,8 +47,8 @@ module.exports = grammar({
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L35
     tsql_file: $ => choice(
-      repeat($.batch)
-      ,seq($.execute_body_batch, repeat($.go_statement))
+      seq(optional($.prepared_stmt_vardecls), repeat($.batch))
+      ,seq(optional($.prepared_stmt_vardecls),$.execute_body_batch, repeat($.go_statement))
     ),
 
     batch: $ => choice(
@@ -51,6 +56,18 @@ module.exports = grammar({
       ,seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
       ,//TODO seq($.batch_level_statement, repeat($.go_statement))
        //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
+    ),
+
+    //CUSTOM PREPARED STATEMENT VAR DECLARATION
+    prepared_stmt_vardecls: $ => parens($.pstmt_vardecl, repeat(seq(token(','), $.pstmt_vardecl))),
+
+    pstmt_vardecl: $ => seq(LOCAL_ID, $.data_type),
+
+    //TODO make sure data_type is kosher with the antlr
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5257-L5267
+    data_type: $ => choice(
+      seq(field('ext_type',$.id_), parens(field('scale',$.decimal_)))
     ),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
