@@ -225,11 +225,32 @@ module.exports = grammar({
       //TODO union all https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3999
     ),
 
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4009-L4023
     query_specification: $ => seq(
       $.select
       ,$.select_list
       ,optional(seq(token(/FROM/i), $.table_sources))
+      ,optional(seq(token(/WHERE/i), field('where', $.search_condition)))
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4010-L4023
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3976-L3981
+    search_condition: $ => choice(
+      seq(repeat($.not_), choice($.predicate, parens($.search_condition)))
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3983-L3993
+    predicate: $ => choice(
+      seq($.expression, $.comparrison_operator, $.expression)
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L6280-L6292
+    comparrison_operator: $ => choice(
+      token('=')
     ),
 
     select: $ => token(/SELECT/i),
@@ -630,6 +651,8 @@ module.exports = grammar({
     keyword: $ => choice(
       token(/GO/i)
     ),
+
+    not_: $ => token(/NOT/i),
 
     integer: $ => INT,
 

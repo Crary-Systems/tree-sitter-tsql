@@ -290,6 +290,11 @@
     }
   },
   {
+    "type": "comparrison_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "constant",
     "named": true,
     "fields": {}
@@ -1246,6 +1251,25 @@
     }
   },
   {
+    "type": "predicate",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comparrison_operator",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "prepared_stmt_vardecls",
     "named": true,
     "fields": {},
@@ -1355,7 +1379,18 @@
   {
     "type": "query_specification",
     "named": true,
-    "fields": {},
+    "fields": {
+      "where": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "search_condition",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -1453,6 +1488,29 @@
         },
         {
           "type": "right_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "search_condition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "not_",
+          "named": true
+        },
+        {
+          "type": "predicate",
+          "named": true
+        },
+        {
+          "type": "search_condition",
           "named": true
         }
       ]
@@ -1963,6 +2021,10 @@
   },
   {
     "type": "min_",
+    "named": true
+  },
+  {
+    "type": "not_",
     "named": true
   },
   {
