@@ -108,6 +108,22 @@
               }
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "batch_level_statement"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "go_statement"
+              }
+            }
+          ]
         }
       ]
     },
@@ -723,6 +739,324 @@
           ]
         }
       ]
+    },
+    "batch_level_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "create_or_alter_procedure"
+        }
+      ]
+    },
+    "create_or_alter_procedure": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "create_"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "or_"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "alter_"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "alter_"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "proc",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "proc_"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "procedure_"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "procName",
+          "content": {
+            "type": "SYMBOL",
+            "name": "func_proc_name_schema"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": ";"
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "decimal_"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "STRING",
+                        "value": "("
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "procedure_param"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "STRING",
+                          "value": ","
+                        }
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "procedure_param"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "STRING",
+                        "value": ")"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "procedure_param": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "@[A-Za-z_$@#0-9]+"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "AS",
+                "flags": "i"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "data_type"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": "="
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "default_val",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "procedure_param_default_value"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "out_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "output_"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "out_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "OUT",
+        "flags": "i"
+      }
+    },
+    "output_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "OUTPUT",
+        "flags": "i"
+      }
+    },
+    "procedure_param_default_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "null_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constant"
+        }
+      ]
+    },
+    "or_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "OR",
+        "flags": "i"
+      }
+    },
+    "alter_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "ALTER",
+        "flags": "i"
+      }
+    },
+    "create_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "CREATE",
+        "flags": "i"
+      }
+    },
+    "proc_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PROC",
+        "flags": "i"
+      }
+    },
+    "procedure_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PROCEDURE",
+        "flags": "i"
+      }
     },
     "sql_clauses": {
       "type": "CHOICE",

@@ -1,0 +1,55 @@
+=================================================
+Create Or Alter Procedure Simple
+=================================================
+CREATE PROCEDURE FOO
+  @quux VARCHAR(7) = 'TEST'
+  ,@xs VARCHAR(40) = NULL OUTPUT
+AS
+SELECT BAZ FROM BAR
+---
+
+(tsql_file
+  (batch
+    (batch_level_statement
+      (create_or_alter_procedure
+        (create_)
+        (procedure_)
+        (func_proc_name_schema
+          (id_))
+        (procedure_param
+          (data_type
+            (id_)
+            (decimal_))
+          (procedure_param_default_value
+            (constant)))
+        (procedure_param
+          (data_type
+            (id_)
+            (decimal_))
+          (procedure_param_default_value
+            (null_))
+          (output_)))))
+  (batch
+    (execute_body_batch
+      (func_proc_name_server_database_schema
+        (func_proc_name_database_schema
+          (func_proc_name_schema
+            (id_)))))
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))

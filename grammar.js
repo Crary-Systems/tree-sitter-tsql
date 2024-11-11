@@ -54,7 +54,7 @@ module.exports = grammar({
     batch: $ => choice(
       prec(1,$.go_statement)
       ,seq(optional($.execute_body_batch),choice($.go_statement, repeat1($.sql_clauses)), repeat($.go_statement))
-      ,//TODO seq($.batch_level_statement, repeat($.go_statement))
+      ,seq($.batch_level_statement, repeat($.go_statement))
        //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
     ),
 
@@ -128,7 +128,60 @@ module.exports = grammar({
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5270
     ),
 
-    //TODO batch_level_statement: $ => 'TODO', //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L46-L51
+    batch_level_statement: $ => choice(
+      $.create_or_alter_procedure
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2386-L2393
+    create_or_alter_procedure: $ => seq(
+      choice(seq($.create_, optional(seq($.or_, $.alter_))), $.alter_)
+      ,field('proc', choice($.proc_, $.procedure_))
+      ,field('procName', $.func_proc_name_schema), optional(seq(token(';'), $.decimal_))
+      ,optional(seq(
+        optional(token('('))
+        ,$.procedure_param, repeat(seq(token(','), $.procedure_param))
+        ,optional(token(')'))
+      ))
+      //TODO procedure_option
+      //TODO FOR REPLICATION as ...
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2469-L2473
+    procedure_param: $ => seq(
+      LOCAL_ID
+      ,optional(token(/AS/i))
+      //TODO typeschema??
+      ,$.data_type
+      //TODO VARYING
+      ,optional(seq(token('='), field('default_val', $.procedure_param_default_value)))
+      ,optional(choice(
+        $.out_
+        ,$.output_
+        //TODO ,$.readonly_
+      )),
+    ),
+
+    out_: $ => token(/OUT/i),
+    output_: $ => token(/OUTPUT/i),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2462-L2467
+    procedure_param_default_value: $ => choice(
+      $.null_
+      ,$.constant
+    ),
+
+    or_: $ => token(/OR/i),
+    alter_: $ => token(/ALTER/i),
+    create_: $ => token(/CREATE/i),
+    proc_: $ => token(/PROC/i),
+    procedure_: $ => token(/PROCEDURE/i),
+
+
 
     sql_clauses: $ => choice(
       seq($.dml_clause, optional(SEMI))
