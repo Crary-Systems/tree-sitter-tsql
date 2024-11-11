@@ -1,0 +1,29 @@
+=================================================
+COMMENT SINGLE LINE
+=================================================
+SELECT --FOOSERVICE_BAZ
+FOO FROM BAR
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (comment
+                  (single_line_comment))
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))

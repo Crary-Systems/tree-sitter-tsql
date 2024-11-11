@@ -343,6 +343,21 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "single_line_comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "comparrison_operator",
     "named": true,
     "fields": {}
@@ -2292,6 +2307,10 @@
   },
   {
     "type": "select",
+    "named": true
+  },
+  {
+    "type": "single_line_comment",
     "named": true
   },
   {

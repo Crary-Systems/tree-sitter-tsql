@@ -41,6 +41,11 @@ module.exports = grammar({
     [$.batch]
   ],
 
+	//https://github.com/tree-sitter/tree-sitter-c/blob/master/grammar.js#L58-L61
+	extras: $ => [
+		/\s|\\\r?\n/ //MANDATORY FOR COMMENT EXTRAS TO NOT BREAK
+		,$.comment
+	],
   ...precedences,
 
   rules: {
@@ -742,6 +747,16 @@ module.exports = grammar({
     integer: $ => INT,
 
     placeholder: $ => alias('TODO', $.dummy),
+
+		comment: $ => choice(
+			$.single_line_comment
+			//,$.multi_line_comment TODO
+		),
+
+		//TODO PREC
+		single_line_comment: $ => token(prec(-1,
+			seq('--', /[^\n]*/)
+		)),
 
   }
 });
