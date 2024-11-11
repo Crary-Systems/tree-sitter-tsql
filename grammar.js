@@ -68,6 +68,7 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5257-L5267
     data_type: $ => choice(
       seq(field('ext_type',$.id_), parens(field('scale',$.decimal_)))
+      ,field('unscaled_type', $.id_)
     ),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver16
@@ -207,11 +208,24 @@ module.exports = grammar({
       ,optional(SEMI)
     )),
 
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L350
     another_statement: $ => choice(
-
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L350
-      $.execute_statement
+      $.declare_statement
+      ,$.execute_statement
     ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2980-L2986
+    declare_statement: $ => choice(
+      seq($.declare_, LOCAL_ID, optional(token(/AS/i)), choice(
+        $.data_type
+        //TODO
+      )),
+
+    ),
+
+    declare_: $ => token(/DECLARE/i),
 
     // https://msdn.microsoft.com/en-us/library/ms188332.aspx
     // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3141

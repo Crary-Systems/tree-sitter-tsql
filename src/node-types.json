@@ -205,6 +205,10 @@
       "required": true,
       "types": [
         {
+          "type": "declare_statement",
+          "named": true
+        },
+        {
           "type": "execute_statement",
           "named": true
         }
@@ -410,7 +414,7 @@
     "fields": {
       "ext_type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "id_",
@@ -420,10 +424,20 @@
       },
       "scale": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "decimal_",
+            "named": true
+          }
+        ]
+      },
+      "unscaled_type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
             "named": true
           }
         ]
@@ -434,6 +448,25 @@
     "type": "decimal_",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "declare_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "data_type",
+          "named": true
+        },
+        {
+          "type": "declare_",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "dml_clause",
@@ -2107,6 +2140,10 @@
   },
   {
     "type": "cume_dist_",
+    "named": true
+  },
+  {
+    "type": "declare_",
     "named": true
   },
   {

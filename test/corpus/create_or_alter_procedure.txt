@@ -118,3 +118,37 @@ END;
                           (table_source_item
                             (full_table_name
                               (id_))))))))))))))))
+
+=================================================
+Create Or Alter Procedure DECL
+=================================================
+CREATE PROCEDURE FOO
+AS
+BEGIN
+  DECLARE @retval INT
+END
+---
+
+(tsql_file
+  (batch
+    (batch_level_statement
+      (create_or_alter_procedure
+        (create_)
+        (procedure_)
+        (func_proc_name_schema
+          (id_)))))
+  (batch
+    (execute_body_batch
+      (func_proc_name_server_database_schema
+        (func_proc_name_database_schema
+          (func_proc_name_schema
+            (id_)))))
+    (sql_clauses
+      (cfl_statement
+        (block_statement
+          (sql_clauses
+            (another_statement
+              (declare_statement
+                (declare_)
+                (data_type
+                  (id_))))))))))
