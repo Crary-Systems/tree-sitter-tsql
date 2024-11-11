@@ -218,7 +218,36 @@ module.exports = grammar({
     another_statement: $ => choice(
       $.declare_statement
       ,$.execute_statement
+			,$.set_statement
     ),
+
+		//TODO CORPUS
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3396-L3406
+		set_statement: $ => choice(
+			//TODO
+			$.set_special
+
+		),
+
+		//TODO CORPUS
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3845-L3865
+		set_special: $ => choice(
+			seq($.set_, $.special_list, repeat(seq(token(','), $.special_list)), $.on_off)
+		),
+
+		//TODO CORPUS
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3867-L3891
+		special_list: $ => choice(
+			token(/NOCOUNT/i)
+		),
+
+		set_: $ => token(/SET/i),
+
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5184
+		on_off: $ => choice(
+			token(/ON/i)
+			,token(/OFF/i)
+		),
 
     //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2980-L2986

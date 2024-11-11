@@ -1224,6 +1224,102 @@
         {
           "type": "SYMBOL",
           "name": "execute_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "set_statement"
+        }
+      ]
+    },
+    "set_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "set_special"
+        }
+      ]
+    },
+    "set_special": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "set_"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "special_list"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "STRING",
+                      "value": ","
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "special_list"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "on_off"
+            }
+          ]
+        }
+      ]
+    },
+    "special_list": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "NOCOUNT",
+            "flags": "i"
+          }
+        }
+      ]
+    },
+    "set_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "SET",
+        "flags": "i"
+      }
+    },
+    "on_off": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "ON",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "OFF",
+            "flags": "i"
+          }
         }
       ]
     },

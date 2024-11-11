@@ -1,8 +1,9 @@
 =====================================
-EXECUTE Statement
+ANOTHER STMT EXECUTE
 =====================================
 EXECUTE sp_help @objname=NULL;
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -18,3 +19,19 @@ EXECUTE sp_help @objname=NULL;
               (execute_statement_arg_named
                 (execute_parameter
                   (null_))))))))))
+
+=====================================
+ANOTHER STMT SET
+=====================================
+SET NOCOUNT ON;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (set_statement
+          (set_special
+            (set_)
+            (special_list)
+            (on_off)))))))

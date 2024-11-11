@@ -211,6 +211,10 @@
         {
           "type": "execute_statement",
           "named": true
+        },
+        {
+          "type": "set_statement",
+          "named": true
         }
       ]
     }
@@ -1260,6 +1264,11 @@
     }
   },
   {
+    "type": "on_off",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "order_by_clause",
     "named": true,
     "fields": {},
@@ -1803,6 +1812,49 @@
     }
   },
   {
+    "type": "set_special",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "on_off",
+          "named": true
+        },
+        {
+          "type": "set_",
+          "named": true
+        },
+        {
+          "type": "special_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "set_special",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "special_list",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "sql_clauses",
     "named": true,
     "fields": {},
@@ -2307,6 +2359,10 @@
   },
   {
     "type": "select",
+    "named": true
+  },
+  {
+    "type": "set_",
     "named": true
   },
   {
