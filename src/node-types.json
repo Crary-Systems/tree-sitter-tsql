@@ -307,6 +307,10 @@
         {
           "type": "block_statement",
           "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
         }
       ]
     }
@@ -1177,6 +1181,25 @@
       "types": [
         {
           "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "search_condition",
+          "named": true
+        },
+        {
+          "type": "sql_clauses",
           "named": true
         }
       ]
