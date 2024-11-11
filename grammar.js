@@ -182,12 +182,30 @@ module.exports = grammar({
     procedure_: $ => token(/PROCEDURE/i),
 
 
-
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L53-L61
     sql_clauses: $ => choice(
       seq($.dml_clause, optional(SEMI))
+      ,seq($.cfl_statement, optional(SEMI))
       ,seq($.another_statement, optional(SEMI))
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L53-L61
     ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L249-L263
+    cfl_statement: $ => choice(
+      $.block_statement
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L265-L268
+    block_statement: $ => prec.left(seq(
+      token(/BEGIN/i)
+      ,optional(SEMI)
+      ,repeat($.sql_clauses)
+      ,token(/END/i)
+      ,optional(SEMI)
+    )),
 
     another_statement: $ => choice(
 

@@ -53,3 +53,68 @@ SELECT BAZ FROM BAR
                     (table_source_item
                       (full_table_name
                         (id_)))))))))))))
+
+=================================================
+Create Or Alter Procedure BEGIN
+=================================================
+CREATE PROC FOO
+AS
+BEGIN
+SELECT FOO FROM BAR
+SELECT BAR FROM BAZ
+END;
+---
+
+(tsql_file
+  (batch
+    (batch_level_statement
+      (create_or_alter_procedure
+        (create_)
+        (proc_)
+        (func_proc_name_schema
+          (id_)))))
+  (batch
+    (execute_body_batch
+      (func_proc_name_server_database_schema
+        (func_proc_name_database_schema
+          (func_proc_name_schema
+            (id_)))))
+    (sql_clauses
+      (cfl_statement
+        (block_statement
+          (sql_clauses
+            (dml_clause
+              (select_statement_standalone
+                (select_statement
+                  (query_expression
+                    (query_specification
+                      (select)
+                      (select_list
+                        (select_list_elem
+                          (expression_elem
+                            (expression
+                              (full_column_name
+                                (id_))))))
+                      (table_sources
+                        (table_source
+                          (table_source_item
+                            (full_table_name
+                              (id_)))))))))))
+          (sql_clauses
+            (dml_clause
+              (select_statement_standalone
+                (select_statement
+                  (query_expression
+                    (query_specification
+                      (select)
+                      (select_list
+                        (select_list_elem
+                          (expression_elem
+                            (expression
+                              (full_column_name
+                                (id_))))))
+                      (table_sources
+                        (table_source
+                          (table_source_item
+                            (full_table_name
+                              (id_))))))))))))))))

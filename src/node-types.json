@@ -274,6 +274,36 @@
     }
   },
   {
+    "type": "block_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "sql_clauses",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cfl_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "collation_",
     "named": true,
     "fields": {
@@ -1734,6 +1764,10 @@
       "types": [
         {
           "type": "another_statement",
+          "named": true
+        },
+        {
+          "type": "cfl_statement",
           "named": true
         },
         {
