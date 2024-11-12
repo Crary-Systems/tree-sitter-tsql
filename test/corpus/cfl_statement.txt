@@ -76,3 +76,80 @@ END
                                 (expression
                                   (primitive_expression
                                     (null_)))))))))))))))))))
+
+=================================================
+CFL STMT AND
+=================================================
+  IF ((@job_name IS NULL)     AND (@job_id IS NULL)) OR
+     ((@job_name IS NOT NULL) AND (@job_id IS NOT NULL))
+  BEGIN
+    SELECT FOO FROM BAR
+  END
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (cfl_statement
+        (if_statement
+          (search_condition
+            (search_condition
+              (search_condition
+                (search_condition
+                  (search_condition
+                    (predicate
+                      (expression
+                        (primitive_expression
+                          (LOCAL_ID_)))
+                      (is_)
+                      (null_notnull))))
+                (and_)
+                (search_condition
+                  (search_condition
+                    (predicate
+                      (expression
+                        (primitive_expression
+                          (LOCAL_ID_)))
+                      (is_)
+                      (null_notnull))))))
+            (or_)
+            (search_condition
+              (search_condition
+                (search_condition
+                  (search_condition
+                    (predicate
+                      (expression
+                        (primitive_expression
+                          (LOCAL_ID_)))
+                      (is_)
+                      (null_notnull))))
+                (and_)
+                (search_condition
+                  (search_condition
+                    (predicate
+                      (expression
+                        (primitive_expression
+                          (LOCAL_ID_)))
+                      (is_)
+                      (null_notnull)))))))
+          (sql_clauses
+            (cfl_statement
+              (block_statement
+                (sql_clauses
+                  (dml_clause
+                    (select_statement_standalone
+                      (select_statement
+                        (query_expression
+                          (query_specification
+                            (select)
+                            (select_list
+                              (select_list_elem
+                                (expression_elem
+                                  (expression
+                                    (full_column_name
+                                      (id_))))))
+                            (table_sources
+                              (table_source
+                                (table_source_item
+                                  (full_table_name
+                                    (id_)))))))))))))))))))

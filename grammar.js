@@ -181,6 +181,7 @@ module.exports = grammar({
       ,$.constant
     ),
 
+		and_: $ => token(/AND/i),
     or_: $ => token(/OR/i),
     alter_: $ => token(/ALTER/i),
     create_: $ => token(/CREATE/i),
@@ -363,11 +364,15 @@ module.exports = grammar({
 
     //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3976-L3981
-    search_condition: $ => choice(
+    search_condition: $ => prec.left(choice(
       seq(repeat($.not_), choice($.predicate, parens($.search_condition)))
-    ),
+			,seq($.search_condition, $.and_, $.search_condition)
+			,seq($.search_condition, $.or_, $.search_condition)
+    )),
+
 
     //TODO CORPUS
+		//https://learn.microsoft.com/en-us/sql/t-sql/queries/search-condition-transact-sql?view=sql-server-ver16
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3983-L3993
     predicate: $ => choice(
       seq($.expression, $.comparrison_operator, $.expression)

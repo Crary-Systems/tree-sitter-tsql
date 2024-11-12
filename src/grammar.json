@@ -1026,6 +1026,14 @@
         }
       ]
     },
+    "and_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "AND",
+        "flags": "i"
+      }
+    },
     "or_": {
       "type": "TOKEN",
       "content": {
@@ -2106,47 +2114,85 @@
       ]
     },
     "search_condition": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "not_"
-              }
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "REPEAT",
+                "content": {
                   "type": "SYMBOL",
-                  "name": "predicate"
-                },
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "("
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "search_condition"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": ")"
-                    }
-                  ]
+                  "name": "not_"
                 }
-              ]
-            }
-          ]
-        }
-      ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "predicate"
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "("
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "search_condition"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": ")"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "search_condition"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "and_"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "search_condition"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "search_condition"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "or_"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "search_condition"
+              }
+            ]
+          }
+        ]
+      }
     },
     "predicate": {
       "type": "CHOICE",

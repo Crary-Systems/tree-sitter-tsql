@@ -197,6 +197,11 @@
     }
   },
   {
+    "type": "and_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "another_statement",
     "named": true,
     "fields": {},
@@ -1763,7 +1768,15 @@
       "required": true,
       "types": [
         {
+          "type": "and_",
+          "named": true
+        },
+        {
           "type": "not_",
+          "named": true
+        },
+        {
+          "type": "or_",
           "named": true
         },
         {
