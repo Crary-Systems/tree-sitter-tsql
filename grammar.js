@@ -204,7 +204,12 @@ module.exports = grammar({
       $.block_statement
 			,$.if_statement
 			,$.raiseerror_statement
+      ,$.return_statement
     ),
+
+    //https://learn.microsoft.com/en-us/sql/t-sql/language-elements/return-transact-sql?view=sql-server-ver16
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L288-L289
+    return_statement: $ => prec.left(seq(token(/RETURN/i), optional($.expression), optional(SEMI))),
 
 		//TODO CORPUS
 		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L336-L344
@@ -500,11 +505,20 @@ module.exports = grammar({
     ),
 
     //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3900-L3917
     expression: $ => choice(
       $.primitive_expression
       ,$.full_column_name
       ,$.function_call
+      ,$.bracket_expression
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3900-L3917
+    ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3945-L3948
+    bracket_expression: $ => choice(
+      parens($.expression)
+      //TODO subquery
     ),
 
     //TODO CORPUS

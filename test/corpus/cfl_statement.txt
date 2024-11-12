@@ -153,3 +153,21 @@ CFL STMT AND
                                 (table_source_item
                                   (full_table_name
                                     (id_)))))))))))))))))))
+
+=================================================
+CFL STMT RETURN
+=================================================
+RETURN(1)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (cfl_statement
+        (return_statement
+          (expression
+            (bracket_expression
+              (expression
+                (primitive_expression
+                  (primitive_constant
+                    (decimal_)))))))))))
