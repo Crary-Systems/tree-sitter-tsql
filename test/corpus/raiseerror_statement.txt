@@ -1,0 +1,18 @@
+=================================================
+RAISEERROR STMT SIMPLE
+=================================================
+RAISERROR(14294, -1, -1, @name_of_id_parameter, @name_of_name_parameter)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (cfl_statement
+        (raiseerror_statement
+          (decimal_)
+          (constant_LOCAL_ID
+            (constant))
+          (constant_LOCAL_ID
+            (constant))
+          (constant_LOCAL_ID)
+          (constant_LOCAL_ID))))))

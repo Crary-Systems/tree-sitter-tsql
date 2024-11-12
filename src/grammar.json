@@ -1165,6 +1165,225 @@
         {
           "type": "SYMBOL",
           "name": "if_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "raiseerror_statement"
+        }
+      ]
+    },
+    "raiseerror_statement": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "RAISERROR",
+                  "flags": "i"
+                }
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "("
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "msg",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "decimal_"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "string_lit"
+                            },
+                            {
+                              "type": "TOKEN",
+                              "content": {
+                                "type": "PATTERN",
+                                "value": "@[A-Za-z_$@#0-9]+"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "STRING",
+                          "value": ","
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "severity",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "constant_LOCAL_ID"
+                        }
+                      },
+                      {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "STRING",
+                          "value": ","
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "state",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "constant_LOCAL_ID"
+                        }
+                      },
+                      {
+                        "type": "REPEAT",
+                        "content": {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "TOKEN",
+                              "content": {
+                                "type": "STRING",
+                                "value": ","
+                              }
+                            },
+                            {
+                              "type": "CHOICE",
+                              "members": [
+                                {
+                                  "type": "SYMBOL",
+                                  "name": "constant_LOCAL_ID"
+                                },
+                                {
+                                  "type": "SYMBOL",
+                                  "name": "null_"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "STRING",
+                    "value": ")"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "TOKEN",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "WITH",
+                          "flags": "i"
+                        }
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "log_"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "seterror_"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "nowait_"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "STRING",
+                      "value": ";"
+                    }
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "log_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "LOG",
+        "flags": "i"
+      }
+    },
+    "seterror_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "SETERROR",
+        "flags": "i"
+      }
+    },
+    "nowait_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "NOWAIT",
+        "flags": "i"
+      }
+    },
+    "constant_LOCAL_ID": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "constant"
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "@[A-Za-z_$@#0-9]+"
+          }
         }
       ]
     },

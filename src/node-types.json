@@ -15,6 +15,11 @@
     "fields": {}
   },
   {
+    "type": "WITH",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "aggregate_windowed_function",
     "named": true,
     "fields": {
@@ -316,6 +321,10 @@
         {
           "type": "if_statement",
           "named": true
+        },
+        {
+          "type": "raiseerror_statement",
+          "named": true
         }
       ]
     }
@@ -379,6 +388,21 @@
     "type": "constant",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "constant_LOCAL_ID",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "create_or_alter_procedure",
@@ -1677,6 +1701,72 @@
     }
   },
   {
+    "type": "raiseerror_statement",
+    "named": true,
+    "fields": {
+      "msg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "decimal_",
+            "named": true
+          },
+          {
+            "type": "string_lit",
+            "named": true
+          }
+        ]
+      },
+      "severity": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "constant_LOCAL_ID",
+            "named": true
+          }
+        ]
+      },
+      "state": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "constant_LOCAL_ID",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "constant_LOCAL_ID",
+          "named": true
+        },
+        {
+          "type": "log_",
+          "named": true
+        },
+        {
+          "type": "nowait_",
+          "named": true
+        },
+        {
+          "type": "null_",
+          "named": true
+        },
+        {
+          "type": "seterror_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ranking_windowed_function",
     "named": true,
     "fields": {},
@@ -2209,10 +2299,6 @@
     "named": true
   },
   {
-    "type": "WITH",
-    "named": true
-  },
-  {
     "type": "^=",
     "named": false
   },
@@ -2353,11 +2439,19 @@
     "named": true
   },
   {
+    "type": "log_",
+    "named": true
+  },
+  {
     "type": "max_",
     "named": true
   },
   {
     "type": "min_",
+    "named": true
+  },
+  {
+    "type": "nowait_",
     "named": true
   },
   {
@@ -2418,6 +2512,10 @@
   },
   {
     "type": "set_",
+    "named": true
+  },
+  {
+    "type": "seterror_",
     "named": true
   },
   {

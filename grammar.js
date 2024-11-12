@@ -203,7 +203,33 @@ module.exports = grammar({
     cfl_statement: $ => choice(
       $.block_statement
 			,$.if_statement
+			,$.raiseerror_statement
     ),
+
+		//TODO CORPUS
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L336-L344
+		raiseerror_statement: $ => prec.left(choice(
+			seq(token(/RAISERROR/i), parens(seq(
+				field('msg', choice($.decimal_, $.string_lit, LOCAL_ID))
+				,token(',')
+				,field('severity', $.constant_LOCAL_ID)
+				,token(',')
+				,field('state', $.constant_LOCAL_ID)
+				,repeat(seq(token(','), choice($.constant_LOCAL_ID, $.null_))))
+			), optional(seq(token(/WITH/i), choice($.log_, $.seterror_, $.nowait_))), optional(SEMI))
+
+			//TODO format string version
+		)),
+
+
+		log_: $ => token(/LOG/i),
+		seterror_: $ => token(/SETERROR/i),
+		nowait_: $ => token(/NOWAIT/i),
+
+		constant_LOCAL_ID: $ => choice(
+			$.constant
+			,LOCAL_ID
+		),
 
 		//TODO CORPUS
 		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L291-L294
