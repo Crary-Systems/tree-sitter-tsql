@@ -38,3 +38,41 @@ END
                                 (expression
                                   (primitive_expression
                                     (null_)))))))))))))))))))
+
+=================================================
+CFL STMT ISNULLIF
+=================================================
+BEGIN
+  IF (@jn is NULL) SELECT @jn = NULL
+END
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (cfl_statement
+        (block_statement
+          (sql_clauses
+            (cfl_statement
+              (if_statement
+                (search_condition
+                  (search_condition
+                    (predicate
+                      (expression
+                        (primitive_expression
+                          (LOCAL_ID_)))
+                      (is_)
+                      (null_notnull))))
+                (sql_clauses
+                  (dml_clause
+                    (select_statement_standalone
+                      (select_statement
+                        (query_expression
+                          (query_specification
+                            (select)
+                            (select_list
+                              (select_list_elem
+                                (LOCAL_ID_)
+                                (expression
+                                  (primitive_expression
+                                    (null_)))))))))))))))))))

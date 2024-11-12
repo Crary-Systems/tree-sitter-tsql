@@ -2167,6 +2167,57 @@
               "name": "expression"
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "is_"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "null_notnull"
+            }
+          ]
+        }
+      ]
+    },
+    "is_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "IS",
+        "flags": "i"
+      }
+    },
+    "null_notnull": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "NOT",
+              "flags": "i"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "NULL",
+            "flags": "i"
+          }
         }
       ]
     },

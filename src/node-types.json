@@ -1287,6 +1287,21 @@
     }
   },
   {
+    "type": "not_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "null_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "null_notnull",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "on_off",
     "named": true,
     "fields": {}
@@ -1449,6 +1464,14 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "is_",
+          "named": true
+        },
+        {
+          "type": "null_notnull",
           "named": true
         }
       ]
@@ -2293,6 +2316,10 @@
     "named": true
   },
   {
+    "type": "is_",
+    "named": true
+  },
+  {
     "type": "is_descendant_of_",
     "named": true
   },
@@ -2321,15 +2348,7 @@
     "named": true
   },
   {
-    "type": "not_",
-    "named": true
-  },
-  {
     "type": "ntile_",
-    "named": true
-  },
-  {
-    "type": "null_",
     "named": true
   },
   {

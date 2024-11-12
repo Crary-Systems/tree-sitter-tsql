@@ -371,7 +371,11 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3983-L3993
     predicate: $ => choice(
       seq($.expression, $.comparrison_operator, $.expression)
+			,seq($.expression, $.is_, $.null_notnull)
     ),
+
+		is_: $ => token(/IS/i),
+		null_notnull: $ => seq(optional(/NOT/i), token(/NULL/i)),
 
     //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L6280-L6292
