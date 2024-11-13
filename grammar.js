@@ -567,6 +567,15 @@ module.exports = grammar({
       ,$.full_column_name
       ,$.function_call
       ,$.bracket_expression
+			,seq($.expression, field('op', choice(
+																			 token('+')
+																			 ,token('-')
+																			 ,token('&')
+																			 ,token('^')
+																			 ,token('|')
+																			 ,token('||')))
+					 ,$.expression)
+
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3900-L3917
     ),
 
