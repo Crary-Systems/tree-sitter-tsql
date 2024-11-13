@@ -171,3 +171,88 @@ RETURN(1)
                 (primitive_expression
                   (primitive_constant
                     (decimal_)))))))))))
+
+=================================================
+CFL STMT IFE SUBQUERY CMP
+=================================================
+IF ((SELECT COUNT(*)
+     FROM msdb.dbo.sysjobs_view
+     WHERE (name = @job_name)) > 1)
+BEGIN
+  RAISERROR(14293, -1, -1, @job_name, @name_of_id_parameter, @name_of_name_parameter)
+  RETURN(1) -- Failure
+END
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (cfl_statement
+        (if_statement
+          (search_condition
+            (search_condition
+              (predicate
+                (expression
+                  (bracket_expression
+                    (expression
+                      (bracket_expression
+                        (subquery
+                          (select_statement
+                            (query_expression
+                              (query_specification
+                                (select)
+                                (select_list
+                                  (select_list_elem
+                                    (expression_elem
+                                      (expression
+                                        (function_call
+                                          (aggregate_windowed_function
+                                            (count_)
+                                            (asterisk)))))))
+                                (table_sources
+                                  (table_source
+                                    (table_source_item
+                                      (full_table_name
+                                        (id_)
+                                        (id_)
+                                        (id_)))))
+                                (search_condition
+                                  (search_condition
+                                    (predicate
+                                      (expression
+                                        (full_column_name
+                                          (id_)))
+                                      (comparrison_operator)
+                                      (expression
+                                        (primitive_expression
+                                          (LOCAL_ID_))))))))))))))
+                (comparrison_operator)
+                (expression
+                  (primitive_expression
+                    (primitive_constant
+                      (decimal_)))))))
+          (sql_clauses
+            (cfl_statement
+              (block_statement
+                (sql_clauses
+                  (cfl_statement
+                    (raiseerror_statement
+                      (decimal_)
+                      (constant_LOCAL_ID
+                        (constant))
+                      (constant_LOCAL_ID
+                        (constant))
+                      (constant_LOCAL_ID)
+                      (constant_LOCAL_ID)
+                      (constant_LOCAL_ID))))
+                (sql_clauses
+                  (cfl_statement
+                    (return_statement
+                      (expression
+                        (bracket_expression
+                          (expression
+                            (primitive_expression
+                              (primitive_constant
+                                (decimal_)))))))))
+                (comment
+                  (single_line_comment))))))))))

@@ -1,4 +1,5 @@
 const precedences = require('./grammar/precedences.js');
+const built_in_functions = require('./grammar/builtins.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -385,13 +386,13 @@ module.exports = grammar({
 
     //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4009-L4023
-    query_specification: $ => seq(
+    query_specification: $ => prec.left(seq(
       $.select
       ,$.select_list
       ,optional(seq(token(/FROM/i), $.table_sources))
       ,optional(seq(token(/WHERE/i), field('where', $.search_condition)))
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4010-L4023
-    ),
+    )),
 
     //TODO CORPUS
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3976-L3981
@@ -403,7 +404,6 @@ module.exports = grammar({
 
 
     //TODO CORPUS
-		//https://learn.microsoft.com/en-us/sql/t-sql/queries/search-condition-transact-sql?view=sql-server-ver16
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3983-L3993
     predicate: $ => choice(
       seq($.expression, $.comparrison_operator, $.expression)
@@ -417,12 +417,20 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L6280-L6292
     comparrison_operator: $ => choice(
       token('=')
+      ,token('>')
+      ,token('<')
+      ,seq(token('<'), token('='))
+      ,seq(token('>'), token('='))
+      ,seq(token('<'), token('>'))
+      ,seq(token('!'), token('='))
+      ,seq(token('!'), token('>'))
+      ,seq(token('!'), token('<'))
     ),
 
     select: $ => token(/SELECT/i),
     //https://learn.microsoft.com/en-us/sql/t-sql/queries/select-clause-transact-sql?view=sql-server-ver16&redirectedfrom=MSDN
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4119
-    select_list: $ => seq($.select_list_elem, repeat(seq(token(','), $.select_list_elem))),
+    select_list: $ => prec.left(seq($.select_list_elem, repeat(seq(token(','), $.select_list_elem)))),
 
     //TODO REDO THIS ONE
     select_list_elem: $ => choice(
@@ -489,6 +497,19 @@ module.exports = grammar({
       $.full_table_name
     ),
 
+    //TODO CORPUS
+    table_name: $ => prec.right(seq(
+      optional(choice(
+        seq(field('database', $.id_), DOT, field('schema', $.id_))
+        ,seq(field('schema', $.id_), DOT)
+      ))
+      ,choice(
+        field('table', $.id_)
+        //TODO blocking_hiearchy
+        //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5128
+      )
+    )),
+
     full_table_name: $ => prec.right(seq(
       optional(choice(
       //NOTE? whats this dotdot example https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5118
@@ -518,8 +539,11 @@ module.exports = grammar({
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3945-L3948
     bracket_expression: $ => choice(
       parens($.expression)
-      //TODO subquery
+      ,$.subquery
     ),
+
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L3950-L3952
+    subquery: $ => $.select_statement,
 
     //TODO CORPUS
     function_call: $ => choice(
@@ -527,6 +551,7 @@ module.exports = grammar({
       ,$.aggregate_windowed_function
       ,$.analytic_windowed_function
 
+      ,$.built_in_functions
       //TODO built_in_function ~~200 rules https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4291
 
       ,choice(
@@ -539,6 +564,8 @@ module.exports = grammar({
       ,$.hierarchyid_static_method
 
     ),
+
+    ...built_in_functions,
 
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(
