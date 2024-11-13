@@ -363,10 +363,45 @@ module.exports = grammar({
 
     PLUS: $ => token(/\+/),
 
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L63-L70
     dml_clause: $ => choice(
-      $.select_statement_standalone
-      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L63-L70
+      $.delete_statement
+      ,$.select_statement_standalone
     ),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2147-L2152
+    delete_statement: $ => prec.left(seq(
+      //TODO with_expression https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2183
+      token(/DELETE/i)
+      //TODO TOP
+      //,optional(token(/FROM/i),
+      ,$.delete_statement_from
+      //TODO with_table_hints
+      //TODO output_clause
+      ,optional(seq(token(/FROM/i), $.table_sources))
+      ,optional(seq(token(/WHERE/i), choice(
+        $.search_condition
+        //TODO
+      )))
+      //TODO forclause
+      //TODO option_clause
+      ,optional(SEMI)
+    )),
+
+    //TODO CORPUS
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2154-L2158
+    delete_statement_from: $ => choice(
+      $.ddl_object
+    ),
+
+    ddl_object: $ => choice(
+      $.full_table_name
+      ,LOCAL_ID
+    ),
+
+    percent_: $ => token(/PERCENT/i),
 
     select_statement_standalone: $ => seq(
       //TODO with_expression https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2183
@@ -869,6 +904,23 @@ module.exports = grammar({
 		single_line_comment: $ => token(prec(-1,
 			seq('--', /[^\n]*/)
 		)),
+
+		//TODO CORPUS
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4814-L4823
+		dateparts_12: $ => choice(
+			$.dateparts_9
+			//TODO
+		),
+
+		//TODO CORPUS
+		//https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4792-L4812
+		dateparts_9: $ => choice(
+			$.minute_
+			//TDO
+		),
+
+		minute_: $ => token(/MINUTE/i),
+
 
   }
 });

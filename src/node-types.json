@@ -409,6 +409,36 @@
           }
         ]
       },
+      "date_first": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "date_second": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "datepart": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "dateparts_12",
+            "named": true
+          }
+        ]
+      },
       "file_id": {
         "multiple": false,
         "required": false,
@@ -684,6 +714,10 @@
         },
         {
           "type": "databasepropertyex_",
+          "named": true
+        },
+        {
+          "type": "datediff_",
           "named": true
         },
         {
@@ -992,6 +1026,51 @@
     }
   },
   {
+    "type": "dateparts_12",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "dateparts_9",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dateparts_9",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "minute_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ddl_object",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "full_table_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "decimal_",
     "named": true,
     "fields": {}
@@ -1016,6 +1095,44 @@
     }
   },
   {
+    "type": "delete_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "delete_statement_from",
+          "named": true
+        },
+        {
+          "type": "search_condition",
+          "named": true
+        },
+        {
+          "type": "table_sources",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete_statement_from",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ddl_object",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "dml_clause",
     "named": true,
     "fields": {},
@@ -1023,6 +1140,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "delete_statement",
+          "named": true
+        },
         {
           "type": "select_statement_standalone",
           "named": true
@@ -2973,6 +3094,10 @@
     "named": true
   },
   {
+    "type": "datediff_",
+    "named": true
+  },
+  {
     "type": "db_id_",
     "named": true
   },
@@ -3126,6 +3251,10 @@
   },
   {
     "type": "min_",
+    "named": true
+  },
+  {
+    "type": "minute_",
     "named": true
   },
   {

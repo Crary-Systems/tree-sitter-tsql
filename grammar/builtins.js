@@ -176,8 +176,14 @@ module.exports = {
       ,seq($.parsename_, parensComma(field('object_name', $.expression)
                                     ,field('object_piece', $.expression)))
 
+			// https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4597
+			// DATEDIFF
+			,seq($.datediff_, parensComma(field('datepart', $.dateparts_12)
+																	 ,field('date_first', $.expression)
+																	 ,field('date_second', $.expression)))
     ),
 
+		datediff_: $ => token(/DATEDIFF/i),
     app_name_: $ => token(/APP_NAME/i),
     applock_mode_: $ => token(/APPLOCK_MODE/i),
     applock_test_: $ => token(/APPLOCK_TEST/i),
