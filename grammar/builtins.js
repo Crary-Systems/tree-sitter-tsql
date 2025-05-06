@@ -176,6 +176,8 @@ module.exports = {
       ,seq($.parsename_, parensComma(field('object_name', $.expression)
                                     ,field('object_piece', $.expression)))
 
+
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4406-L4783
     ),
 
     app_name_: $ => token(/APP_NAME/i),
