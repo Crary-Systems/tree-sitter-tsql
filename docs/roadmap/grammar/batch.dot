@@ -1,0 +1,10 @@
+digraph {
+  batch
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L51"]
+
+  batch -> go_statement;
+  batch -> execute_body_batch;
+
+  batch -> sql_clauses;
+  batch -> batch_level_statement;
+}

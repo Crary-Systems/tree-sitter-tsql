@@ -6,6 +6,7 @@ Adapted from [this T-SQL grammar](https://github.com/antlr/grammars-v4/tree/mast
 ## Developing
 
 ```
+nix-shell
 tree-sitter build
 tree-sitter test
 ```
