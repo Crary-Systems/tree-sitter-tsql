@@ -1,4 +1,5 @@
 const precedences = require('./grammar/precedences.js');
+const built_in_functions = require('./grammar/builtins.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -19,6 +20,7 @@ const STRING            = token(/N?'([^']|'')*'/);
 const DECIMAL           = token(/[0-9]+/);
 const DOUBLE_COLON      = token('::');
 const DEC_DOT_DEC       = token(/([0-9]+\.[0-9]+|[0-9]+\.|\.?[0-9]+)/);
+const COMMA             = token(',');
 
 //
 // UTILS
@@ -286,6 +288,20 @@ module.exports = grammar({
       $.full_table_name
     ),
 
+    //TODO CORPUS
+    table_name: $ => prec.right(seq(
+      optional(choice(
+        seq(field('database', $.id_), DOT, field('schema', $.id_))
+        ,seq(field('schema', $.id_), DOT)
+      ))
+      ,choice(
+        field('table', $.id_)
+        //TODO blocking_hiearchy
+        //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5128
+      )
+    )),
+
+
     full_table_name: $ => prec.right(seq(
       optional(choice(
       //NOTE? whats this dotdot example https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5118
@@ -315,6 +331,7 @@ module.exports = grammar({
       ,$.aggregate_windowed_function
       ,$.analytic_windowed_function
 
+      ,$.built_in_functions
       //TODO built_in_function ~~200 rules https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4291
 
       ,choice(
@@ -328,6 +345,7 @@ module.exports = grammar({
 
     ),
 
+    ...built_in_functions,
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(
       seq($.hierachyid_, DOUBLE_COLON, choice(

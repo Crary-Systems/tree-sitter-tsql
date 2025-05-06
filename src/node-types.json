@@ -264,6 +264,478 @@
     }
   },
   {
+    "type": "built_in_functions",
+    "named": true,
+    "fields": {
+      "assembly_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "catalog_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "column": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "column_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "database": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "database_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "database_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "database_principal": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "file_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "file_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "filegroup_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "filegroup_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "index_ID": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "index_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "index_or_statistics_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "key_ID": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "key_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "lock_mode": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "lock_owner": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "object_ID": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "object_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "object_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "object_piece": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "object_type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "property": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "property_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "resource_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "sequence_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "table_name",
+            "named": true
+          }
+        ]
+      },
+      "table": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "table_id": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "app_name_",
+          "named": true
+        },
+        {
+          "type": "applock_mode_",
+          "named": true
+        },
+        {
+          "type": "applock_test_",
+          "named": true
+        },
+        {
+          "type": "assemblyproperty_",
+          "named": true
+        },
+        {
+          "type": "col_length_",
+          "named": true
+        },
+        {
+          "type": "col_name_",
+          "named": true
+        },
+        {
+          "type": "columnproperty_",
+          "named": true
+        },
+        {
+          "type": "databasepropertyex_",
+          "named": true
+        },
+        {
+          "type": "db_id_",
+          "named": true
+        },
+        {
+          "type": "db_name_",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "file_id_",
+          "named": true
+        },
+        {
+          "type": "file_idex_",
+          "named": true
+        },
+        {
+          "type": "file_name_",
+          "named": true
+        },
+        {
+          "type": "filegroup_id_",
+          "named": true
+        },
+        {
+          "type": "filegroup_name_",
+          "named": true
+        },
+        {
+          "type": "filegroupproperty_",
+          "named": true
+        },
+        {
+          "type": "fileproperty_",
+          "named": true
+        },
+        {
+          "type": "filepropertyex_",
+          "named": true
+        },
+        {
+          "type": "fulltextcatalogproperty_",
+          "named": true
+        },
+        {
+          "type": "fulltextserviceproperty_",
+          "named": true
+        },
+        {
+          "type": "indexcol_",
+          "named": true
+        },
+        {
+          "type": "indexkey_property_",
+          "named": true
+        },
+        {
+          "type": "indexproperty_",
+          "named": true
+        },
+        {
+          "type": "next_value_for_",
+          "named": true
+        },
+        {
+          "type": "object_definition_",
+          "named": true
+        },
+        {
+          "type": "object_id_",
+          "named": true
+        },
+        {
+          "type": "object_name_",
+          "named": true
+        },
+        {
+          "type": "object_schema_name_",
+          "named": true
+        },
+        {
+          "type": "objectproperty_",
+          "named": true
+        },
+        {
+          "type": "objectpropertyex_",
+          "named": true
+        },
+        {
+          "type": "order_by_clause",
+          "named": true
+        },
+        {
+          "type": "original_db_name_",
+          "named": true
+        },
+        {
+          "type": "over_",
+          "named": true
+        },
+        {
+          "type": "parsename_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "collation_",
     "named": true,
     "fields": {
@@ -880,6 +1352,10 @@
           "named": true
         },
         {
+          "type": "built_in_functions",
+          "named": true
+        },
+        {
           "type": "checksum_",
           "named": true
         },
@@ -1083,6 +1559,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "next_value_for_",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "order_by_clause",
@@ -1511,6 +1992,42 @@
     }
   },
   {
+    "type": "table_name",
+    "named": true,
+    "fields": {
+      "database": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "schema": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      },
+      "table": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id_",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "table_source",
     "named": true,
     "fields": {},
@@ -1791,7 +2308,23 @@
     "named": true
   },
   {
+    "type": "app_name_",
+    "named": true
+  },
+  {
+    "type": "applock_mode_",
+    "named": true
+  },
+  {
+    "type": "applock_test_",
+    "named": true
+  },
+  {
     "type": "asc_",
+    "named": true
+  },
+  {
+    "type": "assemblyproperty_",
     "named": true
   },
   {
@@ -1819,6 +2352,18 @@
     "named": true
   },
   {
+    "type": "col_length_",
+    "named": true
+  },
+  {
+    "type": "col_name_",
+    "named": true
+  },
+  {
+    "type": "columnproperty_",
+    "named": true
+  },
+  {
     "type": "count_",
     "named": true
   },
@@ -1828,6 +2373,18 @@
   },
   {
     "type": "cume_dist_",
+    "named": true
+  },
+  {
+    "type": "databasepropertyex_",
+    "named": true
+  },
+  {
+    "type": "db_id_",
+    "named": true
+  },
+  {
+    "type": "db_name_",
     "named": true
   },
   {
@@ -1859,7 +2416,47 @@
     "named": true
   },
   {
+    "type": "file_id_",
+    "named": true
+  },
+  {
+    "type": "file_idex_",
+    "named": true
+  },
+  {
+    "type": "file_name_",
+    "named": true
+  },
+  {
+    "type": "filegroup_id_",
+    "named": true
+  },
+  {
+    "type": "filegroup_name_",
+    "named": true
+  },
+  {
+    "type": "filegroupproperty_",
+    "named": true
+  },
+  {
+    "type": "fileproperty_",
+    "named": true
+  },
+  {
+    "type": "filepropertyex_",
+    "named": true
+  },
+  {
     "type": "first_value_",
+    "named": true
+  },
+  {
+    "type": "fulltextcatalogproperty_",
+    "named": true
+  },
+  {
+    "type": "fulltextserviceproperty_",
     "named": true
   },
   {
@@ -1884,6 +2481,18 @@
   },
   {
     "type": "hierachyid_",
+    "named": true
+  },
+  {
+    "type": "indexcol_",
+    "named": true
+  },
+  {
+    "type": "indexkey_property_",
+    "named": true
+  },
+  {
+    "type": "indexproperty_",
     "named": true
   },
   {
@@ -1923,7 +2532,39 @@
     "named": true
   },
   {
+    "type": "object_definition_",
+    "named": true
+  },
+  {
+    "type": "object_id_",
+    "named": true
+  },
+  {
+    "type": "object_name_",
+    "named": true
+  },
+  {
+    "type": "object_schema_name_",
+    "named": true
+  },
+  {
+    "type": "objectproperty_",
+    "named": true
+  },
+  {
+    "type": "objectpropertyex_",
+    "named": true
+  },
+  {
+    "type": "original_db_name_",
+    "named": true
+  },
+  {
     "type": "parse_",
+    "named": true
+  },
+  {
+    "type": "parsename_",
     "named": true
   },
   {
