@@ -1,0 +1,99 @@
+digraph Roadmap {
+  node [color=red]
+
+  
+  subgraph {
+  tsql_file
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L46"]
+
+  tsql_file -> batch
+  tsql_file -> execute_body_batch
+  tsql_file -> go_statement
+}
+
+  subgraph {
+  batch
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L51"]
+
+  batch -> go_statement;
+  batch -> execute_body_batch;
+
+  batch -> sql_clauses;
+  batch -> batch_level_statement;
+}
+
+  subgraph {
+  execute_body_batch
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/batch.txt#L74"]
+
+  execute_body_batch -> func_proc_name_server_database_schema
+  execute_body_batch -> execute_statement_arg
+}
+
+  subgraph {
+  go_statement [style=filled, color=lightgreen, URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/go.txt"]
+}
+
+  subgraph {
+  execute_statement_arg
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/execute_statement_arg.txt"]
+
+  execute_statement_arg -> execute_statement_arg_named
+  execute_statement_arg -> execute_statement_arg_unnamed
+}
+
+  subgraph {
+  execute_statement_arg_named
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/execute_statement_arg.txt#L2"]
+}
+
+  subgraph {
+  execute_statement_arg_unnamed
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/execute_statement_arg.txt#L42"]
+}
+
+  subgraph {
+  func_proc_name_server_database_schema
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/func_proc_name_server_database_schema.txt"]
+
+  func_proc_name_server_database_schema -> func_proc_name_database_schema
+}
+
+  subgraph {
+  func_proc_name_database_schema
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/func_proc_name_server_database_schema.txt"]
+
+  func_proc_name_database_schema -> func_proc_name_schema
+}
+
+  subgraph {
+  func_proc_name_schema
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/func_proc_name_server_database_schema.txt"]
+}
+
+
+  subgraph {
+  sql_clauses
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L118"]
+}
+
+  subgraph {
+  batch_level_statement
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L116"]
+}
+
+}

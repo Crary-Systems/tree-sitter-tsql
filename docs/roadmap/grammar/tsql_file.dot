@@ -1,0 +1,8 @@
+digraph {
+  tsql_file
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L46"]
+
+  tsql_file -> batch
+  tsql_file -> execute_body_batch
+  tsql_file -> go_statement
+}

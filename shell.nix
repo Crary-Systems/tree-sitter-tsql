@@ -10,8 +10,10 @@ pkgs.stdenv.mkDerivation rec {
   src = ./.;
 
   buildInputs = with pkgs; [
+    m4
     nodejs
     tree-sitter
+    graphviz
   ];
 
   shellHook = ''

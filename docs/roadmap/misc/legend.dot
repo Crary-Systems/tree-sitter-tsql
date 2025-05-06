@@ -1,0 +1,19 @@
+digraph GrammarPortingLegend {
+  rankdir=LR
+  node [shape=box fontname="Sans" width=1.5 height=0.5]
+
+  Incomplete   [label="Incomplete",           color=red]
+  Tested       [label="Tested",               style=filled, fillcolor=orange]
+  SubGraphComplete [label="SubGraphComplete", style=filled, fillcolor=lightgreen]
+
+  subgraph cluster_legend {
+    label = "Legend"
+    style = dashed
+    color = gray
+    fontcolor = black
+    node [style=filled]
+    Incomplete
+    Tested
+    SubGraphComplete
+  }
+}
