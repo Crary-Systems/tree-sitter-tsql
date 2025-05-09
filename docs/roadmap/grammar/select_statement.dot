@@ -1,5 +1,6 @@
 digraph {
   select_statement
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/1f56e8217a05e0a7e09ce2955aee4c340190c598/grammar.js#L202-L206"]
 
   select_statement -> query_expression
 

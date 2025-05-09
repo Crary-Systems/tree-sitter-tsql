@@ -17,6 +17,7 @@ digraph Roadmap {
   include(grammar/sql_clauses.dot)
   include(grammar/dml_clause.dot)
   include(grammar/select_statement_standalone.dot)
+  include(grammar/with_expression.dot)
   include(grammar/select_statement.dot)
   include(grammar/query_expression.dot)
   include(grammar/for_clause.dot)
