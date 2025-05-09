@@ -295,6 +295,89 @@ digraph Roadmap {
 
 
   subgraph {
+  expression
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/c1d4d4d9d830cdf8ec41142c705d269b1ea84c8e/grammar.js#L320-L326"]
+
+	expression -> primitive_expression
+	expression -> function_call
+	expression -> value_call
+	expression -> query_call
+	expression -> exist_call
+	expression -> modify_call
+	expression -> hierarchyid_call
+	expression -> COLLATE
+	expression -> case_expression
+	expression -> full_column_name
+	expression -> bracket_expression
+	expression -> unary_operator_expression
+	expression -> time_zone
+	expression -> over_clause
+	expression -> DOLLAR_ACTION
+
+}
+
+  subgraph {
+  COLLATE
+}
+
+  subgraph {
+  DOLLAR_ACTION
+}
+
+  subgraph {
+  bracket_expression
+}
+
+  subgraph {
+  case_expression
+}
+
+  subgraph {
+  exist_call
+}
+
+  subgraph {
+  full_column_name
+}
+
+  subgraph {
+  function_call
+}
+
+  subgraph {
+  hierarchyid_call
+}
+
+  subgraph {
+  modify_call
+}
+
+  subgraph {
+  over_clause
+}
+
+  subgraph {
+  primitive_expression
+}
+
+  subgraph {
+  query_call
+}
+
+  subgraph {
+  time_zone
+}
+
+  subgraph {
+  unary_operator_expression
+}
+
+  subgraph {
+  value_call
+}
+
+
+  subgraph {
   batch_level_statement
     [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L116"]
 

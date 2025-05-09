@@ -48,5 +48,22 @@ digraph Roadmap {
   include(grammar/execute_var_string.dot)
   include(grammar/udt_method_arguments.dot)
 
+  include(grammar/expression.dot)
+  include(grammar/COLLATE.dot)
+  include(grammar/DOLLAR_ACTION.dot)
+  include(grammar/bracket_expression.dot)
+  include(grammar/case_expression.dot)
+  include(grammar/exist_call.dot)
+  include(grammar/full_column_name.dot)
+  include(grammar/function_call.dot)
+  include(grammar/hierarchyid_call.dot)
+  include(grammar/modify_call.dot)
+  include(grammar/over_clause.dot)
+  include(grammar/primitive_expression.dot)
+  include(grammar/query_call.dot)
+  include(grammar/time_zone.dot)
+  include(grammar/unary_operator_expression.dot)
+  include(grammar/value_call.dot)
+
   include(grammar/batch_level_statement.dot)
 }

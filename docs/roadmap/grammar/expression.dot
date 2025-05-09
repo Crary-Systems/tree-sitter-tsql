@@ -1,4 +1,21 @@
 digraph {
   expression
     [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/c1d4d4d9d830cdf8ec41142c705d269b1ea84c8e/grammar.js#L320-L326"]
+
+	expression -> primitive_expression
+	expression -> function_call
+	expression -> value_call
+	expression -> query_call
+	expression -> exist_call
+	expression -> modify_call
+	expression -> hierarchyid_call
+	expression -> COLLATE
+	expression -> case_expression
+	expression -> full_column_name
+	expression -> bracket_expression
+	expression -> unary_operator_expression
+	expression -> time_zone
+	expression -> over_clause
+	expression -> DOLLAR_ACTION
+
 }
