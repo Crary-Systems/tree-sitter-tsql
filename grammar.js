@@ -199,10 +199,10 @@ module.exports = grammar({
       $.select_statement
     ),
 
-    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2186
     select_statement: $ => prec.left(seq(
       $.query_expression
       ,optional(SEMI)
+      //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L2186
     )),
 
     query_expression: $ => seq(
