@@ -7,4 +7,13 @@ digraph {
   batch_level_statement -> create_or_alter_procedure
   batch_level_statement -> create_or_alter_trigger
   batch_level_statement -> create_view
+
+  create_or_alter_function
+    [color=gray]
+  create_or_alter_procedure
+    [color=gray]
+  create_or_alter_trigger
+    [color=gray]
+  create_view
+    [color=gray]
 }

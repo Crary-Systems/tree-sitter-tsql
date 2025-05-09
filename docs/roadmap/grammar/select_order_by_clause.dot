@@ -1,3 +1,4 @@
 digraph {
   select_order_by_clause
+    [color=gray]
 }

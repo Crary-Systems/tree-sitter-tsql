@@ -3,6 +3,7 @@ execute_var_string simple
 =====================================
 EXECUTE @sql
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -18,6 +19,7 @@ execute_var_string string_lit left
 =====================================
 EXECUTE 'SELECT ' + @sql
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -29,3 +31,34 @@ EXECUTE 'SELECT ' + @sql
               (string_lit)
               (PLUS)
               (LOCAL_ID_))))))))
+
+=====================================
+execute_var_string OUTPUT
+=====================================
+EXECUTE sp_executesql @BAR, N'@XOUT INT OUTPUT', @XOUT OUTPUT;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (another_statement
+        (execute_statement
+          (execute)
+          (execute_body
+            (func_proc_name_server_database_schema
+              (func_proc_name_database_schema
+                (func_proc_name_schema
+                  (id_))))
+            (execute_statement_arg
+              (execute_statement_arg_unnamed
+                (execute_parameter
+                  (LOCAL_ID_)))
+              (execute_statement_arg
+                (execute_statement_arg_unnamed
+                  (execute_parameter
+                    (constant))))
+              (execute_statement_arg
+                (execute_statement_arg_unnamed
+                  (execute_parameter
+                    (LOCAL_ID_)
+                    (OUTPUT)))))))))))

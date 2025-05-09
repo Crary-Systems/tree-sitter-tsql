@@ -1,4 +1,4 @@
 digraph {
-  with_expression
+  top_clause
     [color=gray]
 }

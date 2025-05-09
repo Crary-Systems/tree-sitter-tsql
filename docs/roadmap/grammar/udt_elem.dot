@@ -1,0 +1,9 @@
+digraph {
+  udt_elem
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/udt_elem.txt"]
+
+  udt_elem -> udt_method_arguments
+  udt_elem -> as_column_alias
+}

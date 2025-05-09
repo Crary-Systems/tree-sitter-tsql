@@ -1,4 +1,4 @@
 digraph {
-  with_expression
+  sql_union
     [color=gray]
 }

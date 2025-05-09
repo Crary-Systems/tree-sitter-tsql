@@ -1,0 +1,8 @@
+digraph {
+  select_list
+    [style=filled
+    ,color=orange
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/select.txt"]
+
+  select_list -> select_list_elem
+}

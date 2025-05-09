@@ -1,0 +1,10 @@
+digraph {
+  select_list_elem
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/c1d4d4d9d830cdf8ec41142c705d269b1ea84c8e/grammar.js#L225-L232"]
+
+  select_list_elem -> udt_elem
+  select_list_elem -> assignment_operator
+
+  select_list_elem -> expression
+  select_list_elem -> expression_elem
+}

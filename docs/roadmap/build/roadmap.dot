@@ -113,6 +113,7 @@ digraph Roadmap {
 
   subgraph {
   with_expression
+    [color=gray]
 }
 
   subgraph {
@@ -130,20 +131,167 @@ digraph Roadmap {
   subgraph {
   query_expression
     [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L208-L211"]
+
+  query_expression -> query_specification
+
+  query_expression -> select_order_by_clause
+  query_expression -> unions
+  query_expression -> sql_union
 }
 
   subgraph {
   for_clause
+    [color=gray]
 }
 
   subgraph {
   option_clause
+    [color=gray]
 }
 
   subgraph {
   select_order_by_clause
+    [color=gray]
 }
 
+  subgraph {
+  unions
+    [color=gray]
+}
+
+  subgraph {
+  sql_union
+    [color=gray]
+}
+
+
+  subgraph {
+  assignment_operator
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/assignment_operator.txt"]
+}
+
+  subgraph {
+  query_specification
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/c1d4d4d9d830cdf8ec41142c705d269b1ea84c8e/grammar.js#L213-L218"]
+
+  query_specification -> top_clause
+  query_specification -> select_list
+  query_specification -> table_name
+  query_specification -> table_sources
+  query_specification -> search_condition
+  query_specification -> group_by_item
+  query_specification -> grouping_sets_item
+}
+
+  subgraph {
+  select_list
+    [style=filled
+    ,color=orange
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/select.txt"]
+
+  select_list -> select_list_elem
+}
+
+  subgraph {
+  select_list_elem
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/c1d4d4d9d830cdf8ec41142c705d269b1ea84c8e/grammar.js#L225-L232"]
+
+  select_list_elem -> udt_elem
+  select_list_elem -> assignment_operator
+
+  select_list_elem -> expression
+  select_list_elem -> expression_elem
+}
+
+  subgraph {
+  top_clause
+    [color=gray]
+}
+
+
+  subgraph {
+  create_or_alter_function
+}
+
+  subgraph {
+  create_or_alter_procedure
+}
+
+  subgraph {
+  create_or_alter_trigger
+}
+
+  subgraph {
+  create_view
+}
+
+  subgraph {
+  expression_elem
+}
+
+  subgraph {
+  group_by_item
+}
+
+  subgraph {
+  grouping_sets_item
+}
+
+  subgraph {
+  search_condition
+}
+
+  subgraph {
+  table_name
+}
+
+  subgraph {
+  table_sources
+}
+
+  subgraph {
+  udt_elem
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/udt_elem.txt"]
+
+  udt_elem -> udt_method_arguments
+  udt_elem -> as_column_alias
+}
+
+  subgraph {
+  as_column_alias
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/as_column_alias.txt"]
+
+  as_column_alias -> column_alias
+}
+
+  subgraph {
+  column_alias
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/column_alias.txt"]
+}
+
+  subgraph {
+  execute_var_string
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/execute_var_string.txt"]
+}
+
+  subgraph {
+  udt_method_arguments
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/udt_method_arguments.txt"]
+
+  udt_method_arguments -> execute_var_string
+}
 
 
   subgraph {
@@ -155,6 +303,15 @@ digraph Roadmap {
   batch_level_statement -> create_or_alter_procedure
   batch_level_statement -> create_or_alter_trigger
   batch_level_statement -> create_view
+
+  create_or_alter_function
+    [color=gray]
+  create_or_alter_procedure
+    [color=gray]
+  create_or_alter_trigger
+    [color=gray]
+  create_view
+    [color=gray]
 }
 
 }

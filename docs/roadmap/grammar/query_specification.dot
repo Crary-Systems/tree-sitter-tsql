@@ -1,0 +1,12 @@
+digraph {
+  query_specification
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/c1d4d4d9d830cdf8ec41142c705d269b1ea84c8e/grammar.js#L213-L218"]
+
+  query_specification -> top_clause
+  query_specification -> select_list
+  query_specification -> table_name
+  query_specification -> table_sources
+  query_specification -> search_condition
+  query_specification -> group_by_item
+  query_specification -> grouping_sets_item
+}

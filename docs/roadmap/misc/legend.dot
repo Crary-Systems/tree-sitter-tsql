@@ -2,6 +2,7 @@ digraph GrammarPortingLegend {
   rankdir=LR
   node [shape=box fontname="Sans" width=1.5 height=0.5]
 
+  Todo         [label="Todo",                 color=gray]
   Incomplete   [label="Incomplete",           color=red]
   Tested       [label="Tested",               style=filled, fillcolor=orange]
   SubGraphComplete [label="SubGraphComplete", style=filled, fillcolor=lightgreen]
@@ -15,5 +16,6 @@ digraph GrammarPortingLegend {
     Incomplete
     Tested
     SubGraphComplete
+    Todo
   }
 }

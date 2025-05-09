@@ -1,0 +1,8 @@
+digraph {
+  udt_method_arguments
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/udt_method_arguments.txt"]
+
+  udt_method_arguments -> execute_var_string
+}

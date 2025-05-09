@@ -1,3 +1,4 @@
 digraph {
   option_clause
+    [color=gray]
 }

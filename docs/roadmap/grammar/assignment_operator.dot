@@ -1,0 +1,6 @@
+digraph {
+  assignment_operator
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/assignment_operator.txt"]
+}

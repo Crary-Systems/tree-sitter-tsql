@@ -1,4 +1,10 @@
 digraph {
   query_expression
     [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L208-L211"]
+
+  query_expression -> query_specification
+
+  query_expression -> select_order_by_clause
+  query_expression -> unions
+  query_expression -> sql_union
 }
