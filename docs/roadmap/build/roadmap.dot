@@ -86,14 +86,67 @@ digraph Roadmap {
 }
 
 
+  ## TODO
   subgraph {
   sql_clauses
-    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L118"]
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/4dda5f0b2a1d0c921fa68dff7fd5ffdb39467df3/grammar.js#L118-L122"]
+
+  sql_clauses -> dml_clause
 }
+
+  subgraph {
+  dml_clause
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/4dda5f0b2a1d0c921fa68dff7fd5ffdb39467df3/grammar.js#L192-L195"]
+
+  dml_clause -> select_statement_standalone
+}
+
+  subgraph {
+  select_statement_standalone
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/4dda5f0b2a1d0c921fa68dff7fd5ffdb39467df3/grammar.js#L197-L200"]
+
+  select_statement_standalone -> select_statement
+}
+
+  subgraph {
+  select_statement
+
+  select_statement -> query_expression
+
+  ##TODO
+  select_statement -> select_order_by_clause
+  select_statement -> for_clause
+  select_statement -> option_clause
+}
+
+  subgraph {
+  query_expression
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L208-L211"]
+}
+
+  subgraph {
+  for_clause
+}
+
+  subgraph {
+  option_clause
+}
+
+  subgraph {
+  select_order_by_clause
+}
+
+
 
   subgraph {
   batch_level_statement
     [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L116"]
+
+  //TODO ROADMAP
+  batch_level_statement -> create_or_alter_function
+  batch_level_statement -> create_or_alter_procedure
+  batch_level_statement -> create_or_alter_trigger
+  batch_level_statement -> create_view
 }
 
 }

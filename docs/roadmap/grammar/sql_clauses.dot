@@ -1,4 +1,6 @@
 digraph {
   sql_clauses
-    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L118"]
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/4dda5f0b2a1d0c921fa68dff7fd5ffdb39467df3/grammar.js#L118-L122"]
+
+  sql_clauses -> dml_clause
 }

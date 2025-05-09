@@ -5,8 +5,11 @@ OUTPUT = build/roadmap.dot
 
 all : $(OUTPUT)
 
-$(OUTPUT): $(TEMPLATE)
+$(OUTPUT): $(TEMPLATE) test
 	m4 $(TEMPLATE) > $(OUTPUT); dot -Tsvg $(OUTPUT) -o build/roadmap.svg; dot -Tsvg misc/legend.dot -o build/legend.svg
+
+test :
+	./test-includes.sh
 
 clean:
 	rm -f $(OUTPUT) build/roadmap.svg build/legend.svg

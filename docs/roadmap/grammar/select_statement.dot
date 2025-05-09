@@ -1,0 +1,10 @@
+digraph {
+  select_statement
+
+  select_statement -> query_expression
+
+  ##TODO
+  select_statement -> select_order_by_clause
+  select_statement -> for_clause
+  select_statement -> option_clause
+}

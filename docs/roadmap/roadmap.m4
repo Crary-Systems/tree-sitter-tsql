@@ -13,6 +13,16 @@ digraph Roadmap {
   include(grammar/func_proc_name_database_schema.dot)
   include(grammar/func_proc_name_schema.dot)
 
+  ## TODO
   include(grammar/sql_clauses.dot)
+  include(grammar/dml_clause.dot)
+  include(grammar/select_statement_standalone.dot)
+  include(grammar/select_statement.dot)
+  include(grammar/query_expression.dot)
+  include(grammar/for_clause.dot)
+  include(grammar/option_clause.dot)
+  include(grammar/select_order_by_clause.dot)
+
+
   include(grammar/batch_level_statement.dot)
 }

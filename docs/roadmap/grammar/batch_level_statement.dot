@@ -1,4 +1,10 @@
 digraph {
   batch_level_statement
     [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar.js#L116"]
+
+  //TODO ROADMAP
+  batch_level_statement -> create_or_alter_function
+  batch_level_statement -> create_or_alter_procedure
+  batch_level_statement -> create_or_alter_trigger
+  batch_level_statement -> create_view
 }

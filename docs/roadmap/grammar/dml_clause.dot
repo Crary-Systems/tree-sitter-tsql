@@ -1,0 +1,6 @@
+digraph {
+  dml_clause
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/4dda5f0b2a1d0c921fa68dff7fd5ffdb39467df3/grammar.js#L192-L195"]
+
+  dml_clause -> select_statement_standalone
+}
