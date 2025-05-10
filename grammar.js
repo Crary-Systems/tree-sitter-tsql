@@ -593,7 +593,7 @@ module.exports = grammar({
       ,$.decimal_
       ,$.float_
       ,$.money_
-      //,$.parameter_ Example??
+      ,$.parameter_
     ),
 
     binary: $ => token(/0x[0-9A-F]*/),
@@ -602,7 +602,7 @@ module.exports = grammar({
     money_: $ => seq(field('dollar', token('$')), optional(choice(token('-'),token('+'))), choice($.real_, $.float_)),
 
     //Example??
-    //parameter_: $ => token('?');
+    parameter_: $ => token('?'),
 
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlLexer.g4#L1231

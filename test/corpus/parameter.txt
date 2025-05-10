@@ -1,0 +1,22 @@
+=================================================
+Parameter Primitive Constant
+=================================================
+SELECT ?
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (primitive_expression
+                          (primitive_constant
+                            (parameter_)))))))))))))))

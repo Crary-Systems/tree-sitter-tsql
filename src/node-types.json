@@ -1734,6 +1734,10 @@
           "named": true
         },
         {
+          "type": "parameter_",
+          "named": true
+        },
+        {
           "type": "real_",
           "named": true
         },
@@ -2557,6 +2561,10 @@
   },
   {
     "type": "original_db_name_",
+    "named": true
+  },
+  {
+    "type": "parameter_",
     "named": true
   },
   {
