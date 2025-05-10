@@ -64,6 +64,8 @@ digraph Roadmap {
   include(grammar/time_zone.dot)
   include(grammar/unary_operator_expression.dot)
   include(grammar/value_call.dot)
+  include(grammar/primitive_constant.dot)
+  include(grammar/parameter.dot)
 
   include(grammar/batch_level_statement.dot)
 }

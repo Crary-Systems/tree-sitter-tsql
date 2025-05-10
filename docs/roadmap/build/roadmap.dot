@@ -358,6 +358,11 @@ digraph Roadmap {
 
   subgraph {
   primitive_expression
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/primitive_expression.txt"]
+
+  primitive_expression -> primitive_constant
 }
 
   subgraph {
@@ -374,6 +379,22 @@ digraph Roadmap {
 
   subgraph {
   value_call
+}
+
+  subgraph {
+  primitive_constant
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/primitive_constant.txt"]
+
+  primitive_constant -> parameter
+}
+
+  subgraph {
+  parameter
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/parameter.txt"]
 }
 
 
