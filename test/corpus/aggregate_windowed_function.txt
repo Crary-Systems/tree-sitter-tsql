@@ -3,6 +3,7 @@ agg_func avg
 =====================================
 SELECT AVG(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -34,6 +35,7 @@ agg_func max
 =====================================
 SELECT MAX(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -65,6 +67,7 @@ agg_func min
 =====================================
 SELECT MIN(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -96,6 +99,7 @@ agg_func sum
 =====================================
 SELECT SUM(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -127,6 +131,7 @@ agg_func stdev
 =====================================
 SELECT STDEV(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -158,6 +163,7 @@ agg_func stdevp
 =====================================
 SELECT STDEVP(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -190,37 +196,38 @@ agg_func var
 SELECT VAR(id) FROM FOO
 ---
 
-    (tsql_file
-      (batch
-        (sql_clauses
-          (dml_clause
-            (select_statement_standalone
-              (select_statement
-                (query_expression
-                  (query_specification
-                    (select)
-                    (select_list
-                      (select_list_elem
-                        (expression_elem
-                          (expression
-                            (function_call
-                              (aggregate_windowed_function
-                                (var_)
-                                (all_distinct_expression
-                                  (expression
-                                    (full_column_name
-                                      (id_))))))))))
-                    (table_sources
-                      (table_source
-                        (table_source_item
-                          (full_table_name
-                            (id_)))))))))))))
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (var_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))))))))))
 
 =====================================
 agg_func varp
 =====================================
 SELECT VARP(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -252,6 +259,7 @@ agg count
 =====================================
 SELECT COUNT(id) OVER (PARTITION BY baz) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -289,6 +297,7 @@ agg count_big
 =====================================
 SELECT COUNT_BIG(id) OVER (PARTITION BY baz) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -326,6 +335,7 @@ agg checksum_agg
 =====================================
 SELECT CHECKSUM_AGG(id) FROM FOO
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -353,23 +363,107 @@ SELECT CHECKSUM_AGG(id) FROM FOO
                         (id_)))))))))))))
 
 =====================================
-agg GROUPING NEED GROUPBY
-:skip
+agg APPROX_COUNT_DISTINCT
 =====================================
-SELECT GROUPING(FOO) FROM BAR
-GROUP BY FOO WITH ROLLUP
+SELECT APPROX_COUNT_DISTINCT(id)
+FROM [StackOverflowTiny].[dbo].[Posts]
 ---
 
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (approx_count_distinct_)
+                            (expression
+                              (full_column_name
+                                (id_)))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
+
 =====================================
-agg GROUPING_ID NEED GROUPBY
-:skip
+agg STRING_AGG string_lit
 =====================================
-SELECT col1, col2, sum(v), GROUPING_ID(col1,col2)
-FROM BAR
-GROUP BY
-  GROUPING SETS (
-    (col1,col2)
-    (col1),
-    (col2),
-    ());
+SELECT STRING_AGG(Type,',')
+FROM [StackOverflowTiny].[dbo].[LinkTypes]
 ---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (string_agg_)
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (seperator
+                              (string_lit))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
+
+=====================================
+agg STRING_AGG LOCAL
+=====================================
+SELECT STRING_AGG(Type,@sep)
+FROM [StackOverflowTiny].[dbo].[LinkTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (string_agg_)
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (seperator
+                              (local_id_))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))

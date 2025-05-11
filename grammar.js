@@ -458,12 +458,12 @@ module.exports = grammar({
           ,$.stdevp_
           ,$.var_
           ,$.varp_
-          //TODO STRING_AGG
-          //TODO APPROX_COUNT_DISTINCT
         ))
         ,parens($.all_distinct_expression)
         ,optional($.over_clause))
 
+      ,seq($.approx_count_distinct_,parens($.expression))
+      ,seq($.string_agg_,parens($.expression,token(','), $.seperator))
       ,seq(
         field('cnt', choice($.count_, $.count_big_))
         ,parens(choice($.asterisk, $.all_distinct_expression))
@@ -474,6 +474,13 @@ module.exports = grammar({
       //,seq($.GROUPING_ID, parens($.expression_list_) --TODO GROUPBY
     ),
 
+    local_id_: $ => LOCAL_ID,
+    seperator: $ => choice(
+      $.local_id_
+      ,$.string_lit
+    ),
+    string_agg_: $ => token(/STRING_AGG/i),
+    approx_count_distinct_: $ => token(/APPROX_COUNT_DISTINCT/i),
     checksum_agg_: $ => token(/CHECKSUM_AGG/i),
     count_: $ => token(/COUNT/i),
     count_big_: $ => token(/COUNT_BIG/i),
@@ -487,7 +494,7 @@ module.exports = grammar({
     var_: $ => token(/VAR/i),
     varp_: $ => token(/VARP/i),
 
-    // TODO CORPUS
+    // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5028-L5030
     all_distinct_expression: $ => seq(
       optional(choice($.all_, $.distinct_)), $.expression
     ),

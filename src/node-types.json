@@ -80,6 +80,10 @@
           "named": true
         },
         {
+          "type": "approx_count_distinct_",
+          "named": true
+        },
+        {
           "type": "asterisk",
           "named": true
         },
@@ -88,7 +92,19 @@
           "named": true
         },
         {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "over_clause",
+          "named": true
+        },
+        {
+          "type": "seperator",
+          "named": true
+        },
+        {
+          "type": "string_agg_",
           "named": true
         }
       ]
@@ -1531,6 +1547,11 @@
     }
   },
   {
+    "type": "local_id_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "money_",
     "named": true,
     "fields": {
@@ -1977,6 +1998,25 @@
     }
   },
   {
+    "type": "seperator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "local_id_",
+          "named": true
+        },
+        {
+          "type": "string_lit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "sql_clauses",
     "named": true,
     "fields": {},
@@ -2324,6 +2364,10 @@
     "named": true
   },
   {
+    "type": "approx_count_distinct_",
+    "named": true
+  },
+  {
     "type": "asc_",
     "named": true
   },
@@ -2609,6 +2653,10 @@
   },
   {
     "type": "stdevp_",
+    "named": true
+  },
+  {
+    "type": "string_agg_",
     "named": true
   },
   {

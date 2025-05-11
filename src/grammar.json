@@ -4786,6 +4786,69 @@
           "type": "SEQ",
           "members": [
             {
+              "type": "SYMBOL",
+              "name": "approx_count_distinct_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string_agg_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "STRING",
+                    "value": ","
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "seperator"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "FIELD",
               "name": "cnt",
               "content": {
@@ -4869,6 +4932,42 @@
           ]
         }
       ]
+    },
+    "local_id_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "@[A-Za-z_$@#0-9]+"
+      }
+    },
+    "seperator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "local_id_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_lit"
+        }
+      ]
+    },
+    "string_agg_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "STRING_AGG",
+        "flags": "i"
+      }
+    },
+    "approx_count_distinct_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "APPROX_COUNT_DISTINCT",
+        "flags": "i"
+      }
     },
     "checksum_agg_": {
       "type": "TOKEN",

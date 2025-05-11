@@ -1,0 +1,71 @@
+=====================================
+All Distinct Expression ALL
+=====================================
+SELECT AVG(ALL id)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (avg_)
+                            (all_distinct_expression
+                              (all_)
+                              (expression
+                                (full_column_name
+                                  (id_))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
+
+=====================================
+All Distinct Expression DISTINCT
+=====================================
+SELECT AVG(DISTINCT id)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (avg_)
+                            (all_distinct_expression
+                              (distinct_)
+                              (expression
+                                (full_column_name
+                                  (id_))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
