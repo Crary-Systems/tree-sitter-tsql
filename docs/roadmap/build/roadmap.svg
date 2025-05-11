@@ -864,8 +864,11 @@
 <!-- built_in_functions -->
 <g id="node62" class="node">
 <title>built_in_functions</title>
+<g id="a_node62"><a xlink:href="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar/builtins.js#L180" xlink:title="built_in_functions">
 <ellipse fill="none" stroke="red" cx="3549.19" cy="-378" rx="99.61" ry="18"/>
 <text text-anchor="middle" x="3549.19" y="-373.32" font-family="Times,serif" font-size="14.00">built_in_functions</text>
+</a>
+</g>
 </g>
 <!-- function_call&#45;&gt;built_in_functions -->
 <g id="edge60" class="edge">

@@ -1,3 +1,4 @@
 digraph {
   built_in_functions
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/grammar/builtins.js#L180"]
 }
