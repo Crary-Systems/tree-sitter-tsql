@@ -1,0 +1,56 @@
+=================================================
+Partition Function Database
+=================================================
+SELECT [StackOverflowTiny].$PARTITION.RangePF1 (10);
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (partition_function
+                            (id_)
+                            (dollar_partition_)
+                            (id_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=================================================
+Partition Function NoDatabase
+=================================================
+SELECT $PARTITION.RangePF1 (10);
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (partition_function
+                            (dollar_partition_)
+                            (id_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))

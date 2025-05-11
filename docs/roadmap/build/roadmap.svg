@@ -906,8 +906,11 @@
 <!-- partition_function -->
 <g id="node65" class="node">
 <title>partition_function</title>
-<ellipse fill="none" stroke="red" cx="4274.19" cy="-378" rx="100.66" ry="18"/>
+<g id="a_node65"><a xlink:href="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/partition_function.txt" xlink:title="partition_function">
+<ellipse fill="lightgreen" stroke="lightgreen" cx="4274.19" cy="-378" rx="100.66" ry="18"/>
 <text text-anchor="middle" x="4274.19" y="-373.32" font-family="Times,serif" font-size="14.00">partition_function</text>
+</a>
+</g>
 </g>
 <!-- function_call&#45;&gt;partition_function -->
 <g id="edge63" class="edge">

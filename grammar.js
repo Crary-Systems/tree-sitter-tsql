@@ -11,7 +11,7 @@ const built_in_functions = require('./grammar/builtins.js');
 //TODO doublecheck * and + semantics
 const SEMI = token(';');
 //FULLWIDTH handling?
-const ID                = token(/[A-Za-z_#]+/);
+const ID                = token(/[A-Za-z_#][A-Za-z_#$@0-9]+/);
 const SQUARE_BRACKET_ID = token(/\[[A-Za-z_#]+\]/);
 const LOCAL_ID          = token(/@[A-Za-z_$@#0-9]+/);
 const INT               = token(/[0-9]+/);
@@ -383,6 +383,7 @@ module.exports = grammar({
 
     parse_: $ => token(/PARSE/i),
 
+    // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4298-L4300
     partition_function: $ => seq(
       optional(seq(field('database', $.id_), DOT)), $.dollar_partition_, DOT, field('func_name', $.id_), parens($.expression)
     ),
