@@ -22,7 +22,7 @@ select 'foo'
 
 
 =================================================
-Primitive Expression Binary
+Primitive Constant Binary
 =================================================
 select 0x123456789DEADBEEF
 ---
@@ -44,7 +44,7 @@ select 0x123456789DEADBEEF
                             (binary)))))))))))))))
 
 =================================================
-Primitive Expression Decimal
+Primitive Constant Decimal
 =================================================
 select 10
 ---
@@ -67,7 +67,7 @@ select 10
 
 
 =================================================
-Primitive Expression REAL simple
+Primitive Constant REAL simple
 =================================================
 select 1e+2
 ---
@@ -89,7 +89,7 @@ select 1e+2
                             (real_)))))))))))))))
 
 =================================================
-Primitive Expression REAL dec_dot_dec
+Primitive Constant REAL dec_dot_dec
 =================================================
 select 1.23e+2
 ---
@@ -110,9 +110,8 @@ select 1.23e+2
                           (primitive_constant
                             (real_)))))))))))))))
 
-
 =================================================
-Primitive Expression Money
+Primitive Constant Money
 =================================================
 select $+3.0
 ---
@@ -133,3 +132,25 @@ select $+3.0
                           (primitive_constant
                             (money_
                               (float_))))))))))))))))
+
+=================================================
+Primitive Constant Parameter
+=================================================
+select ?
+---
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (primitive_expression
+                          (primitive_constant
+                            (parameter_)))))))))))))))
