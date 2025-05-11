@@ -56,6 +56,17 @@ digraph Roadmap {
   include(grammar/exist_call.dot)
   include(grammar/full_column_name.dot)
   include(grammar/function_call.dot)
+
+  include(grammar/aggregate_windowed_function.dot)
+  include(grammar/analytic_windowed_function.dot)
+  include(grammar/built_in_functions.dot)
+  include(grammar/expression_list_.dot)
+  include(grammar/freetext_function.dot)
+  include(grammar/hierarchyid_static_method.dot)
+  include(grammar/partition_function.dot)
+  include(grammar/ranking_windowed_function.dot)
+  include(grammar/scalar_function_name.dot)
+
   include(grammar/hierarchyid_call.dot)
   include(grammar/modify_call.dot)
   include(grammar/over_clause.dot)

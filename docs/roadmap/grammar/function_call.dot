@@ -1,3 +1,14 @@
 digraph {
   function_call
+
+  function_call -> ranking_windowed_function
+  function_call -> aggregate_windowed_function
+  function_call -> analytic_windowed_function
+  function_call -> built_in_functions
+  function_call -> scalar_function_name
+  function_call -> freetext_function
+  function_call -> partition_function
+  function_call -> hierarchyid_static_method
+  function_call -> expression_list_
+
 }

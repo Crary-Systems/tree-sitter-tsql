@@ -335,13 +335,13 @@ module.exports = grammar({
 
       ,choice(
         seq($.scalar_function_name, parens(optional($.expression_list_)))
-        ,seq(choice($.binary_checksum_, $.checksum_), parens(choice($.asterisk, $.expression_list_)))
+        ,seq(choice($.binary_checksum_, $.checksum_), parens(choice($.asterisk, $.expression_list_))) //TODO MOVE TO BUILTINS
       )
 
       ,$.partition_function
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4287
       ,$.hierarchyid_static_method
-
+      ,//TODO freetext_function
     ),
 
     ...built_in_functions,
