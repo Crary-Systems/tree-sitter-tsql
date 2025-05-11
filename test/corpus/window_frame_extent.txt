@@ -1,0 +1,95 @@
+=================================================
+Window Frame Extent PRECEDING
+=================================================
+SELECT SUM(id) OVER (ORDER BY ID ROWS UNBOUNDED PRECEDING)
+FROM [StackOverflowTiny].[dbo].[LinkTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (sum_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_preceding))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
+
+=================================================
+Window Frame Extent BETWEEN
+=================================================
+Select SUM(id) OVER (PARTITION BY id ORDER BY id ROWS BETWEEN CURRENT ROW AND 10 FOLLOWING)
+FROM [StackOverflowTiny].[dbo].[PostTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (sum_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (partition_by_clause
+                                (expression_list_
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_bound
+                                    (window_frame_preceding))
+                                  (window_frame_bound
+                                    (window_frame_following)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
