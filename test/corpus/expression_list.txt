@@ -1,0 +1,31 @@
+=================================================
+Expression List
+=================================================
+SELECT FOO(BAR, BAZ)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (scalar_function_name
+                            (func_proc_name_database_schema
+                              (func_proc_name_schema
+                                (id_))))
+                          (expression_list_
+                            (expression
+                              (full_column_name
+                                (id_)))
+                            (expression
+                              (full_column_name
+                                (id_)))))))))))))))))
