@@ -1,3 +1,11 @@
 digraph {
   analytic_windowed_function
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/analytic_windowed_function.txt"]
+
+  analytic_windowed_function -> over_clause
+  analytic_windowed_function -> order_by_clause
+  analytic_windowed_function -> expression
+  analytic_windowed_function -> expression_list_
 }
