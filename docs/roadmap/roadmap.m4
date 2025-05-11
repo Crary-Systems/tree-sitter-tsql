@@ -58,6 +58,12 @@ digraph Roadmap {
   include(grammar/function_call.dot)
 
   include(grammar/aggregate_windowed_function.dot)
+  include(grammar/all_distinct_expression.dot)
+  #TODO GROUPBY
+  include(grammar/GROUPING.dot)
+  include(grammar/GROUPING_ID.dot)
+
+
   include(grammar/analytic_windowed_function.dot)
   include(grammar/built_in_functions.dot)
   include(grammar/expression_list_.dot)

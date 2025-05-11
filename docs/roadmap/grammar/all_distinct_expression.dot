@@ -1,0 +1,6 @@
+digraph {
+  all_distinct_expression
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/all_distinct_expression.txt"]
+}

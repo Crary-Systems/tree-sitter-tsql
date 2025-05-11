@@ -1,3 +1,4 @@
 digraph {
   freetext_function
+    [color=gray]
 }

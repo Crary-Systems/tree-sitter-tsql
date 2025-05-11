@@ -1,3 +1,14 @@
 digraph {
   aggregate_windowed_function
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/aggregate_windowed_function.txt"]
+
+  aggregate_windowed_function -> all_distinct_expression
+  aggregate_windowed_function -> over_clause
+  aggregate_windowed_function -> expression
+  aggregate_windowed_function -> expression_list_
+
+  //TODO groupby
+  aggregate_windowed_function -> GROUPING
+  aggregate_windowed_function -> GROUPING_ID
+
 }
