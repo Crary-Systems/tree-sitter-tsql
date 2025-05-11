@@ -879,8 +879,11 @@
 <!-- scalar_function_name -->
 <g id="node63" class="node">
 <title>scalar_function_name</title>
-<ellipse fill="none" stroke="red" cx="3824.19" cy="-378" rx="119.08" ry="18"/>
+<g id="a_node63"><a xlink:href="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/scalar_function.txt" xlink:title="scalar_function_name">
+<ellipse fill="lightgreen" stroke="lightgreen" cx="3824.19" cy="-378" rx="119.08" ry="18"/>
 <text text-anchor="middle" x="3824.19" y="-373.32" font-family="Times,serif" font-size="14.00">scalar_function_name</text>
+</a>
+</g>
 </g>
 <!-- function_call&#45;&gt;scalar_function_name -->
 <g id="edge61" class="edge">
