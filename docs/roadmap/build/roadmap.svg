@@ -912,8 +912,11 @@
 <!-- expression_list_ -->
 <g id="node67" class="node">
 <title>expression_list_</title>
-<ellipse fill="none" stroke="red" cx="3702.19" cy="-90" rx="90.67" ry="18"/>
+<g id="a_node67"><a xlink:href="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/expression_list.txt" xlink:title="expression_list_">
+<ellipse fill="lightgreen" stroke="lightgreen" cx="3702.19" cy="-90" rx="90.67" ry="18"/>
 <text text-anchor="middle" x="3702.19" y="-85.33" font-family="Times,serif" font-size="14.00">expression_list_</text>
+</a>
+</g>
 </g>
 <!-- function_call&#45;&gt;expression_list_ -->
 <g id="edge65" class="edge">
