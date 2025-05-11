@@ -1,0 +1,6 @@
+digraph {
+  partition_by_clause
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/over_clause.txt#L25"]
+}

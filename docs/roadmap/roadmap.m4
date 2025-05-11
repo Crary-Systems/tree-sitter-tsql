@@ -65,6 +65,14 @@ digraph Roadmap {
   include(grammar/hierarchyid_static_method.dot)
   include(grammar/partition_function.dot)
   include(grammar/ranking_windowed_function.dot)
+  include(grammar/row_or_range_clause.dot)
+  include(grammar/partition_by_clause.dot)
+  include(grammar/order_by_clause.dot)
+  include(grammar/order_by_expression.dot)
+  include(grammar/window_frame_extent.dot)
+  include(grammar/window_frame_bound.dot)
+  include(grammar/window_frame_preceding.dot)
+
   include(grammar/scalar_function_name.dot)
 
   include(grammar/hierarchyid_call.dot)

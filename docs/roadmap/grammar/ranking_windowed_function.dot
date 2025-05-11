@@ -1,3 +1,8 @@
 digraph {
   ranking_windowed_function
+    [style=filled
+    ,color=orange
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/ranking_windowed_function.txt"]
+
+  ranking_windowed_function -> over_clause
 }

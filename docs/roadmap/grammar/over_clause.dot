@@ -1,3 +1,9 @@
 digraph {
   over_clause
+
+  over_clause -> expression_list_
+  over_clause -> partition_by_clause
+  over_clause -> order_by_clause
+  over_clause -> row_or_range_clause
+
 }

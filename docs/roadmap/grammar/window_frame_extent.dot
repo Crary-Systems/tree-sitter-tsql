@@ -1,0 +1,6 @@
+digraph {
+  window_frame_extent
+
+  window_frame_extent -> window_frame_preceding
+  window_frame_extent -> window_frame_bound
+}

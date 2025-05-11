@@ -389,7 +389,60 @@ digraph Roadmap {
 
   subgraph {
   ranking_windowed_function
+    [style=filled
+    ,color=orange
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/ranking_windowed_function.txt"]
+
+  ranking_windowed_function -> over_clause
 }
+
+  subgraph {
+  row_or_range_clause
+    [style=filled
+    ,color=orange
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/row_or_range_clause.txt"]
+
+  row_or_range_clause -> window_frame_extent
+}
+
+  subgraph {
+  partition_by_clause
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/over_clause.txt#L25"]
+}
+
+  subgraph {
+  order_by_clause
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/order_by_clause.txt"]
+
+  order_by_clause -> order_by_expression
+}
+
+  subgraph {
+  order_by_expression
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/order_by_expression.txt"]
+}
+
+  subgraph {
+  window_frame_extent
+
+  window_frame_extent -> window_frame_preceding
+  window_frame_extent -> window_frame_bound
+}
+
+  subgraph {
+  window_frame_bound
+}
+
+  subgraph {
+  window_frame_preceding
+}
+
 
   subgraph {
   scalar_function_name
@@ -406,6 +459,12 @@ digraph Roadmap {
 
   subgraph {
   over_clause
+
+  over_clause -> expression_list_
+  over_clause -> partition_by_clause
+  over_clause -> order_by_clause
+  over_clause -> row_or_range_clause
+
 }
 
   subgraph {

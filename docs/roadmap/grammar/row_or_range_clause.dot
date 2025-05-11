@@ -1,0 +1,8 @@
+digraph {
+  row_or_range_clause
+    [style=filled
+    ,color=orange
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/row_or_range_clause.txt"]
+
+  row_or_range_clause -> window_frame_extent
+}
