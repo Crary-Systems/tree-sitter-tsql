@@ -1,0 +1,46 @@
+=================================================
+Window Frame Bound PRECEDING AND FOLLOWING
+=================================================
+SELECT SUM(id) OVER (ORDER BY ID ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+FROM [StackOverflowTiny].[dbo].[LinkTypes]
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (sum_)
+                            (all_distinct_expression
+                              (expression
+                                (full_column_name
+                                  (id_))))
+                            (over_clause
+                              (order_by_clause
+                                (order_by_expression
+                                  (expression
+                                    (full_column_name
+                                      (id_)))))
+                              (row_or_range_clause
+                                (window_frame_extent
+                                  (window_frame_bound
+                                    (window_frame_preceding))
+                                  (window_frame_bound
+                                    (window_frame_following)))))))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)
+                        (id_)
+                        (id_)))))))))))))
