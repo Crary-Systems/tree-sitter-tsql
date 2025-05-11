@@ -1,5 +1,8 @@
 digraph {
   over_clause
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/over_clause.txt"]
 
   over_clause -> expression_list_
   over_clause -> partition_by_clause

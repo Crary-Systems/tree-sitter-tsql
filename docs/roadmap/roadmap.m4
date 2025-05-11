@@ -72,6 +72,7 @@ digraph Roadmap {
   include(grammar/window_frame_extent.dot)
   include(grammar/window_frame_bound.dot)
   include(grammar/window_frame_preceding.dot)
+  include(grammar/window_frame_following.dot)
 
   include(grammar/scalar_function_name.dot)
 

@@ -1,5 +1,8 @@
 digraph {
   window_frame_extent
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/window_frame_extent.txt"]
 
   window_frame_extent -> window_frame_preceding
   window_frame_extent -> window_frame_bound

@@ -390,7 +390,7 @@ digraph Roadmap {
   subgraph {
   ranking_windowed_function
     [style=filled
-    ,color=orange
+    ,color=lightgreen
     ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/ranking_windowed_function.txt"]
 
   ranking_windowed_function -> over_clause
@@ -399,7 +399,7 @@ digraph Roadmap {
   subgraph {
   row_or_range_clause
     [style=filled
-    ,color=orange
+    ,color=lightgreen
     ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/row_or_range_clause.txt"]
 
   row_or_range_clause -> window_frame_extent
@@ -430,6 +430,9 @@ digraph Roadmap {
 
   subgraph {
   window_frame_extent
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/window_frame_extent.txt"]
 
   window_frame_extent -> window_frame_preceding
   window_frame_extent -> window_frame_bound
@@ -437,10 +440,26 @@ digraph Roadmap {
 
   subgraph {
   window_frame_bound
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/window_frame_bound.txt"]
+
+  window_frame_bound -> window_frame_preceding
+  window_frame_bound -> window_frame_following
 }
 
   subgraph {
   window_frame_preceding
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/window_frame_preceding.txt"]
+}
+
+  subgraph {
+  window_frame_following
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/window_frame_following.txt"]
 }
 
 
@@ -459,6 +478,9 @@ digraph Roadmap {
 
   subgraph {
   over_clause
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/over_clause.txt"]
 
   over_clause -> expression_list_
   over_clause -> partition_by_clause

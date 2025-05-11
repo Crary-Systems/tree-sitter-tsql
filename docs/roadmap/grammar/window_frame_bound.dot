@@ -1,3 +1,9 @@
 digraph {
   window_frame_bound
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/window_frame_bound.txt"]
+
+  window_frame_bound -> window_frame_preceding
+  window_frame_bound -> window_frame_following
 }
