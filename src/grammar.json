@@ -4760,8 +4760,17 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "approx_percentile_cont_"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "approx_percentile_cont_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "approx_percentile_disc_"
+                }
+              ]
             },
             {
               "type": "SEQ",
@@ -4822,6 +4831,14 @@
       "content": {
         "type": "PATTERN",
         "value": "APPROX_PERCENTILE_CONT",
+        "flags": "i"
+      }
+    },
+    "approx_percentile_disc_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "APPROX_PERCENTILE_DISC",
         "flags": "i"
       }
     },

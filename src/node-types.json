@@ -88,6 +88,10 @@
           "named": true
         },
         {
+          "type": "approx_percentile_disc_",
+          "named": true
+        },
+        {
           "type": "asterisk",
           "named": true
         },
@@ -2521,6 +2525,10 @@
   },
   {
     "type": "approx_percentile_cont_",
+    "named": true
+  },
+  {
+    "type": "approx_percentile_disc_",
     "named": true
   },
   {

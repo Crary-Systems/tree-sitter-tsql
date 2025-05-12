@@ -30,11 +30,15 @@ module.exports = {
     //,seq($.GROUPING_, parens($.expression)) --TODO GROUPBY
     //,seq($.GROUPING_ID, parens($.expression_list_) --TODO GROUPBY
 
-    ,seq($.approx_percentile_cont_,parens($.expression),$.within_group_,parens($.order_by_, $.order_by_expression))
+    ,seq(
+      choice($.approx_percentile_cont_
+            ,$.approx_percentile_disc_
+      ),parens($.expression),$.within_group_,parens($.order_by_, $.order_by_expression))
   ),
 
   order_by_: $ => token(/ORDER BY/i),
   approx_percentile_cont_: $ => token(/APPROX_PERCENTILE_CONT/i),
+  approx_percentile_disc_: $ => token(/APPROX_PERCENTILE_DISC/i),
   within_group_: $ => token(/WITHIN GROUP/i),
   string_agg_: $ => token(/STRING_AGG/i),
   approx_count_distinct_: $ => token(/APPROX_COUNT_DISTINCT/i),
