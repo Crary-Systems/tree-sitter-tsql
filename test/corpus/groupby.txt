@@ -1,0 +1,92 @@
+=====================================
+GROUPBY SINGLE
+=====================================
+SELECT Count(*), BAR
+FROM FOO
+GROUP BY BAR
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (count_)
+                            (asterisk))))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))
+                (groupby
+                  (groupby_)
+                  (group_by_item
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))
+
+=====================================
+GROUPBY MULTIPLE
+=====================================
+SELECT Count(*), BBB, CCC
+FROM FOO
+GROUP BY BBB, CCC
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (aggregate_windowed_function
+                            (count_)
+                            (asterisk))))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_)))))
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (full_column_name
+                          (id_))))))
+                (table_sources
+                  (table_source
+                    (table_source_item
+                      (full_table_name
+                        (id_)))))
+                (groupby
+                  (groupby_)
+                  (group_by_item
+                    (expression
+                      (full_column_name
+                        (id_))))
+                  (group_by_item
+                    (expression
+                      (full_column_name
+                        (id_)))))))))))))

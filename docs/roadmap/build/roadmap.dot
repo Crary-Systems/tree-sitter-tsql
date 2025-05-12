@@ -181,8 +181,8 @@ digraph Roadmap {
   query_specification -> table_name
   query_specification -> table_sources
   query_specification -> search_condition
-  query_specification -> group_by_item
-  query_specification -> grouping_sets_item
+
+  query_specification -> groupby
 }
 
   subgraph {
@@ -388,7 +388,14 @@ digraph Roadmap {
     ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/all_distinct_expression.txt"]
 }
 
-  #TODO GROUPBY
+  subgraph {
+  groupby
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/groupby.txt"]
+
+  groupby -> group_by_item
+  groupby -> grouping_sets_item
+}
+
   subgraph {
   GROUPING
 }

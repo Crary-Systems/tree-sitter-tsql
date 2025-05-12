@@ -61,7 +61,7 @@ digraph Roadmap {
 
   include(grammar/aggregate_windowed_function.dot)
   include(grammar/all_distinct_expression.dot)
-  #TODO GROUPBY
+  include(grammar/groupby.dot)
   include(grammar/GROUPING.dot)
   include(grammar/GROUPING_ID.dot)
 

@@ -7,6 +7,6 @@ digraph {
   query_specification -> table_name
   query_specification -> table_sources
   query_specification -> search_condition
-  query_specification -> group_by_item
-  query_specification -> grouping_sets_item
+
+  query_specification -> groupby
 }

@@ -214,6 +214,7 @@ module.exports = grammar({
       $.select
       ,$.select_list
       ,optional(seq(token(/FROM/i), $.table_sources))
+      ,optional($.groupby)
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4010-L4023
     ),
 
@@ -230,6 +231,18 @@ module.exports = grammar({
       ,$.expression_elem
       //TODO https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4143-L4148
     ),
+
+    //TODO
+    groupby: $ => seq($.groupby_, choice(
+      field('groupBys',seq($.group_by_item, repeat(seq(token(','), $.group_by_item))))
+    )),
+
+    //TODO
+    group_by_item: $ => choice(
+      $.expression
+    ),
+
+    groupby_: $ => token(/GROUP BY/i),
 
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L6294
     assignment_operator: $ => choice(

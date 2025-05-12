@@ -1,0 +1,7 @@
+digraph {
+  groupby
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/groupby.txt"]
+
+  groupby -> group_by_item
+  groupby -> grouping_sets_item
+}
