@@ -820,7 +820,7 @@
 <g id="node59" class="node">
 <title>odbc_scalar_function</title>
 <g id="a_node59"><a xlink:href="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/odbc_scalar_functions.txt" xlink:title="odbc_scalar_function">
-<ellipse fill="none" stroke="red" cx="3744.19" cy="-378" rx="115.39" ry="18"/>
+<ellipse fill="lightgreen" stroke="lightgreen" cx="3744.19" cy="-378" rx="115.39" ry="18"/>
 <text text-anchor="middle" x="3744.19" y="-373.32" font-family="Times,serif" font-size="14.00">odbc_scalar_function</text>
 </a>
 </g>

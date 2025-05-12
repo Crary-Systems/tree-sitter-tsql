@@ -24,3 +24,472 @@ SELECT { fn bit_length('foo')}
                               (primitive_expression
                                 (primitive_constant
                                   (string_lit))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions CONCAT
+=====================================
+SELECT { fn CONCAT('FOO','BAR')}
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (concat_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions OCTET_LENGTH
+=====================================
+SELECT { fn OCTET_LENGTH('foo') }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (octet_length_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions TRUNCATE
+=====================================
+SELECT { fn TRUNCATE(9.4536, 2) }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (truncate_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (float_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions CURRENT_DATE
+=====================================
+SELECT { fn CURRENT_DATE() }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (current_date_)))))))))))))))
+
+=====================================
+ODBC Scalar Functions CURDATE
+=====================================
+SELECT { fn CURDATE() }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (curdate_)))))))))))))))
+
+=====================================
+ODBC Scalar Functions CURRENT_TIME OPT
+=====================================
+SELECT { fn CURRENT_TIME() }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (current_time_)))))))))))))))
+
+=====================================
+ODBC Scalar Functions CURRENT_TIME EXPR
+=====================================
+SELECT { fn CURRENT_TIME(5) }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (current_time_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions CURTIME
+=====================================
+SELECT { fn CURTIME() }
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (curtime_)))))))))))))))
+
+=====================================
+ODBC Scalar Functions DAYNAME
+=====================================
+SELECT {fn DAYNAME(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (dayname_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions DAYOFMONTH
+=====================================
+SELECT {fn DAYOFMONTH(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (dayofmonth_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions DAYOFWEEK
+=====================================
+SELECT {fn DAYOFWEEK(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (dayofweek_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions HOUR
+=====================================
+SELECT {fn HOUR(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (hour_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions MINUTE
+=====================================
+SELECT {fn MINUTE(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (minute_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions SECOND
+=====================================
+SELECT {fn SECOND(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (second_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions MONTHNAME
+=====================================
+SELECT {fn MONTHNAME(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (monthname_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions QUARTER
+=====================================
+SELECT {fn QUARTER(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (quarter_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))
+
+=====================================
+ODBC Scalar Functions WEEK
+=====================================
+SELECT {fn WEEK(GETDATE())};
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (week_)
+                            (expression
+                              (function_call
+                                (scalar_function_name
+                                  (func_proc_name_database_schema
+                                    (func_proc_name_schema
+                                      (id_))))))))))))))))))))

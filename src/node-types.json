@@ -1603,7 +1603,71 @@
           "named": true
         },
         {
+          "type": "concat_",
+          "named": true
+        },
+        {
+          "type": "curdate_",
+          "named": true
+        },
+        {
+          "type": "current_date_",
+          "named": true
+        },
+        {
+          "type": "current_time_",
+          "named": true
+        },
+        {
+          "type": "curtime_",
+          "named": true
+        },
+        {
+          "type": "dayname_",
+          "named": true
+        },
+        {
+          "type": "dayofmonth_",
+          "named": true
+        },
+        {
+          "type": "dayofweek_",
+          "named": true
+        },
+        {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "hour_",
+          "named": true
+        },
+        {
+          "type": "minute_",
+          "named": true
+        },
+        {
+          "type": "monthname_",
+          "named": true
+        },
+        {
+          "type": "octet_length_",
+          "named": true
+        },
+        {
+          "type": "quarter_",
+          "named": true
+        },
+        {
+          "type": "second_",
+          "named": true
+        },
+        {
+          "type": "truncate_",
+          "named": true
+        },
+        {
+          "type": "week_",
           "named": true
         }
       ]
@@ -2439,6 +2503,10 @@
     "named": true
   },
   {
+    "type": "concat_",
+    "named": true
+  },
+  {
     "type": "count_",
     "named": true
   },
@@ -2451,7 +2519,35 @@
     "named": true
   },
   {
+    "type": "curdate_",
+    "named": true
+  },
+  {
+    "type": "current_date_",
+    "named": true
+  },
+  {
+    "type": "current_time_",
+    "named": true
+  },
+  {
+    "type": "curtime_",
+    "named": true
+  },
+  {
     "type": "databasepropertyex_",
+    "named": true
+  },
+  {
+    "type": "dayname_",
+    "named": true
+  },
+  {
+    "type": "dayofmonth_",
+    "named": true
+  },
+  {
+    "type": "dayofweek_",
     "named": true
   },
   {
@@ -2559,6 +2655,10 @@
     "named": true
   },
   {
+    "type": "hour_",
+    "named": true
+  },
+  {
     "type": "indexcol_",
     "named": true
   },
@@ -2599,6 +2699,14 @@
     "named": true
   },
   {
+    "type": "minute_",
+    "named": true
+  },
+  {
+    "type": "monthname_",
+    "named": true
+  },
+  {
     "type": "ntile_",
     "named": true
   },
@@ -2631,6 +2739,10 @@
     "named": true
   },
   {
+    "type": "octet_length_",
+    "named": true
+  },
+  {
     "type": "original_db_name_",
     "named": true
   },
@@ -2659,6 +2771,10 @@
     "named": true
   },
   {
+    "type": "quarter_",
+    "named": true
+  },
+  {
     "type": "rank_",
     "named": true
   },
@@ -2668,6 +2784,10 @@
   },
   {
     "type": "row_number_",
+    "named": true
+  },
+  {
+    "type": "second_",
     "named": true
   },
   {
@@ -2699,11 +2819,19 @@
     "named": true
   },
   {
+    "type": "truncate_",
+    "named": true
+  },
+  {
     "type": "var_",
     "named": true
   },
   {
     "type": "varp_",
+    "named": true
+  },
+  {
+    "type": "week_",
     "named": true
   },
   {

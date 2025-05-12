@@ -1,4 +1,6 @@
 digraph {
   odbc_scalar_function
-    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/odbc_scalar_functions.txt"]
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/odbc_scalar_functions.txt"]
 }
