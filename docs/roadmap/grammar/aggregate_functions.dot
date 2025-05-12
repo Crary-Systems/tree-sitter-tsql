@@ -1,12 +1,11 @@
 digraph {
   aggregate_functions
-    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/aggregate_functions.txt"]
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/aggregate_functions.txt"]
 
   aggregate_functions -> all_distinct_expression
   aggregate_functions -> over_clause
   aggregate_functions -> expression
   aggregate_functions -> expression_list_
-
-  aggregate_functions -> GROUPING
-  aggregate_functions -> GROUPING_ID
 }

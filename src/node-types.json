@@ -104,6 +104,18 @@
           "named": true
         },
         {
+          "type": "expression_list_",
+          "named": true
+        },
+        {
+          "type": "grouping_",
+          "named": true
+        },
+        {
+          "type": "grouping_id_",
+          "named": true
+        },
+        {
           "type": "order_by_",
           "named": true
         },
@@ -2729,6 +2741,14 @@
   },
   {
     "type": "groupby_",
+    "named": true
+  },
+  {
+    "type": "grouping_",
+    "named": true
+  },
+  {
+    "type": "grouping_id_",
     "named": true
   },
   {

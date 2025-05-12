@@ -4760,6 +4760,58 @@
           "type": "SEQ",
           "members": [
             {
+              "type": "SYMBOL",
+              "name": "grouping_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "grouping_id_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression_list_"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
               "type": "CHOICE",
               "members": [
                 {
@@ -4817,6 +4869,22 @@
           ]
         }
       ]
+    },
+    "grouping_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GROUPING",
+        "flags": "i"
+      }
+    },
+    "grouping_id_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "GROUPING_ID",
+        "flags": "i"
+      }
     },
     "order_by_": {
       "type": "TOKEN",

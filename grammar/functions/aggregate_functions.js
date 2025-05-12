@@ -4,7 +4,6 @@ module.exports = {
   // https://msdn.microsoft.com/en-us/library/ms173454.aspx
   // https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5010
 
-  // TODO CORPUS
   aggregate_functions: $ => choice(
     seq(field('agg_func', choice(
         $.avg_
@@ -27,8 +26,8 @@ module.exports = {
       ,optional($.over_clause))
 
     ,seq($.checksum_agg_, parens($.all_distinct_expression))
-    //,seq($.GROUPING_, parens($.expression)) --TODO GROUPBY
-    //,seq($.GROUPING_ID, parens($.expression_list_) --TODO GROUPBY
+    ,seq($.grouping_, parens($.expression))
+    ,seq($.grouping_id_, parens($.expression_list_))
 
     ,seq(
       choice($.approx_percentile_cont_
@@ -36,6 +35,8 @@ module.exports = {
       ),parens($.expression),$.within_group_,parens($.order_by_, $.order_by_expression))
   ),
 
+  grouping_: $ => token(/GROUPING/i),
+  grouping_id_: $ => token(/GROUPING_ID/i),
   order_by_: $ => token(/ORDER BY/i),
   approx_percentile_cont_: $ => token(/APPROX_PERCENTILE_CONT/i),
   approx_percentile_disc_: $ => token(/APPROX_PERCENTILE_DISC/i),
