@@ -1,10 +1,6 @@
-const COMMA = token(',');
-const parens = (...rule) => seq('(', ...rule, ')');
-const parensComma = (...args) => parens(comma_separated(...args));
-
-function comma_separated(...rules) {
-  return seq(...rules.flatMap((rule, index) => index === 0 ? [rule] : [',', rule]));
-}
+const { COMMA
+       ,parens
+       ,parensComma } = require('./utils.js');
 
 module.exports = {
     //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4338
