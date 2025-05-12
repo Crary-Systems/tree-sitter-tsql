@@ -1,0 +1,26 @@
+=====================================
+ODBC Scalar Functions BIT_LENGTH
+=====================================
+SELECT { fn bit_length('foo')}
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (odbc_scalar_functions
+                            (bit_length_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))

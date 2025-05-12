@@ -1,6 +1,8 @@
 digraph {
   function_call
 
+  function_call -> odbc_scalar_function
+
   function_call -> ranking_windowed_function
   function_call -> aggregate_windowed_function
   function_call -> analytic_windowed_function

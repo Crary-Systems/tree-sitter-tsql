@@ -57,6 +57,8 @@ digraph Roadmap {
   include(grammar/full_column_name.dot)
   include(grammar/function_call.dot)
 
+  include(grammar/odbc_scalar_function.dot)
+
   include(grammar/aggregate_windowed_function.dot)
   include(grammar/all_distinct_expression.dot)
   #TODO GROUPBY

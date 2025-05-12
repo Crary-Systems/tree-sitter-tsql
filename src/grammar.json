@@ -2072,6 +2072,10 @@
         {
           "type": "SYMBOL",
           "name": "hierarchyid_static_method"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "odbc_scalar_functions"
         }
       ]
     },
@@ -3816,6 +3820,71 @@
       "content": {
         "type": "PATTERN",
         "value": "PARSENAME",
+        "flags": "i"
+      }
+    },
+    "odbc_scalar_functions": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "FN",
+                "flags": "i"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "bit_length_"
+                    },
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "("
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "expression"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": ")"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "bit_length_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "BIT_LENGTH",
         "flags": "i"
       }
     },

@@ -1384,6 +1384,10 @@
           "named": true
         },
         {
+          "type": "odbc_scalar_functions",
+          "named": true
+        },
+        {
           "type": "partition_function",
           "named": true
         },
@@ -1585,6 +1589,25 @@
     "type": "next_value_for_",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "odbc_scalar_functions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bit_length_",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "order_by_clause",
@@ -2392,6 +2415,10 @@
     "named": true
   },
   {
+    "type": "bit_length_",
+    "named": true
+  },
+  {
     "type": "checksum_",
     "named": true
   },
@@ -2680,7 +2707,15 @@
     "named": true
   },
   {
+    "type": "{",
+    "named": false
+  },
+  {
     "type": "|=",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]
