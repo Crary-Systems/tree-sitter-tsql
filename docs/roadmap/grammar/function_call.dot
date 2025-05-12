@@ -4,7 +4,7 @@ digraph {
   function_call -> odbc_scalar_function
 
   function_call -> ranking_windowed_function
-  function_call -> aggregate_windowed_function
+  function_call -> aggregate_functions
   function_call -> analytic_windowed_function
   function_call -> built_in_functions
   function_call -> scalar_function_name

@@ -15,7 +15,7 @@
     "fields": {}
   },
   {
-    "type": "aggregate_windowed_function",
+    "type": "aggregate_functions",
     "named": true,
     "fields": {
       "agg_func": {
@@ -1352,7 +1352,7 @@
       "required": true,
       "types": [
         {
-          "type": "aggregate_windowed_function",
+          "type": "aggregate_functions",
           "named": true
         },
         {

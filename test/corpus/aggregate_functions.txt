@@ -18,7 +18,7 @@ SELECT AVG(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (avg_)
                             (all_distinct_expression
                               (expression
@@ -50,7 +50,7 @@ SELECT MAX(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (max_)
                             (all_distinct_expression
                               (expression
@@ -82,7 +82,7 @@ SELECT MIN(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (min_)
                             (all_distinct_expression
                               (expression
@@ -114,7 +114,7 @@ SELECT SUM(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (sum_)
                             (all_distinct_expression
                               (expression
@@ -146,7 +146,7 @@ SELECT STDEV(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (stdev_)
                             (all_distinct_expression
                               (expression
@@ -178,7 +178,7 @@ SELECT STDEVP(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (stdevp_)
                             (all_distinct_expression
                               (expression
@@ -210,7 +210,7 @@ SELECT VAR(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (var_)
                             (all_distinct_expression
                               (expression
@@ -242,7 +242,7 @@ SELECT VARP(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (varp_)
                             (all_distinct_expression
                               (expression
@@ -274,7 +274,7 @@ SELECT COUNT(id) OVER (PARTITION BY baz) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (count_)
                             (all_distinct_expression
                               (expression
@@ -312,7 +312,7 @@ SELECT COUNT_BIG(id) OVER (PARTITION BY baz) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (count_big_)
                             (all_distinct_expression
                               (expression
@@ -350,7 +350,7 @@ SELECT CHECKSUM_AGG(id) FROM FOO
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (checksum_agg_)
                             (all_distinct_expression
                               (expression
@@ -383,7 +383,7 @@ FROM [StackOverflowTiny].[dbo].[Posts]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (approx_count_distinct_)
                             (expression
                               (full_column_name
@@ -417,7 +417,7 @@ FROM [StackOverflowTiny].[dbo].[LinkTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (string_agg_)
                             (expression
                               (full_column_name
@@ -453,7 +453,7 @@ FROM [StackOverflowTiny].[dbo].[LinkTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (string_agg_)
                             (expression
                               (full_column_name

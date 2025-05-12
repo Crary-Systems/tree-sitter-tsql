@@ -346,7 +346,7 @@ digraph Roadmap {
   function_call -> odbc_scalar_function
 
   function_call -> ranking_windowed_function
-  function_call -> aggregate_windowed_function
+  function_call -> aggregate_functions
   function_call -> analytic_windowed_function
   function_call -> built_in_functions
   function_call -> scalar_function_name
@@ -367,18 +367,16 @@ digraph Roadmap {
 
 
   subgraph {
-  aggregate_windowed_function
-    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/aggregate_windowed_function.txt"]
+  aggregate_functions
+    [URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/aggregate_functions.txt"]
 
-  aggregate_windowed_function -> all_distinct_expression
-  aggregate_windowed_function -> over_clause
-  aggregate_windowed_function -> expression
-  aggregate_windowed_function -> expression_list_
+  aggregate_functions -> all_distinct_expression
+  aggregate_functions -> over_clause
+  aggregate_functions -> expression
+  aggregate_functions -> expression_list_
 
-  //TODO groupby
-  aggregate_windowed_function -> GROUPING
-  aggregate_windowed_function -> GROUPING_ID
-
+  aggregate_functions -> GROUPING
+  aggregate_functions -> GROUPING_ID
 }
 
   subgraph {

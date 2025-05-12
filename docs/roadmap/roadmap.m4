@@ -59,7 +59,7 @@ digraph Roadmap {
 
   include(grammar/odbc_scalar_function.dot)
 
-  include(grammar/aggregate_windowed_function.dot)
+  include(grammar/aggregate_functions.dot)
   include(grammar/all_distinct_expression.dot)
   include(grammar/groupby.dot)
   include(grammar/GROUPING.dot)

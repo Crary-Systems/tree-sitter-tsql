@@ -19,7 +19,7 @@ FROM [StackOverflowTiny].[dbo].[PostTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (avg_)
                             (all_distinct_expression
                               (all_)
@@ -55,7 +55,7 @@ FROM [StackOverflowTiny].[dbo].[PostTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (avg_)
                             (all_distinct_expression
                               (distinct_)

@@ -19,7 +19,7 @@ FROM [StackOverflowTiny].[dbo].[LinkTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (sum_)
                             (all_distinct_expression
                               (expression
@@ -63,7 +63,7 @@ FROM [StackOverflowTiny].[dbo].[PostTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (sum_)
                             (all_distinct_expression
                               (expression

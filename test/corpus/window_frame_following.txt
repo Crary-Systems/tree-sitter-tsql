@@ -19,7 +19,7 @@ FROM [StackOverflowTiny].[dbo].[PostTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (sum_)
                             (all_distinct_expression
                               (expression
@@ -46,6 +46,7 @@ window_frame_following decimal NEED AGGREGATEWINDOW
 Select SUM(id) OVER (ROWS BETWEEN CURRENT ROW AND 10 FOLLOWING)
 FROM [StackOverflowTiny].[dbo].[PostTypes]
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -60,7 +61,7 @@ FROM [StackOverflowTiny].[dbo].[PostTypes]
                     (expression_elem
                       (expression
                         (function_call
-                          (aggregate_windowed_function
+                          (aggregate_functions
                             (sum_)
                             (all_distinct_expression
                               (expression
