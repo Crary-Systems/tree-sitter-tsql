@@ -20,7 +20,7 @@ module.exports = {
       ,optional($.over_clause))
 
     ,seq($.approx_count_distinct_,parens($.expression))
-    ,seq($.string_agg_,parens($.expression,token(','), $.seperator))
+    ,seq($.string_agg_,parens($.expression,token(','), $.seperator)) //TODO move to String functions
     ,seq(
       field('cnt', choice($.count_, $.count_big_))
       ,parens(choice($.asterisk, $.all_distinct_expression))
@@ -29,8 +29,13 @@ module.exports = {
     ,seq($.checksum_agg_, parens($.all_distinct_expression))
     //,seq($.GROUPING_, parens($.expression)) --TODO GROUPBY
     //,seq($.GROUPING_ID, parens($.expression_list_) --TODO GROUPBY
+
+    ,seq($.approx_percentile_cont_,parens($.expression),$.within_group_,parens($.order_by_, $.order_by_expression))
   ),
 
+  order_by_: $ => token(/ORDER BY/i),
+  approx_percentile_cont_: $ => token(/APPROX_PERCENTILE_CONT/i),
+  within_group_: $ => token(/WITHIN GROUP/i),
   string_agg_: $ => token(/STRING_AGG/i),
   approx_count_distinct_: $ => token(/APPROX_COUNT_DISTINCT/i),
   checksum_agg_: $ => token(/CHECKSUM_AGG/i),

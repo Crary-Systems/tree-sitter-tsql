@@ -4755,6 +4755,94 @@
               ]
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "approx_percentile_cont_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "within_group_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "order_by_"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "order_by_expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "order_by_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "ORDER BY",
+        "flags": "i"
+      }
+    },
+    "approx_percentile_cont_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "APPROX_PERCENTILE_CONT",
+        "flags": "i"
+      }
+    },
+    "within_group_": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "WITHIN",
+            "flags": "i"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "GROUP",
+            "flags": "i"
+          }
         }
       ]
     },
@@ -5587,27 +5675,6 @@
         "value": "OVER",
         "flags": "i"
       }
-    },
-    "within_group_": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "WITHIN",
-            "flags": "i"
-          }
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "GROUP",
-            "flags": "i"
-          }
-        }
-      ]
     },
     "percentile_cont_": {
       "type": "TOKEN",
