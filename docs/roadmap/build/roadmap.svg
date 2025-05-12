@@ -921,8 +921,11 @@
 <!-- hierarchyid_static_method -->
 <g id="node66" class="node">
 <title>hierarchyid_static_method</title>
-<ellipse fill="none" stroke="red" cx="4536.19" cy="-378" rx="143.8" ry="18"/>
+<g id="a_node66"><a xlink:href="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/hierarchyid_static_method.txt" xlink:title="hierarchyid_static_method">
+<ellipse fill="lightgreen" stroke="lightgreen" cx="4536.19" cy="-378" rx="143.8" ry="18"/>
 <text text-anchor="middle" x="4536.19" y="-373.32" font-family="Times,serif" font-size="14.00">hierarchyid_static_method</text>
+</a>
+</g>
 </g>
 <!-- function_call&#45;&gt;hierarchyid_static_method -->
 <g id="edge64" class="edge">
