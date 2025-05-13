@@ -4,6 +4,7 @@ const odbc_scalar_functions = require('./grammar/functions/odbc_scalar_functions
 const aggregate_window_functions = require('./grammar/functions/aggregate_functions.js');
 const analytic_windowed_functions = require('./grammar/functions/analytic_windowed_functions.js');
 const bit_manipulation_functions = require('./grammar/functions/bit_manipulation_functions.js');
+const collation_functions = require('./grammar/functions/collation_functions.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -361,6 +362,7 @@ module.exports = grammar({
       //TODO freetext_function
       ,$.odbc_scalar_functions
       ,$.bit_manipulation_functions
+      ,$.collation_functions,
     ),
 
     ...built_in_functions,
@@ -368,6 +370,7 @@ module.exports = grammar({
     ...aggregate_window_functions,
     ...analytic_windowed_functions,
     ...bit_manipulation_functions,
+    ...collation_functions,
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(
       seq($.hierachyid_, DOUBLE_COLON, choice(

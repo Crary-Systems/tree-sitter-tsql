@@ -92,6 +92,7 @@ digraph Roadmap {
   include(grammar/primitive_constant.dot)
   include(grammar/parameter.dot)
   include(grammar/bit_manipulation_functions.dot)
+  include(grammar/collation_functions.dot)
 
   include(grammar/batch_level_statement.dot)
 }

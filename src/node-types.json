@@ -843,6 +843,29 @@
     }
   },
   {
+    "type": "collation_functions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "collationproperty_",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "tertiary_weights_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "column_alias",
     "named": true,
     "fields": {},
@@ -1452,6 +1475,10 @@
         },
         {
           "type": "checksum_",
+          "named": true
+        },
+        {
+          "type": "collation_functions",
           "named": true
         },
         {
@@ -2639,6 +2666,10 @@
     "named": true
   },
   {
+    "type": "collationproperty_",
+    "named": true
+  },
+  {
     "type": "columnproperty_",
     "named": true
   },
@@ -2992,6 +3023,10 @@
   },
   {
     "type": "sum_",
+    "named": true
+  },
+  {
+    "type": "tertiary_weights_",
     "named": true
   },
   {

@@ -13,5 +13,6 @@ digraph {
   function_call -> hierarchyid_static_method
   function_call -> expression_list_
   function_call -> bit_manipulation_functions
+  function_call -> collation_functions
 
 }

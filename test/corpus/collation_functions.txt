@@ -1,0 +1,57 @@
+=================================================
+collation COLLATIONPROPERTY
+=================================================
+SELECT COLLATIONPROPERTY('Traditional_Spanish_CS_AS_KS_WS', 'CodePage')
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (collation_functions
+                            (collationproperty_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
+
+=================================================
+collation TERTIARY_WEIGHTS
+=================================================
+SELECT TERTIARY_WEIGHTS('foo')
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (collation_functions
+                            (tertiary_weights_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))))))))))))))))
