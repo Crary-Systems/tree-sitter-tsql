@@ -2159,6 +2159,10 @@
         {
           "type": "SYMBOL",
           "name": "collation_functions"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "configuration_functions"
         }
       ]
     },
@@ -5943,6 +5947,176 @@
         "type": "PATTERN",
         "value": "TERTIARY_WEIGHTS",
         "flags": "i"
+      }
+    },
+    "configuration_functions": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "datefirst_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dbts_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "langid_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "language_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lock_timeout_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "max_connections_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "max_precision_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nestlevel_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "options_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "remserver_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "servername_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "servicename_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "spid_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "textsize_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "version_"
+        }
+      ]
+    },
+    "datefirst_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@DATEFIRST"
+      }
+    },
+    "dbts_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@DBTS"
+      }
+    },
+    "langid_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@LANGID"
+      }
+    },
+    "language_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@LANGUAGE"
+      }
+    },
+    "lock_timeout_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@LOCK_TIMEOUT"
+      }
+    },
+    "max_connections_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@MAX_CONNECTIONS"
+      }
+    },
+    "max_precision_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@MAX_PRECISION"
+      }
+    },
+    "nestlevel_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@NESTLEVEL"
+      }
+    },
+    "options_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@OPTIONS"
+      }
+    },
+    "remserver_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@REMSERVER"
+      }
+    },
+    "servername_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@SERVERNAME"
+      }
+    },
+    "servicename_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@SERVICENAME"
+      }
+    },
+    "spid_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@SPID"
+      }
+    },
+    "textsize_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@TEXTSIZE"
+      }
+    },
+    "version_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@@VERSION"
       }
     },
     "hierarchyid_static_method": {

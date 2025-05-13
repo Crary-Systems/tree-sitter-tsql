@@ -356,6 +356,7 @@ digraph Roadmap {
   function_call -> expression_list_
   function_call -> bit_manipulation_functions
   function_call -> collation_functions
+  function_call -> configuration_functions
 
 }
 
@@ -597,6 +598,13 @@ digraph Roadmap {
     [style=filled
     ,color=lightgreen
     ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/collation_functions.txt"]
+}
+
+  subgraph {
+  configuration_functions
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/configuration_functions.txt"]
 }
 
 

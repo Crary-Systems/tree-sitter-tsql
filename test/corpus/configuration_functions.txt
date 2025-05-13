@@ -1,0 +1,344 @@
+=================================================
+Configuration Function DATEFIRST
+=================================================
+SELECT @@DATEFIRST;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (datefirst_)))))))))))))))
+
+=================================================
+Configuration Function DBTS
+=================================================
+SELECT @@DBTS;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (dbts_)))))))))))))))
+
+=================================================
+Configuration Function LANGID
+=================================================
+SELECT @@LANGID;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (langid_)))))))))))))))
+
+=================================================
+Configuration Function LANGUAGE
+=================================================
+SELECT @@LANGUAGE;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (language_)))))))))))))))
+
+=================================================
+Configuration Function LOCK_TIMEOUT
+=================================================
+SELECT @@LOCK_TIMEOUT;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (lock_timeout_)))))))))))))))
+
+=================================================
+Configuration Function MAX_CONNECTIONS
+=================================================
+SELECT @@MAX_CONNECTIONS;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (max_connections_)))))))))))))))
+
+=================================================
+Configuration Function MAX_PRECISION
+=================================================
+SELECT @@MAX_PRECISION;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (max_precision_)))))))))))))))
+
+=================================================
+Configuration Function NESTLEVEL
+=================================================
+SELECT @@NESTLEVEL;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (nestlevel_)))))))))))))))
+
+=================================================
+Configuration Function OPTIONS
+=================================================
+SELECT @@OPTIONS;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (options_)))))))))))))))
+
+=================================================
+Configuration Function REMSERVER
+=================================================
+SELECT @@REMSERVER;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (remserver_)))))))))))))))
+
+=================================================
+Configuration Function SERVERNAME
+=================================================
+SELECT @@SERVERNAME;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (servername_)))))))))))))))
+
+=================================================
+Configuration Function SERVICENAME
+=================================================
+SELECT @@SERVICENAME;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (servicename_)))))))))))))))
+
+=================================================
+Configuration Function SPID
+=================================================
+SELECT @@SPID;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (spid_)))))))))))))))
+
+=================================================
+Configuration Function TEXTSIZE
+=================================================
+SELECT @@TEXTSIZE;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (textsize_)))))))))))))))
+
+=================================================
+Configuration Function VERSION
+=================================================
+SELECT @@VERSION;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (configuration_functions
+                            (version_)))))))))))))))

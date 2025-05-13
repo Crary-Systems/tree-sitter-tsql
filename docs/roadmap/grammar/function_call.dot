@@ -14,5 +14,6 @@ digraph {
   function_call -> expression_list_
   function_call -> bit_manipulation_functions
   function_call -> collation_functions
+  function_call -> configuration_functions
 
 }

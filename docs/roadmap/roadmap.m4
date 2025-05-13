@@ -93,6 +93,7 @@ digraph Roadmap {
   include(grammar/parameter.dot)
   include(grammar/bit_manipulation_functions.dot)
   include(grammar/collation_functions.dot)
+  include(grammar/configuration_functions.dot)
 
   include(grammar/batch_level_statement.dot)
 }

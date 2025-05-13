@@ -885,6 +885,77 @@
     }
   },
   {
+    "type": "configuration_functions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "datefirst_",
+          "named": true
+        },
+        {
+          "type": "dbts_",
+          "named": true
+        },
+        {
+          "type": "langid_",
+          "named": true
+        },
+        {
+          "type": "language_",
+          "named": true
+        },
+        {
+          "type": "lock_timeout_",
+          "named": true
+        },
+        {
+          "type": "max_connections_",
+          "named": true
+        },
+        {
+          "type": "max_precision_",
+          "named": true
+        },
+        {
+          "type": "nestlevel_",
+          "named": true
+        },
+        {
+          "type": "options_",
+          "named": true
+        },
+        {
+          "type": "remserver_",
+          "named": true
+        },
+        {
+          "type": "servername_",
+          "named": true
+        },
+        {
+          "type": "servicename_",
+          "named": true
+        },
+        {
+          "type": "spid_",
+          "named": true
+        },
+        {
+          "type": "textsize_",
+          "named": true
+        },
+        {
+          "type": "version_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "constant",
     "named": true,
     "fields": {}
@@ -1479,6 +1550,10 @@
         },
         {
           "type": "collation_functions",
+          "named": true
+        },
+        {
+          "type": "configuration_functions",
           "named": true
         },
         {
@@ -2710,6 +2785,10 @@
     "named": true
   },
   {
+    "type": "datefirst_",
+    "named": true
+  },
+  {
     "type": "dayname_",
     "named": true
   },
@@ -2727,6 +2806,10 @@
   },
   {
     "type": "db_name_",
+    "named": true
+  },
+  {
+    "type": "dbts_",
     "named": true
   },
   {
@@ -2866,6 +2949,14 @@
     "named": true
   },
   {
+    "type": "langid_",
+    "named": true
+  },
+  {
+    "type": "language_",
+    "named": true
+  },
+  {
     "type": "last_value_",
     "named": true
   },
@@ -2886,7 +2977,19 @@
     "named": true
   },
   {
+    "type": "lock_timeout_",
+    "named": true
+  },
+  {
     "type": "max_",
+    "named": true
+  },
+  {
+    "type": "max_connections_",
+    "named": true
+  },
+  {
+    "type": "max_precision_",
     "named": true
   },
   {
@@ -2899,6 +3002,10 @@
   },
   {
     "type": "monthname_",
+    "named": true
+  },
+  {
+    "type": "nestlevel_",
     "named": true
   },
   {
@@ -2935,6 +3042,10 @@
   },
   {
     "type": "octet_length_",
+    "named": true
+  },
+  {
+    "type": "options_",
     "named": true
   },
   {
@@ -2978,6 +3089,10 @@
     "named": true
   },
   {
+    "type": "remserver_",
+    "named": true
+  },
+  {
     "type": "right_",
     "named": true
   },
@@ -3002,7 +3117,19 @@
     "named": true
   },
   {
+    "type": "servername_",
+    "named": true
+  },
+  {
+    "type": "servicename_",
+    "named": true
+  },
+  {
     "type": "set_bit_",
+    "named": true
+  },
+  {
+    "type": "spid_",
     "named": true
   },
   {
@@ -3030,6 +3157,10 @@
     "named": true
   },
   {
+    "type": "textsize_",
+    "named": true
+  },
+  {
     "type": "tostring_",
     "named": true
   },
@@ -3043,6 +3174,10 @@
   },
   {
     "type": "varp_",
+    "named": true
+  },
+  {
+    "type": "version_",
     "named": true
   },
   {
