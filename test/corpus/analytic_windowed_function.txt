@@ -18,7 +18,7 @@ SELECT FIRST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (first_value_)
                             (expression
                               (full_column_name
@@ -60,7 +60,7 @@ SELECT LAST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (last_value_)
                             (expression
                               (full_column_name
@@ -87,6 +87,7 @@ analytic lag 1
 =====================================
 SELECT LAST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -101,7 +102,7 @@ SELECT LAST_VALUE(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (last_value_)
                             (expression
                               (full_column_name
@@ -128,6 +129,7 @@ analytic LAG IN
 =====================================
 SELECT LAG(foo,1 ,0) IGNORE NULLS OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -142,7 +144,7 @@ SELECT LAG(foo,1 ,0) IGNORE NULLS OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (lag_)
                             (lag_lead_args
                               (expression
@@ -179,6 +181,7 @@ analytic LEAD RESPECT
 =====================================
 SELECT LEAD(foo,1) RESPECT NULLS OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -193,7 +196,7 @@ SELECT LEAD(foo,1) RESPECT NULLS OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (lead_)
                             (lag_lead_args
                               (expression
@@ -226,6 +229,7 @@ analytic LAGLEAD0
 =====================================
 SELECT LEAD(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -240,7 +244,7 @@ SELECT LEAD(foo) OVER (PARTITION BY BAZ ORDER BY BAR) FROM QUUX
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (lead_)
                             (lag_lead_args
                               (expression
@@ -269,6 +273,7 @@ analytic CUME_DIST
 SELECT id, CUME_DIST() OVER (PARTITION BY Foo ORDER BY baz)
 FROM BAR
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -288,7 +293,7 @@ FROM BAR
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (cume_dist_)
                             (over_)
                             (partition_by_clause
@@ -313,6 +318,7 @@ analytic PERCENT_RANK
 SELECT id, PERCENT_RANK() OVER (ORDER BY baz)
 FROM BAR
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -332,7 +338,7 @@ FROM BAR
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (percent_rank_)
                             (over_)
                             (order_by_clause
@@ -352,6 +358,7 @@ analytic PERCENTILE_CONT
 SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY FOO) OVER (PARTITION BY BAR)
 FROM BAZ
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -366,7 +373,7 @@ FROM BAZ
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (percentile_cont_)
                             (expression
                               (primitive_expression
@@ -396,6 +403,7 @@ analytic PERCENTILE_DISC
 SELECT PERCENTILE_DISC(0.5) WITHIN GROUP (ORDER BY FOO) OVER ()
 FROM BAZ
 ---
+
 (tsql_file
   (batch
     (sql_clauses
@@ -410,7 +418,7 @@ FROM BAZ
                     (expression_elem
                       (expression
                         (function_call
-                          (analytic_windowed_function
+                          (analytic_windowed_functions
                             (percentile_disc_)
                             (expression
                               (primitive_expression

@@ -2,6 +2,7 @@ const precedences = require('./grammar/precedences.js');
 const built_in_functions = require('./grammar/builtins.js');
 const odbc_scalar_functions = require('./grammar/functions/odbc_scalar_functions.js');
 const aggregate_window_functions = require('./grammar/functions/aggregate_functions.js');
+const analytic_windowed_functions = require('./grammar/functions/analytic_windowed_functions.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -343,7 +344,7 @@ module.exports = grammar({
     function_call: $ => choice(
       $.ranking_windowed_function
       ,$.aggregate_functions
-      ,$.analytic_windowed_function
+      ,$.analytic_windowed_functions
 
       ,$.built_in_functions
       //TODO built_in_function ~~200 rules https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L4291
@@ -363,6 +364,7 @@ module.exports = grammar({
     ...built_in_functions,
     ...odbc_scalar_functions,
     ...aggregate_window_functions,
+    ...analytic_windowed_functions,
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(
       seq($.hierachyid_, DOUBLE_COLON, choice(

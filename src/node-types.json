@@ -166,7 +166,7 @@
     }
   },
   {
-    "type": "analytic_windowed_function",
+    "type": "analytic_windowed_functions",
     "named": true,
     "fields": {},
     "children": {
@@ -1388,7 +1388,7 @@
           "named": true
         },
         {
-          "type": "analytic_windowed_function",
+          "type": "analytic_windowed_functions",
           "named": true
         },
         {
