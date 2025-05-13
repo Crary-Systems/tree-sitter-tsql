@@ -354,6 +354,7 @@ digraph Roadmap {
   function_call -> partition_function
   function_call -> hierarchyid_static_method
   function_call -> expression_list_
+  function_call -> bit_manipulation_functions
 
 }
 
@@ -581,6 +582,13 @@ digraph Roadmap {
     [style=filled
     ,color=lightgreen
     ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/parameter.txt"]
+}
+
+  subgraph {
+  bit_manipulation_functions
+    [style=filled
+    ,color=lightgreen
+    ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/bit_manipulation_functions.txt"]
 }
 
 

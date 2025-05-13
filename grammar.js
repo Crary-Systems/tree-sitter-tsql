@@ -3,6 +3,7 @@ const built_in_functions = require('./grammar/builtins.js');
 const odbc_scalar_functions = require('./grammar/functions/odbc_scalar_functions.js');
 const aggregate_window_functions = require('./grammar/functions/aggregate_functions.js');
 const analytic_windowed_functions = require('./grammar/functions/analytic_windowed_functions.js');
+const bit_manipulation_functions = require('./grammar/functions/bit_manipulation_functions.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -359,12 +360,14 @@ module.exports = grammar({
       ,$.hierarchyid_static_method
       //TODO freetext_function
       ,$.odbc_scalar_functions
+      ,$.bit_manipulation_functions
     ),
 
     ...built_in_functions,
     ...odbc_scalar_functions,
     ...aggregate_window_functions,
     ...analytic_windowed_functions,
+    ...bit_manipulation_functions,
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(
       seq($.hierachyid_, DOUBLE_COLON, choice(
@@ -421,50 +424,6 @@ module.exports = grammar({
     left_: $ => token(/LEFT/i),
     binary_checksum_: $ => token(/BINARY_CHECKSUM/i),
     checksum_: $ => token(/CHECKSUM/i),
-
-    //https://docs.microsoft.com/en-us/sql/t-sql/functions/analytic-functions-transact-sql
-    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5019
-    analytic_windowed_function: $ => choice(
-      seq(choice($.first_value_,$.last_value_), parens($.expression), $.over_clause)
-
-      ,seq(choice($.lag_, $.lead_)
-        ,$.lag_lead_args
-        ,optional(choice($.ignore_nulls_, $.respect_nulls_))
-        ,$.over_clause)
-
-      ,seq(choice($.cume_dist_, $.percent_rank_)
-        ,token('('),token(')')
-        ,$.over_
-        ,parens(seq(
-          optional($.partition_by_clause)
-          ,$.order_by_clause)))
-
-      ,seq(choice($.percentile_cont_, $.percentile_disc_), parens($.expression)
-        ,$.within_group_, parens($.order_by_clause), $.over_, parens(optional($.partition_by_clause)))
-    ),
-
-    over_: $ => token(/OVER/i),
-    within_group_: $ => seq(token(/WITHIN/i), token(/GROUP/i)),
-    percentile_cont_: $ => token(/PERCENTILE_CONT/i),
-    percentile_disc_: $ => token(/PERCENTILE_DISC/i),
-
-
-    cume_dist_: $ => token(/CUME_DIST/i),
-    percent_rank_: $ => token(/PERCENT_RANK/i),
-
-    lag_lead_args: $ => parens(
-      seq($.expression,
-        optional(seq(token(','), field('offset', $.expression),
-          optional(seq(token(','), field('default', $.expression))))))
-    ),
-
-    ignore_nulls_: $ => seq(token(/IGNORE/i), token(/NULLS/i)),
-    respect_nulls_: $ => seq(token(/RESPECT/i), token(/NULLS/i)),
-    lag_: $ => token(/LAG/i),
-    lead_: $ => token(/LEAD/i),
-
-    first_value_: $ => token(/FIRST_VALUE/i),
-    last_value_: $ => token(/LAST_VALUE/i),
 
     local_id_: $ => LOCAL_ID,
     seperator: $ => choice(

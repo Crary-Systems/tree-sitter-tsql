@@ -1,0 +1,247 @@
+=====================================
+Bit Manipulation LEFT_SHIFT
+=====================================
+SELECT LEFT_SHIFT(5,2);
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (left_shift_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation LEFT_SHIFT OP
+=====================================
+SELECT 5 << 2;
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (left_shift_operator_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation RIGHT_SHIFT
+=====================================
+SELECT RIGHT_SHIFT(5,2)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (right_shift_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation RIGHT_SHIFT OP
+=====================================
+SELECT 5 >> 2
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (right_shift_operator_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation Bit Count
+=====================================
+SELECT BIT_COUNT(5)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (bit_count_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation GET_BIT
+=====================================
+SELECT GET_BIT(5,2)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (get_bit_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation SET_BIT
+=====================================
+SELECT SET_BIT(5,2)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (set_bit_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))
+
+=====================================
+Bit Manipulation SET_BIT VALUE
+=====================================
+SELECT SET_BIT(5,2,1)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (bit_manipulation_functions
+                            (set_bit_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (decimal_))))))))))))))))))

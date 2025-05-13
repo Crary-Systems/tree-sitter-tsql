@@ -312,6 +312,49 @@
     }
   },
   {
+    "type": "bit_manipulation_functions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bit_count_",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "get_bit_",
+          "named": true
+        },
+        {
+          "type": "left_shift_",
+          "named": true
+        },
+        {
+          "type": "left_shift_operator_",
+          "named": true
+        },
+        {
+          "type": "right_shift_",
+          "named": true
+        },
+        {
+          "type": "right_shift_operator_",
+          "named": true
+        },
+        {
+          "type": "set_bit_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "built_in_functions",
     "named": true,
     "fields": {
@@ -1397,6 +1440,10 @@
         },
         {
           "type": "binary_checksum_",
+          "named": true
+        },
+        {
+          "type": "bit_manipulation_functions",
           "named": true
         },
         {
@@ -2568,6 +2615,10 @@
     "named": true
   },
   {
+    "type": "bit_count_",
+    "named": true
+  },
+  {
     "type": "bit_length_",
     "named": true
   },
@@ -2720,6 +2771,10 @@
     "named": true
   },
   {
+    "type": "get_bit_",
+    "named": true
+  },
+  {
     "type": "get_descendant_",
     "named": true
   },
@@ -2789,6 +2844,14 @@
   },
   {
     "type": "left_",
+    "named": true
+  },
+  {
+    "type": "left_shift_",
+    "named": true
+  },
+  {
+    "type": "left_shift_operator_",
     "named": true
   },
   {
@@ -2888,6 +2951,14 @@
     "named": true
   },
   {
+    "type": "right_shift_",
+    "named": true
+  },
+  {
+    "type": "right_shift_operator_",
+    "named": true
+  },
+  {
     "type": "row_number_",
     "named": true
   },
@@ -2897,6 +2968,10 @@
   },
   {
     "type": "select",
+    "named": true
+  },
+  {
+    "type": "set_bit_",
     "named": true
   },
   {
