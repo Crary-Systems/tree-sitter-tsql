@@ -6,6 +6,7 @@ const analytic_windowed_functions = require('./grammar/functions/analytic_window
 const bit_manipulation_functions = require('./grammar/functions/bit_manipulation_functions.js');
 const collation_functions = require('./grammar/functions/collation_functions.js');
 const configuration_functions = require('./grammar/functions/configuration_functions.js');
+const conversion_functions = require('./grammar/functions/conversion_functions.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -365,6 +366,7 @@ module.exports = grammar({
       ,$.bit_manipulation_functions
       ,$.collation_functions
       ,$.configuration_functions
+      ,$.conversion_functions
     ),
 
     ...built_in_functions,
@@ -374,7 +376,14 @@ module.exports = grammar({
     ...bit_manipulation_functions,
     ...collation_functions,
     ...configuration_functions,
+    ...conversion_functions,
 
+    //TODO
+    //https://msdn.microsoft.com/en-us/library/ms187752.aspx
+    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5260-L5267
+    data_type: $ => choice(
+      token(/VARCHAR/i),
+    ),
 
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(

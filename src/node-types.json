@@ -961,6 +961,38 @@
     "fields": {}
   },
   {
+    "type": "conversion_functions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "AS",
+          "named": true
+        },
+        {
+          "type": "cast_",
+          "named": true
+        },
+        {
+          "type": "data_type",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "data_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "decimal_",
     "named": true,
     "fields": {}
@@ -1554,6 +1586,10 @@
         },
         {
           "type": "configuration_functions",
+          "named": true
+        },
+        {
+          "type": "conversion_functions",
           "named": true
         },
         {
@@ -2722,6 +2758,10 @@
   },
   {
     "type": "bit_length_",
+    "named": true
+  },
+  {
+    "type": "cast_",
     "named": true
   },
   {

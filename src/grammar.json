@@ -2163,6 +2163,10 @@
         {
           "type": "SYMBOL",
           "name": "configuration_functions"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "conversion_functions"
         }
       ]
     },
@@ -6119,6 +6123,106 @@
         "value": "@@VERSION"
       }
     },
+    "conversion_functions": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cast_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "AS"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "data_type"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "cast_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "CAST",
+        "flags": "i"
+      }
+    },
+    "convert_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "CONVERT",
+        "flags": "i"
+      }
+    },
+    "parse_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "PARSE",
+        "flags": "i"
+      }
+    },
+    "try_cast_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "TRY_CAST",
+        "flags": "i"
+      }
+    },
+    "try_convert_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "TRY_CONVERT",
+        "flags": "i"
+      }
+    },
+    "try_parse_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "TRY_PARSE",
+        "flags": "i"
+      }
+    },
+    "data_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "VARCHAR",
+            "flags": "i"
+          }
+        }
+      ]
+    },
     "hierarchyid_static_method": {
       "type": "CHOICE",
       "members": [
@@ -6408,14 +6512,6 @@
       "content": {
         "type": "PATTERN",
         "value": "ToString",
-        "flags": "i"
-      }
-    },
-    "parse_": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "PARSE",
         "flags": "i"
       }
     },

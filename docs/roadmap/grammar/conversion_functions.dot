@@ -1,0 +1,6 @@
+digraph {
+  conversion_functions
+
+  conversion_functions -> data_type
+
+}
