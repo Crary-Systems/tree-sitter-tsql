@@ -7,6 +7,7 @@ const bit_manipulation_functions = require('./grammar/functions/bit_manipulation
 const collation_functions = require('./grammar/functions/collation_functions.js');
 const configuration_functions = require('./grammar/functions/configuration_functions.js');
 const conversion_functions = require('./grammar/functions/conversion_functions.js');
+const data_type = require('./grammar/data_types.js');
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -377,13 +378,7 @@ module.exports = grammar({
     ...collation_functions,
     ...configuration_functions,
     ...conversion_functions,
-
-    //TODO
-    //https://msdn.microsoft.com/en-us/library/ms187752.aspx
-    //https://github.com/antlr/grammars-v4/blob/master/sql/tsql/TSqlParser.g4#L5260-L5267
-    data_type: $ => choice(
-      token(/VARCHAR/i),
-    ),
+    ...data_type,
 
     //https://learn.microsoft.com/en-us/sql/t-sql/data-types/hierarchyid-data-type-method-reference?view=sql-server-ver16
     hierarchyid_static_method: $ => choice(

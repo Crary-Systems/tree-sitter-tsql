@@ -990,7 +990,53 @@
   {
     "type": "data_type",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bigint_",
+          "named": true
+        },
+        {
+          "type": "bit_",
+          "named": true
+        },
+        {
+          "type": "decimal_",
+          "named": true
+        },
+        {
+          "type": "decimalty_",
+          "named": true
+        },
+        {
+          "type": "int_",
+          "named": true
+        },
+        {
+          "type": "moneyty_",
+          "named": true
+        },
+        {
+          "type": "numeric_",
+          "named": true
+        },
+        {
+          "type": "smallint_",
+          "named": true
+        },
+        {
+          "type": "smallmoney_",
+          "named": true
+        },
+        {
+          "type": "tinyint_",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "decimal_",
@@ -2745,11 +2791,19 @@
     "named": true
   },
   {
+    "type": "bigint_",
+    "named": true
+  },
+  {
     "type": "binary",
     "named": true
   },
   {
     "type": "binary_checksum_",
+    "named": true
+  },
+  {
+    "type": "bit_",
     "named": true
   },
   {
@@ -2850,6 +2904,10 @@
   },
   {
     "type": "dbts_",
+    "named": true
+  },
+  {
+    "type": "decimalty_",
     "named": true
   },
   {
@@ -2981,6 +3039,10 @@
     "named": true
   },
   {
+    "type": "int_",
+    "named": true
+  },
+  {
     "type": "is_descendant_of_",
     "named": true
   },
@@ -3041,6 +3103,10 @@
     "named": true
   },
   {
+    "type": "moneyty_",
+    "named": true
+  },
+  {
     "type": "monthname_",
     "named": true
   },
@@ -3054,6 +3120,10 @@
   },
   {
     "type": "null_",
+    "named": true
+  },
+  {
+    "type": "numeric_",
     "named": true
   },
   {
@@ -3169,6 +3239,14 @@
     "named": true
   },
   {
+    "type": "smallint_",
+    "named": true
+  },
+  {
+    "type": "smallmoney_",
+    "named": true
+  },
+  {
     "type": "spid_",
     "named": true
   },
@@ -3198,6 +3276,10 @@
   },
   {
     "type": "textsize_",
+    "named": true
+  },
+  {
+    "type": "tinyint_",
     "named": true
   },
   {

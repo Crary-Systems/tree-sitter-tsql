@@ -1,7 +1,7 @@
 =================================================
-Datatype Varchar
+Datatype Exact Numerics tinyint
 =================================================
-SELECT CAST('a' as VARCHAR)
+SELECT CAST('3' as tinyint)
 ---
 
 (tsql_file
@@ -25,4 +25,281 @@ SELECT CAST('a' as VARCHAR)
                                 (primitive_constant
                                   (string_lit))))
                             (AS)
-                            (data_type)))))))))))))))
+                            (data_type
+                              (tinyint_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics smallint
+=================================================
+SELECT CAST('3' as smallint)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (smallint_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics int
+=================================================
+SELECT CAST('3' as int)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (int_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics bigint
+=================================================
+SELECT CAST('3' as bigint)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (bigint_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics DECIMAL
+=================================================
+SELECT CAST('1' as DECIMAL(16))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (decimalty_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics DECIMAL PRECISION
+=================================================
+SELECT CAST('1' as DECIMAL(16,2))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (decimalty_)
+                              (decimal_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Numeric
+=================================================
+SELECT CAST('1' as NUMERIC(16))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (numeric_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Numeric Precision
+=================================================
+SELECT CAST('1' as NUMERIC(16,2))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (numeric_)
+                              (decimal_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Money
+=================================================
+SELECT CAST('1' as MONEY)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (moneyty_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Smallmoney
+=================================================
+SELECT CAST('1' as SMALLMONEY)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (smallmoney_))))))))))))))))

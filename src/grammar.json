@@ -6214,6 +6214,134 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "tinyint_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smallint_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "int_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bigint_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bit_"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "decimalty_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "decimal_"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "TOKEN",
+                          "content": {
+                            "type": "STRING",
+                            "value": ","
+                          }
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "decimal_"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "numeric_"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "decimal_"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "TOKEN",
+                          "content": {
+                            "type": "STRING",
+                            "value": ","
+                          }
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "decimal_"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "moneyty_"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smallmoney_"
+        },
+        {
           "type": "TOKEN",
           "content": {
             "type": "PATTERN",
@@ -6222,6 +6350,78 @@
           }
         }
       ]
+    },
+    "tinyint_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "TINYINT",
+        "flags": "i"
+      }
+    },
+    "smallint_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "SMALLINT",
+        "flags": "i"
+      }
+    },
+    "int_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "INT",
+        "flags": "i"
+      }
+    },
+    "bigint_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "BIGINT",
+        "flags": "i"
+      }
+    },
+    "bit_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "BIT",
+        "flags": "i"
+      }
+    },
+    "decimalty_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "DECIMAL",
+        "flags": "i"
+      }
+    },
+    "numeric_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "NUMERIC",
+        "flags": "i"
+      }
+    },
+    "moneyty_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "MONEY",
+        "flags": "i"
+      }
+    },
+    "smallmoney_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "SMALLMONEY",
+        "flags": "i"
+      }
     },
     "hierarchyid_static_method": {
       "type": "CHOICE",
