@@ -95,6 +95,7 @@ digraph Roadmap {
   include(grammar/collation_functions.dot)
   include(grammar/configuration_functions.dot)
   include(grammar/conversion_functions.dot)
+  include(grammar/data_type.dot)
 
   include(grammar/batch_level_statement.dot)
 }

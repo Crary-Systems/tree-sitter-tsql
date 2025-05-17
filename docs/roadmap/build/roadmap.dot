@@ -341,6 +341,7 @@ digraph Roadmap {
 }
 
   subgraph {
+
   function_call
 
   function_call -> odbc_scalar_function
@@ -357,7 +358,7 @@ digraph Roadmap {
   function_call -> bit_manipulation_functions
   function_call -> collation_functions
   function_call -> configuration_functions
-
+  function_call -> conversion_functions
 }
 
 
@@ -605,6 +606,17 @@ digraph Roadmap {
     [style=filled
     ,color=lightgreen
     ,URL="https://github.com/Crary-Systems/tree-sitter-tsql/blob/main/test/corpus/configuration_functions.txt"]
+}
+
+  subgraph {
+  conversion_functions
+
+  conversion_functions -> data_type
+
+}
+
+  subgraph {
+  data_type
 }
 
 

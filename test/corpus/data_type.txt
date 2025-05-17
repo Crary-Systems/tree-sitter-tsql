@@ -303,3 +303,125 @@ SELECT CAST('1' as SMALLMONEY)
                             (AS)
                             (data_type
                               (smallmoney_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Float
+=================================================
+SELECT CAST('1' as FLOAT)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (floatty_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Float Opt
+=================================================
+SELECT CAST('1' as FLOAT(16))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (floatty_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Real
+=================================================
+SELECT CAST('1' as REAL)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (realty_))))))))))))))))
+
+=================================================
+Datatype Exact Numerics Real Opt
+=================================================
+SELECT CAST('1' as REAL(16))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (realty_)
+                              (decimal_))))))))))))))))

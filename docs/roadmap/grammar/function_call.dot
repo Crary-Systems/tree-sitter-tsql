@@ -1,4 +1,5 @@
 digraph {
+
   function_call
 
   function_call -> odbc_scalar_function
@@ -15,5 +16,5 @@ digraph {
   function_call -> bit_manipulation_functions
   function_call -> collation_functions
   function_call -> configuration_functions
-  function_call -> conversion_function
+  function_call -> conversion_functions
 }

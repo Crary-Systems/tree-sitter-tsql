@@ -1012,6 +1012,10 @@
           "named": true
         },
         {
+          "type": "floatty_",
+          "named": true
+        },
+        {
           "type": "int_",
           "named": true
         },
@@ -1021,6 +1025,10 @@
         },
         {
           "type": "numeric_",
+          "named": true
+        },
+        {
+          "type": "realty_",
           "named": true
         },
         {
@@ -2975,6 +2983,10 @@
     "named": true
   },
   {
+    "type": "floatty_",
+    "named": true
+  },
+  {
     "type": "fulltextcatalogproperty_",
     "named": true
   },
@@ -3196,6 +3208,10 @@
   },
   {
     "type": "rank_",
+    "named": true
+  },
+  {
+    "type": "realty_",
     "named": true
   },
   {

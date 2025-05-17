@@ -16,6 +16,10 @@ module.exports = {
     $.moneyty_,
     $.smallmoney_,
 
+    //Approximate numerics
+    seq($.floatty_,optional(parens($.decimal_))),
+    seq($.realty_,optional(parens($.decimal_))),
+
 
     token(/VARCHAR/i), //TODO
 
@@ -33,8 +37,11 @@ module.exports = {
   moneyty_: $ => token(/MONEY/i),
   smallmoney_: $ => token(/SMALLMONEY/i),
 
+  //Approximate numerics
+  floatty_: $ => token(/FLOAT/i),
+  realty_: $ => token(/REAL/i),
+
   /*
-    Approximate numerics
     Date and time
     Character strings
     Unicode character strings

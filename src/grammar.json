@@ -6342,6 +6342,74 @@
           "name": "smallmoney_"
         },
         {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "floatty_"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "("
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "decimal_"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "realty_"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "("
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "decimal_"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "type": "TOKEN",
           "content": {
             "type": "PATTERN",
@@ -6420,6 +6488,22 @@
       "content": {
         "type": "PATTERN",
         "value": "SMALLMONEY",
+        "flags": "i"
+      }
+    },
+    "floatty_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "FLOAT",
+        "flags": "i"
+      }
+    },
+    "realty_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "REAL",
         "flags": "i"
       }
     },
