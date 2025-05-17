@@ -993,7 +993,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "bigint_",
@@ -1001,6 +1001,10 @@
         },
         {
           "type": "bit_",
+          "named": true
+        },
+        {
+          "type": "char_",
           "named": true
         },
         {
@@ -1040,7 +1044,15 @@
           "named": true
         },
         {
+          "type": "text_",
+          "named": true
+        },
+        {
           "type": "tinyint_",
+          "named": true
+        },
+        {
+          "type": "varchar_",
           "named": true
         }
       ]
@@ -2827,6 +2839,10 @@
     "named": true
   },
   {
+    "type": "char_",
+    "named": true
+  },
+  {
     "type": "checksum_",
     "named": true
   },
@@ -3291,6 +3307,10 @@
     "named": true
   },
   {
+    "type": "text_",
+    "named": true
+  },
+  {
     "type": "textsize_",
     "named": true
   },
@@ -3308,6 +3328,10 @@
   },
   {
     "type": "var_",
+    "named": true
+  },
+  {
+    "type": "varchar_",
     "named": true
   },
   {

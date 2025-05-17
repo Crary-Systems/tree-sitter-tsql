@@ -425,3 +425,155 @@ SELECT CAST('1' as REAL(16))
                             (data_type
                               (realty_)
                               (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Character Strings Char
+=================================================
+SELECT CAST('1' as CHAR)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (char_))))))))))))))))
+
+=================================================
+Datatype Exact Character Strings Char Opt
+=================================================
+SELECT CAST('1' as CHAR(3))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (char_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Character Strings Varchar
+=================================================
+SELECT CAST('1' as VARCHAR)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (varchar_))))))))))))))))
+
+=================================================
+Datatype Exact Character Strings Varchar Opt
+=================================================
+SELECT CAST('1' as VARCHAR(16))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (varchar_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Character Strings Text
+=================================================
+SELECT CAST('1' as TEXT)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (text_))))))))))))))))

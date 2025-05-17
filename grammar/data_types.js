@@ -20,8 +20,11 @@ module.exports = {
     seq($.floatty_,optional(parens($.decimal_))),
     seq($.realty_,optional(parens($.decimal_))),
 
+    //Character strings
+    seq($.char_, optional(parens($.decimal_))),
+    seq($.varchar_, optional(parens($.decimal_))),
+    $.text_,
 
-    token(/VARCHAR/i), //TODO
 
 
   ),
@@ -41,9 +44,13 @@ module.exports = {
   floatty_: $ => token(/FLOAT/i),
   realty_: $ => token(/REAL/i),
 
+  //Character strings
+  char_: $ => token(/CHAR/i),
+  varchar_: $ => token(/VARCHAR/i),
+  text_: $ => token(/TEXT/i),
+
   /*
     Date and time
-    Character strings
     Unicode character strings
     Binary strings
     Other data types
