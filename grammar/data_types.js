@@ -22,11 +22,14 @@ module.exports = {
 
     //Character strings
     seq($.char_, optional(parens($.decimal_))),
-    seq($.varchar_, optional(parens($.decimal_))),
+    seq($.varchar_, optional(parens(choice($.decimal_, $.max_)))),
     $.text_,
 
 
-
+    //Unicode character strings
+    seq($.nchar_, optional(parens($.decimal_))),
+    seq($.nvarchar_, optional(parens(choice($.decimal_, $.max_)))),
+    $.ntext_,
   ),
 
   //Exact Numerics
@@ -49,9 +52,13 @@ module.exports = {
   varchar_: $ => token(/VARCHAR/i),
   text_: $ => token(/TEXT/i),
 
+  //Unicode character strings
+  nchar_: $ => token(/NCHAR/i),
+  nvarchar_: $ => token(/NVARCHAR/i),
+  ntext_: $ => token(/NTEXT/i),
+
   /*
     Date and time
-    Unicode character strings
     Binary strings
     Other data types
   */

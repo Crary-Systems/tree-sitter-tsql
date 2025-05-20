@@ -549,6 +549,37 @@ SELECT CAST('1' as VARCHAR(16))
                               (decimal_))))))))))))))))
 
 =================================================
+Datatype Exact Character Strings Varchar Max
+=================================================
+SELECT CAST('1' as VARCHAR(Max))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (varchar_)
+                              (max_))))))))))))))))
+
+=================================================
 Datatype Exact Character Strings Text
 =================================================
 SELECT CAST('1' as TEXT)
@@ -577,3 +608,186 @@ SELECT CAST('1' as TEXT)
                             (AS)
                             (data_type
                               (text_))))))))))))))))
+
+=================================================
+Datatype Exact Unicode Character Strings NCHAR
+=================================================
+SELECT CAST('1' as NCHAR)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (nchar_))))))))))))))))
+
+=================================================
+Datatype Exact Unicode Character Strings NCHAR OPT
+=================================================
+SELECT CAST('1' as NCHAR(4))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (nchar_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Unicode Character Strings NVarchar
+=================================================
+SELECT CAST('1' as NVARCHAR)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (nvarchar_))))))))))))))))
+
+=================================================
+Datatype Exact Unicode Character Strings NVarchar OPT
+=================================================
+SELECT CAST('1' as NVARCHAR(4))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (nvarchar_)
+                              (decimal_))))))))))))))))
+
+=================================================
+Datatype Exact Unicode Character Strings NVarchar Max
+=================================================
+SELECT CAST('1' as NVARCHAR(MAX))
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (nvarchar_)
+                              (max_))))))))))))))))
+
+=================================================
+Datatype Exact Unicode Character Strings NText
+=================================================
+SELECT CAST('1' as NTEXT)
+---
+
+(tsql_file
+  (batch
+    (sql_clauses
+      (dml_clause
+        (select_statement_standalone
+          (select_statement
+            (query_expression
+              (query_specification
+                (select)
+                (select_list
+                  (select_list_elem
+                    (expression_elem
+                      (expression
+                        (function_call
+                          (conversion_functions
+                            (cast_)
+                            (expression
+                              (primitive_expression
+                                (primitive_constant
+                                  (string_lit))))
+                            (AS)
+                            (data_type
+                              (ntext_))))))))))))))))

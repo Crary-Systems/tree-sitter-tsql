@@ -1024,11 +1024,27 @@
           "named": true
         },
         {
+          "type": "max_",
+          "named": true
+        },
+        {
           "type": "moneyty_",
           "named": true
         },
         {
+          "type": "nchar_",
+          "named": true
+        },
+        {
+          "type": "ntext_",
+          "named": true
+        },
+        {
           "type": "numeric_",
+          "named": true
+        },
+        {
+          "type": "nvarchar_",
           "named": true
         },
         {
@@ -3139,7 +3155,15 @@
     "named": true
   },
   {
+    "type": "nchar_",
+    "named": true
+  },
+  {
     "type": "nestlevel_",
+    "named": true
+  },
+  {
+    "type": "ntext_",
     "named": true
   },
   {
@@ -3152,6 +3176,10 @@
   },
   {
     "type": "numeric_",
+    "named": true
+  },
+  {
+    "type": "nvarchar_",
     "named": true
   },
   {
