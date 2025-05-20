@@ -30,6 +30,11 @@ module.exports = {
     seq($.nchar_, optional(parens($.decimal_))),
     seq($.nvarchar_, optional(parens(choice($.decimal_, $.max_)))),
     $.ntext_,
+
+    //Binary strings
+    seq($.binary_, optional(parens($.decimal_))),
+    seq($.varbinary_, optional(parens(choice($.decimal_, $.max_)))),
+    $.image_,
   ),
 
   //Exact Numerics
@@ -57,9 +62,12 @@ module.exports = {
   nvarchar_: $ => token(/NVARCHAR/i),
   ntext_: $ => token(/NTEXT/i),
 
+  //Binary strings
+  binary_: $ => token(/BINARY/i),
+  varbinary_: $ => token(/VARBINARY/i),
+  image_: $ => token(/IMAGE/i),
   /*
     Date and time
-    Binary strings
     Other data types
   */
 };

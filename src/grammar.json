@@ -6570,6 +6570,87 @@
         {
           "type": "SYMBOL",
           "name": "ntext_"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "binary_"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "("
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "decimal_"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "varbinary_"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "("
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "decimal_"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "max_"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "image_"
         }
       ]
     },
@@ -6706,6 +6787,30 @@
       "content": {
         "type": "PATTERN",
         "value": "NTEXT",
+        "flags": "i"
+      }
+    },
+    "binary_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "BINARY",
+        "flags": "i"
+      }
+    },
+    "varbinary_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "VARBINARY",
+        "flags": "i"
+      }
+    },
+    "image_": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "IMAGE",
         "flags": "i"
       }
     },

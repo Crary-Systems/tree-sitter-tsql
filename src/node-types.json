@@ -1000,6 +1000,10 @@
           "named": true
         },
         {
+          "type": "binary_",
+          "named": true
+        },
+        {
           "type": "bit_",
           "named": true
         },
@@ -1017,6 +1021,10 @@
         },
         {
           "type": "floatty_",
+          "named": true
+        },
+        {
+          "type": "image_",
           "named": true
         },
         {
@@ -1065,6 +1073,10 @@
         },
         {
           "type": "tinyint_",
+          "named": true
+        },
+        {
+          "type": "varbinary_",
           "named": true
         },
         {
@@ -2835,6 +2847,10 @@
     "named": true
   },
   {
+    "type": "binary_",
+    "named": true
+  },
+  {
     "type": "binary_checksum_",
     "named": true
   },
@@ -3068,6 +3084,10 @@
   },
   {
     "type": "hour_",
+    "named": true
+  },
+  {
+    "type": "image_",
     "named": true
   },
   {
@@ -3356,6 +3376,10 @@
   },
   {
     "type": "var_",
+    "named": true
+  },
+  {
+    "type": "varbinary_",
     "named": true
   },
   {
