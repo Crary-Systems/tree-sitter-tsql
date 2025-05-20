@@ -1012,6 +1012,22 @@
           "named": true
         },
         {
+          "type": "date_",
+          "named": true
+        },
+        {
+          "type": "datetime2_",
+          "named": true
+        },
+        {
+          "type": "datetime_",
+          "named": true
+        },
+        {
+          "type": "datetimeoffset_",
+          "named": true
+        },
+        {
           "type": "decimal_",
           "named": true
         },
@@ -1060,6 +1076,10 @@
           "named": true
         },
         {
+          "type": "smalldatetime_",
+          "named": true
+        },
+        {
           "type": "smallint_",
           "named": true
         },
@@ -1069,6 +1089,10 @@
         },
         {
           "type": "text_",
+          "named": true
+        },
+        {
+          "type": "time_",
           "named": true
         },
         {
@@ -2935,7 +2959,23 @@
     "named": true
   },
   {
+    "type": "date_",
+    "named": true
+  },
+  {
     "type": "datefirst_",
+    "named": true
+  },
+  {
+    "type": "datetime2_",
+    "named": true
+  },
+  {
+    "type": "datetime_",
+    "named": true
+  },
+  {
+    "type": "datetimeoffset_",
     "named": true
   },
   {
@@ -3319,6 +3359,10 @@
     "named": true
   },
   {
+    "type": "smalldatetime_",
+    "named": true
+  },
+  {
     "type": "smallint_",
     "named": true
   },
@@ -3360,6 +3404,10 @@
   },
   {
     "type": "textsize_",
+    "named": true
+  },
+  {
+    "type": "time_",
     "named": true
   },
   {

@@ -35,6 +35,14 @@ module.exports = {
     seq($.binary_, optional(parens($.decimal_))),
     seq($.varbinary_, optional(parens(choice($.decimal_, $.max_)))),
     $.image_,
+
+    //Date and time
+    $.date_,
+    seq($.time_, optional(parens($.decimal_))),
+    seq($.datetime2_, optional(parens($.decimal_))),
+    seq($.datetimeoffset_, optional(parens($.decimal_))),
+    $.datetime_,
+    $.smalldatetime_,
   ),
 
   //Exact Numerics
@@ -66,8 +74,16 @@ module.exports = {
   binary_: $ => token(/BINARY/i),
   varbinary_: $ => token(/VARBINARY/i),
   image_: $ => token(/IMAGE/i),
+
+  //Date and time
+  date_: $ => token(/DATE/i),
+  time_: $ => token(/TIME/i),
+  datetime2_: $ => token(/DATETIME2/i),
+  datetimeoffset_: $ => token(/DATETIMEOFFSET/i),
+  datetime_: $ => token(/DATETIME/i),
+  smalldatetime_: $ => token(/SMALLDATETIME/i),
+
   /*
-    Date and time
     Other data types
   */
 };
