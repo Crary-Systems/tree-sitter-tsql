@@ -96,6 +96,9 @@ digraph Roadmap {
   include(grammar/configuration_functions.dot)
   include(grammar/conversion_functions.dot)
   include(grammar/data_type.dot)
+  ## TODO
+  include(grammar/other_data_types.dot)
+
 
   include(grammar/batch_level_statement.dot)
 }

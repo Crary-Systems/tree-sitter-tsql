@@ -84,6 +84,9 @@ module.exports = {
   smalldatetime_: $ => token(/SMALLDATETIME/i),
 
   /*
-    Other data types
+    TODO Other data types
+    https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16#other-data-types
   */
+
+
 };

@@ -617,7 +617,15 @@ digraph Roadmap {
 
   subgraph {
   data_type
+
+  data_type -> other_data_types
 }
+
+  ## TODO
+  subgraph {
+  other_data_types
+}
+
 
 
   subgraph {

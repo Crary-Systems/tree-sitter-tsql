@@ -1,3 +1,5 @@
 digraph {
   data_type
+
+  data_type -> other_data_types
 }
